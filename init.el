@@ -220,6 +220,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
+   ;; https://github.com/adobe-fonts/source-code-pro
    dotspacemacs-default-font '("Source Code Variable"
                                :size 13
                                :weight normal
@@ -446,8 +447,7 @@ It should only modify the values of Spacemacs settings."
 ;; Useful custom functions
 
 ;; https://emacs.stackexchange.com/questions/7742/what-is-the-easiest-way-to-open-the-folder-containing-the-current-file-by-the-de
-;; you need install xsel under Linux
-;; xclip has some problem when copying under Linux
+;; need xsel under Linux; xclip has some problem when copying under Linux
 (defun copy-yank-str (msg &optional clipboard-only)
   (unless clipboard-only (kill-new msg))
   (cond
@@ -539,6 +539,7 @@ from Projectile)."
 ;;   (ansi-term "/bin/bash")
 ;; )
 
+;; based on https://emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere/
 (defun eval-and-replace-sexp ()
   "Replace the preceding sexp with its value.
 
@@ -597,6 +598,7 @@ A buffer is skipped as not representing a file, if:
       (message "no other files open")
       (message "%s file" (if backwards "previous" "next"))))))
 
+;; this version is not as useful, since (buffer-list) gives the buffers in most-recently-used order.
 ;; (defun switch-to-next-file (&optional backwards)
 ;;   "Switch current window to next file.
 ;;
@@ -685,13 +687,14 @@ before packages are loaded."
   (global-set-key (kbd "C-t") 'spacemacs/shell-pop-inferior-shell)  ; much more useful than transpose-chars
   (global-set-key (kbd "C-S-t") 'open-dedicated-terminal)
   (global-set-key (kbd "C-S-e") 'browse-file-directory)
-  (global-set-key (kbd "C-e") 'move-end-of-line)  ; FIXME: better way to not shadow this default? (convenient to have!)
+  (global-set-key (kbd "C-e") 'move-end-of-line)  ; FIXME: unshadowing a default
   (global-set-key (kbd "C-c e") 'eval-and-replace-sexp)
   (global-set-key (kbd "C-<next>") 'switch-to-next-file)
   (global-set-key (kbd "C-<prior>") 'switch-to-previous-file)
   (global-set-key (kbd "M-S-q") 'unfill-paragraph)
-  (global-set-key (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing
-  (define-key 'iso-transl-ctl-x-8-map "l" [?λ])  ; clean way to automatically bind with sensible display label for which-key
+  (global-set-key (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
+  (define-key 'iso-transl-ctl-x-8-map "l" [?λ])  ; automatically gives sensible display label for which-key
+  ;; but can be done manually like this
   ;; (global-set-key (kbd "C-x 8 l") [?λ])
   ;; (which-key-add-key-based-replacements "C-x 8 l" "λ")
   (global-set-key (kbd "S-<f12>") 'yafolding-go-parent-element)
@@ -707,16 +710,16 @@ before packages are loaded."
   (add-hook 'python-mode-hook 'anaconda-mode)
   ;; default modes
   (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
-  (yafolding-mode)  ; FIXME: seems to need a hook, gets disabled when opening a file
+  (yafolding-mode)  ; FIXME: seems to need a (major mode?) hook, gets disabled when opening a file
   (global-visual-line-mode t)
   ;; (fancy-battery-mode)
   ;; https://www.emacswiki.org/emacs/DisplayTime
   ;; (display-time-mode)
   ;; (setq display-time-24hr-format t)
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html
-  (setq sentence-end-double-space nil)
-  (spacemacs/toggle-automatic-symbol-highlight-on)
-  ;; ;; no need for hook, this runs after init is done
+  (setq sentence-end-double-space nil)s
+  (spacemacs/toggle-automatic-symbol-highlight-on)  ; in addition should configure colors for ahs (see customs below)
+  ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
 )
