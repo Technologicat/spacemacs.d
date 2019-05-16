@@ -758,7 +758,7 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-mypy-executable "python3")
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
- '(minimap-update-delay 0.02)
+ '(minimap-update-delay 0)
  '(minimap-window-location 'right)
  '(nil nil t)
  '(package-selected-packages
