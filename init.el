@@ -588,6 +588,7 @@ A buffer is skipped as not representing a file, if:
                ($p (purpose-buffer-purpose $n)))
           (or
            (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
+           (s-starts-with? "Dired " $n)
            (equal $p 'general)
            (equal $p 'minibuf)
            )))
@@ -616,6 +617,7 @@ A buffer is skipped as not representing a file, if:
 ;;             ($p (purpose-buffer-purpose buf)))
 ;;         (or
 ;;          (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
+;;          (s-starts-with? "Dired " $n)
 ;;          (equal $p 'general)
 ;;          (equal $p 'minibuf)
 ;;          )))
