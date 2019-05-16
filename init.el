@@ -717,7 +717,7 @@ before packages are loaded."
   ;; (display-time-mode)
   ;; (setq display-time-24hr-format t)
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html
-  (setq sentence-end-double-space nil)s
+  (setq sentence-end-double-space nil)
   (spacemacs/toggle-automatic-symbol-highlight-on)  ; in addition should configure colors for ahs (see customs below)
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
