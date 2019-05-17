@@ -79,11 +79,12 @@ This function should only modify configuration layer settings."
                                       ;; https://github.com/kyagi/shell-pop-el
                                       ;;shell-pop
                                       fireplace
-                                      (minimap :location (recipe :fetcher github :repo "dengste/minimap"))
                                       ;; The minimap in ELPA is old; even though both that and the one on GitHub
                                       ;; advertise themselves as version 1.2, only the one on GitHub has an option
                                       ;; to change the color of the highlighted line.
                                       ;; https://github.com/dengste/minimap
+                                      ;;(minimap :location (recipe :fetcher github :repo "dengste/minimap"))
+                                      sublimity
                                       yafolding)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -709,8 +710,17 @@ before packages are loaded."
   (defun toggle-minimap ()
     "Toggle the minimap."
     (interactive)
-    (minimap-mode 'toggle))
+    ;; (minimap-mode 'toggle)
+    (sublimity-mode 'toggle))
   (global-set-key (kbd "<f9>") 'toggle-minimap)
+  ;; https://github.com/zk-phi/sublimity
+  (require 'sublimity)
+  ;;(require 'sublimity-scroll)
+  (require 'sublimity-map)
+  (sublimity-map-set-delay nil)
+  ;; (setq sublimity-scroll-weight 3
+  ;;       sublimity-scroll-drift-length 3)
+  ;; (require 'sublimity-attractive)
   ;; Python support
   (eval-after-load "company"
     '(add-to-list 'company-backends 'company-anaconda))
