@@ -700,6 +700,7 @@ before packages are loaded."
   (global-set-key (kbd "C-<next>") 'switch-to-next-file)
   (global-set-key (kbd "C-<prior>") 'switch-to-previous-file)
   (global-set-key (kbd "M-S-q") 'unfill-paragraph)
+  (global-set-key (kbd "M-Q") 'unfill-paragraph)
   (global-set-key (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
   (define-key 'iso-transl-ctl-x-8-map "l" [?λ])  ; automatically gives sensible display label for which-key
   ;; but can be done manually like this
