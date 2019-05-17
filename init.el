@@ -61,7 +61,12 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-width 40
             shell-default-position 'right)
-     ;; spell-checking
+     ;; spell-checking may crash Emacs on the first load, because apt needs the
+     ;; sudo password to install the dependencies, but Emacs doesn't prompt for it.
+     ;; If this happens, look at the command Emacs is trying to run (at the status line),
+     ;; run it manually (so that the installation completes), and kill and restart Emacs.
+     ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bcheckers/spell-checking
+     spell-checking
      syntax-checking
      ;; version-control
      themes-megapack
@@ -776,6 +781,9 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-mypy-executable "python3")
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
+ ;; use tmispell to check also Finnish; part of Voikko
+ ;; https://voikko.puimula.org/
+ '(ispell-program-name "/usr/bin/tmispell")
  '(minimap-update-delay 0)
  '(minimap-window-location 'right)
  '(nil nil t)
