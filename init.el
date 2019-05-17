@@ -733,6 +733,14 @@ before packages are loaded."
   (eval-after-load "company"
     '(add-to-list 'company-backends 'company-anaconda))
   (add-hook 'python-mode-hook 'anaconda-mode)
+  ;; add company-dabbrev to company-backends in text mode to enable completion from text already in buffer
+  ;; TODO: how to get it to support TAB without overriding indent-for-tab-command?
+  (eval-after-load "company"
+    '(add-hook 'text-mode-hook 'my-company-text-mode-hook))
+  (defun my-company-text-mode-hook ()
+    "Enable some completers for Company in Text mode, and enable company-mode."
+    (add-to-list 'company-backends 'company-dabbrev)
+    (company-mode))
   ;; default modes
   (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
   (yafolding-mode)  ; FIXME: seems to need a (major mode?) hook, gets disabled when opening a file
