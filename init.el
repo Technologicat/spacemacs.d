@@ -80,6 +80,10 @@ This function should only modify configuration layer settings."
                                       ;;shell-pop
                                       fireplace
                                       (minimap :location (recipe :fetcher github :repo "dengste/minimap"))
+                                      ;; The minimap in ELPA is old; even though both that and the one on GitHub
+                                      ;; advertise themselves as version 1.2, only the one on GitHub has an option
+                                      ;; to change the color of the highlighted line.
+                                      ;; https://github.com/dengste/minimap
                                       yafolding)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
