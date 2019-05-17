@@ -706,8 +706,10 @@ before packages are loaded."
   ;; but can be done manually like this
   ;; (global-set-key (kbd "C-x 8 l") [?λ])
   ;; (which-key-add-key-based-replacements "C-x 8 l" "λ")
+  ;; code folding
   (global-set-key (kbd "S-<f12>") 'yafolding-go-parent-element)
   (global-set-key (kbd "<f12>") 'yafolding-toggle-element)
+  ;; minimap
   (defun toggle-minimap ()
     "Toggle the minimap."
     (interactive)
