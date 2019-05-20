@@ -793,6 +793,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
+ '(flycheck-flake8rc "~/.config/flake8")
  '(flycheck-python-flake8-executable "python3")
  '(flycheck-python-mypy-executable "python3")
  '(flycheck-python-pycompile-executable "python3")
