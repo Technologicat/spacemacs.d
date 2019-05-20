@@ -745,6 +745,7 @@ before packages are loaded."
   (global-visual-line-mode t)
   (spacemacs/toggle-zero-based-column-indexing-off)  ; one of the few things that is nice to index 1-based.
   (add-hook 'prog-mode-hook 'yafolding-mode)
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   ;; TODO: how to add multiple modes in the same call?
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
