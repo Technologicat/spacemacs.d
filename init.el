@@ -742,9 +742,9 @@ before packages are loaded."
     (company-mode))
   ;; default modes
   (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
-  (yafolding-mode)  ; FIXME: seems to need a (major mode?) hook, gets disabled when opening a file
   (global-visual-line-mode t)
   (spacemacs/toggle-zero-based-column-indexing-off)  ; one of the few things that is nice to index 1-based.
+  (add-hook 'prog-mode-hook 'yafolding-mode)
   ;; TODO: how to add multiple modes in the same call?
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
