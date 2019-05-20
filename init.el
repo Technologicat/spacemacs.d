@@ -745,6 +745,11 @@ before packages are loaded."
   (yafolding-mode)  ; FIXME: seems to need a (major mode?) hook, gets disabled when opening a file
   (global-visual-line-mode t)
   (spacemacs/toggle-zero-based-column-indexing-off)  ; one of the few things that is nice to index 1-based.
+  ;; TODO: how to add multiple modes in the same call?
+  (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'show-smartparens-mode)
+  ;; (add-hook 'eval-expression-minibuffer-setup-hook #'highlight-parentheses-mode)  ; does nothing in minibuffer
   ;; (fancy-battery-mode)
   ;; https://www.emacswiki.org/emacs/DisplayTime
   ;; (display-time-mode)
