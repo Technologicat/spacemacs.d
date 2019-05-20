@@ -796,6 +796,7 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-pylint-executable "python3")
  ;; use tmispell to check also Finnish; part of Voikko
  ;; https://voikko.puimula.org/
+ '(importmagic-python-interpreter "ipython3")
  '(ispell-program-name "/usr/bin/tmispell")
  '(minimap-update-delay 0)
  '(minimap-window-location 'right)
