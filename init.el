@@ -734,7 +734,6 @@ before packages are loaded."
     '(add-to-list 'company-backends 'company-anaconda))
   (add-hook 'python-mode-hook 'anaconda-mode)
   ;; add company-dabbrev to company-backends in text mode to enable completion from text already in buffer
-  ;; TODO: how to get it to support TAB without overriding indent-for-tab-command?
   (eval-after-load "company"
     '(add-hook 'text-mode-hook 'my-company-text-mode-hook))
   (defun my-company-text-mode-hook ()
