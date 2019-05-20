@@ -814,5 +814,6 @@ This function is called at the very end of Spacemacs initialization."
  '(ahs-plugin-whole-buffer-face ((t (:background "dark olive green" :foreground "ghost white"))))
  '(minimap-active-region-background ((t (:background "dark olive green"))))
  '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
- '(minimap-font-face ((t (:height 20 :family "Source Code Variable")))))
-)
+ '(minimap-font-face ((t (:height 20 :family "Source Code Variable"))))
+ '(spacemacs-emacs-face ((t (:inherit 'mode-line :background "SkyBlue4"))))
+))
