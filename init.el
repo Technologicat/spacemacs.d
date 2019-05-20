@@ -762,7 +762,8 @@ before packages are loaded."
   ;; (add-hook 'after-init-hook #'display-time)
 )
 
-;; In custom settings, use tmispell instead of classic ispell to check also Finnish; part of Voikko
+;; In custom settings, use tmispell instead of classic ispell to check also Finnish; part of Voikko.
+;; EDIT: in 2019, deprecated. Use enchant instead, Voikko has a provider also for that.
 ;; https://voikko.puimula.org/
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -799,7 +800,7 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
  '(importmagic-python-interpreter "ipython3")
- '(ispell-program-name "/usr/bin/tmispell")
+ '(ispell-program-name "/usr/bin/enchant")
  '(minimap-update-delay 0)
  '(minimap-window-location 'right)
  '(nil nil t)
