@@ -744,6 +744,7 @@ before packages are loaded."
   (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
   (yafolding-mode)  ; FIXME: seems to need a (major mode?) hook, gets disabled when opening a file
   (global-visual-line-mode t)
+  (spacemacs/toggle-zero-based-column-indexing-off)  ; one of the few things that is nice to index 1-based.
   ;; (fancy-battery-mode)
   ;; https://www.emacswiki.org/emacs/DisplayTime
   ;; (display-time-mode)
