@@ -762,6 +762,9 @@ before packages are loaded."
   ;; (add-hook 'after-init-hook #'display-time)
 )
 
+;; In custom settings, use tmispell instead of classic ispell to check also Finnish; part of Voikko
+;; https://voikko.puimula.org/
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -794,8 +797,6 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-mypy-executable "python3")
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
- ;; use tmispell to check also Finnish; part of Voikko
- ;; https://voikko.puimula.org/
  '(importmagic-python-interpreter "ipython3")
  '(ispell-program-name "/usr/bin/tmispell")
  '(minimap-update-delay 0)
