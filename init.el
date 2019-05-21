@@ -691,10 +691,10 @@ before packages are loaded."
   ;; (global-set-key (kbd "M-z") 'undo-tree-undo)
   (define-key evil-emacs-state-map (kbd "C-z") nil)  ; prevent shadowing undo
   ;; Ctrl+Z undo shadows helm's action list viewer; let's place that on Alt+Z
-  (define-key undo-tree-map (kbd "M-z") 'helm-select-action)
+  ;; (define-key undo-tree-map (kbd "M-z") (lookup-key helm--minor-mode-map (kbd "C-z")))  ; gahh, where is it?!
+  (define-key undo-tree-map (kbd "M-z") 'helm-select-action)  ; this seems to be the "C-z Actions"?
   (define-key undo-tree-map (kbd "C-z") 'undo-tree-undo)
   (define-key undo-tree-map (kbd "C-S-z") 'undo-tree-redo)
-  ;; (define-key undo-tree-map (kbd "M-z") (lookup-key helm--minor-mode-map (kbd "C-z")))  ; gahh, where is it?!
   ;; (global-set-key (kbd "C-z") 'undo-tree-undo)
   ;; (global-set-key (kbd "C-S-z") 'undo-tree-redo)
   ;; (global-set-key (kbd "M-C") 'copy-fullpath-of-current-buffer)
