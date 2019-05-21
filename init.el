@@ -762,6 +762,14 @@ before packages are loaded."
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html
   (setq sentence-end-double-space nil)
   (spacemacs/toggle-automatic-symbol-highlight-on)  ; in addition should configure colors for ahs (see customs below)
+  ;; prettify
+  ;; (add-hook 'emacs-lisp-mode-hook
+  ;;           (lambda ()
+  ;;             (push '("lambda" . ?λ) prettify-symbols-alist)
+  ;;             (push '("<=" . ?≤) prettify-symbols-alist)
+  ;;             (push '(">=" . ?≥) prettify-symbols-alist)
+  ;;             ))
+  ;; (global-prettify-symbols-mode)
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
