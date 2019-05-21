@@ -753,6 +753,7 @@ before packages are loaded."
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'show-smartparens-mode)
+  ;; (add-hook 'eval-expression-minibuffer-setup-hook #'rainbow-delimiters-mode)  ; does nothing in minibuffer
   ;; (add-hook 'eval-expression-minibuffer-setup-hook #'highlight-parentheses-mode)  ; does nothing in minibuffer
   ;; (fancy-battery-mode)
   ;; https://www.emacswiki.org/emacs/DisplayTime
