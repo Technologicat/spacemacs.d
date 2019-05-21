@@ -597,12 +597,14 @@ A buffer is skipped as not representing a file, if:
       (defun $rejectp ()
         (let* (($n (buffer-name))
                ($p (purpose-buffer-purpose $n)))
-          (or
-           (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
-           (s-starts-with? "Dired " $n)
-           (equal $p 'general)
-           (equal $p 'minibuf)
-           )))
+          (and
+           (not (s-starts-with? "untitled" $n))
+           (or
+            (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
+            (s-starts-with? "Dired " $n)
+            (equal $p 'general)
+            (equal $p 'minibuf)))
+          ))
       ($next)
       (while ($rejectp)
         ($next))
@@ -626,12 +628,13 @@ A buffer is skipped as not representing a file, if:
 ;;     (defun $rejectp (buf)
 ;;       (let (($n (string-trim (buffer-name buf)))
 ;;             ($p (purpose-buffer-purpose buf)))
-;;         (or
-;;          (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
-;;          (s-starts-with? "Dired " $n)
-;;          (equal $p 'general)
-;;          (equal $p 'minibuf)
-;;          )))
+;;         (and
+;;          (not (s-starts-with? "untitled" $n))
+;;          (or
+;;           (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
+;;           (s-starts-with? "Dired " $n)
+;;           (equal $p 'general)
+;;           (equal $p 'minibuf)))))
 ;;     (let (($bufs (cdr (buffer-list (selected-frame)))))  ; current buffer is first, skip it
 ;;       (when backwards (setq $bufs (reverse $bufs)))
 ;;       (dolist ($buf $bufs nil)
