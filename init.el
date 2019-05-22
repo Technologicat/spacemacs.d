@@ -91,6 +91,7 @@ This function should only modify configuration layer settings."
                                       ;;(minimap :location (recipe :fetcher github :repo "dengste/minimap"))
                                       sublimity
                                       yafolding
+                                      beacon
                                       rainbow-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -809,6 +810,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(beacon-color "goldenrod")
  '(evil-want-Y-yank-to-eol nil)
  '(flycheck-flake8rc "~/.config/flake8")
  '(flycheck-python-flake8-executable "python3")
