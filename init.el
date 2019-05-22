@@ -817,6 +817,7 @@ before packages are loaded."
   (add-hook 'prog-mode-hook 'my/prettify-symbols-setup)
   (add-hook 'python-mode-hook 'my/prettify-python-setup)
   (global-prettify-symbols-mode)
+  (setq inhibit-compacting-font-caches t)
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
