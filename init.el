@@ -775,6 +775,7 @@ before packages are loaded."
   ;;             (push '(">=" . ?≥) prettify-symbols-alist)
   ;;             ))
   ;; (global-prettify-symbols-mode)
+  (beacon-mode t)  ; highlight cursor after scroll
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
