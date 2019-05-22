@@ -90,7 +90,8 @@ This function should only modify configuration layer settings."
                                       ;; https://github.com/dengste/minimap
                                       ;;(minimap :location (recipe :fetcher github :repo "dengste/minimap"))
                                       sublimity
-                                      yafolding)
+                                      yafolding
+                                      rainbow-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -749,6 +750,8 @@ before packages are loaded."
   (spacemacs/toggle-zero-based-column-indexing-off)  ; one of the few things that is nice to index 1-based.
   (add-hook 'prog-mode-hook 'yafolding-mode)
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  (add-hook 'prog-mode-hook 'rainbow-mode)  ; display color specifications (e.g. #A0A080, green) using the color they describe
+  (add-hook 'text-mode-hook 'rainbow-mode)
   ;; TODO: how to add multiple modes in the same call?
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
