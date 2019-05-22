@@ -776,6 +776,11 @@ before packages are loaded."
   ;;             ))
   ;; (global-prettify-symbols-mode)
   (beacon-mode t)  ; highlight cursor after scroll
+  ;; "vim scrolloff", gradual scrolling https://wolfecub.github.io/dotfiles/
+  (setq scroll-margin 10
+        scroll-step 1
+        scroll-conservatively 10000
+        scroll-preserve-screen-position 1)
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
