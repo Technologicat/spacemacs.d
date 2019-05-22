@@ -767,20 +767,56 @@ before packages are loaded."
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html
   (setq sentence-end-double-space nil)
   (spacemacs/toggle-automatic-symbol-highlight-on)  ; in addition should configure colors for ahs (see customs below)
-  ;; prettify
-  ;; (add-hook 'emacs-lisp-mode-hook
-  ;;           (lambda ()
-  ;;             (push '("lambda" . ?λ) prettify-symbols-alist)
-  ;;             (push '("<=" . ?≤) prettify-symbols-alist)
-  ;;             (push '(">=" . ?≥) prettify-symbols-alist)
-  ;;             ))
-  ;; (global-prettify-symbols-mode)
   (beacon-mode t)  ; highlight cursor after scroll
   ;; "vim scrolloff", gradual scrolling https://wolfecub.github.io/dotfiles/
   (setq scroll-margin 10
         scroll-step 1
         scroll-conservatively 10000
         scroll-preserve-screen-position 1)
+  ;; prettify symbols
+  (defun my/prettify-symbols-setup ()
+     "Set up symbol prettification (base settings for all programming languages)."
+     (let ((xs '(;("lambda" . ?λ)  ; lambda is already there by default
+                 ("<=" . ?≤)
+                 (">=" . ?≥)
+                 ("!=" . ?≠)
+                 ("=>" . ?⇒)
+                 ;("==" . ?＝)  ; maybe too much of a trap.
+                 )))
+       (dolist (x xs nil)
+         (push x prettify-symbols-alist)))
+     (prettify-symbols-mode))
+  ;; TODO: test and yak-shave this to something actually productive
+  (defun my/prettify-python-setup ()  ; suggestions from https://wolfecub.github.io/dotfiles/
+     "Set up symbol prettification (additional settings for Python)."
+     (let ((xs '(("**2" . ?²)
+                 ("**3" . ?³)
+                 ("**4" . ?⁴)
+                 ("**5" . ?⁵)
+                 ("**6" . ?⁶)
+                 ("**7" . ?⁷)
+                 ("**8" . ?⁸)
+                 ("**9" . ?⁹)
+                 ("sum" . ?∑)
+                 ("prod" . ?∏)  ; unpythonic.fold.prod  https://github.com/Technologicat/unpythonic
+                 ("and" . ?∩)
+                 ("or" . ?∪)
+                 ("in" . ?∈)
+                 ("not in" . ?∉)
+                 ("is" . ?≡)
+                 ("is not" . ?≢)
+                 ("all" . ?∀)
+                 ("any" . ?∃)
+                 ("None" . ?∅)
+                 ("return" . ?➡)
+                 ;("def" . ?ƒ)  ; looks silly; literal "def" easier to spot.
+                 )))
+       (dolist (x xs nil)
+         (push x prettify-symbols-alist)))
+     (prettify-symbols-mode))
+  (add-hook 'prog-mode-hook 'my/prettify-symbols-setup)
+  (add-hook 'python-mode-hook 'my/prettify-python-setup)
+  (global-prettify-symbols-mode)
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
@@ -831,6 +867,7 @@ This function is called at the very end of Spacemacs initialization."
  '(nil nil t)
  '(package-selected-packages
    '(fireplace shell-pop company-quickhelp yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic flycheck-pos-tip pos-tip flycheck company-auctex auctex zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme smeargle orgit mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy evil-magit magit transient git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+ '(prettify-symbols-unprettify-at-point 'right-edge)
  '(python-shell-interpreter "ipython3")
  '(sublimity-map-active-region 'secondary-selection))
 (custom-set-faces
