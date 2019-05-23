@@ -758,6 +758,7 @@ before packages are loaded."
   (global-set-key (kbd "M-Q") 'unfill-paragraph)
   (global-set-key (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
   (spacemacs/set-leader-keys "s m" 'helm-multi-swoop-this-mode)  ; M-m s m
+  (spacemacs/set-leader-keys "s C-p" 'helm-multi-swoop-projectile)  ; M-m s C-p
   (define-key 'iso-transl-ctl-x-8-map "l" [?λ])  ; automatically gives sensible display label for which-key
   ;; but can be done manually like this
   ;; (global-set-key (kbd "C-x 8 l") [?λ])
