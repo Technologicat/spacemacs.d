@@ -866,6 +866,30 @@ before packages are loaded."
      (prettify-symbols-mode))
   (add-hook 'prog-mode-hook 'my/prettify-symbols-setup)
   (add-hook 'python-mode-hook 'my/prettify-python-setup)
+  (defun my/unpythonic-syntax-highlight-setup ()
+    "Set up additional syntax highlighting for `unpythonic.syntax' in python mode."
+    ;; adapted from code in dash.el
+    (let ((new-keywords '("let" "dlet" "blet"
+                          "letseq" "dletseq" "bletseq"
+                          "letrec" "dletrec" "bletrec"
+                          "let_syntax" "abbrev"
+                          "where"
+                          "do" "local" "delete"
+                          "continuations" "call_cc"
+                          "curry" "lazify" "envify" "tco" "prefix" "autoreturn" "forall"
+                          "multilambda" "namedlambda" "quicklambda"
+                          "cond" "aif" "autoref" "dbg" "nb"
+                          "macros" "q" "u" "hq" "ast_literal")) ; macropy
+          (special-variables '("it"
+                               "dyn"
+                               "dbgprint_expr")))
+      (font-lock-add-keywords 'python-mode `((,(concat "\\_<" (regexp-opt special-variables 'paren) "\\_>")
+                                              1 font-lock-variable-name-face)) 'append)
+      ;; "(\\s-*" maybe somewhere?
+      (font-lock-add-keywords 'python-mode `((,(concat "\\_<" (regexp-opt new-keywords 'paren) "\\_>")
+                                              1 font-lock-keyword-face)) 'append)
+  ))
+  (add-hook 'python-mode-hook 'my/unpythonic-syntax-highlight-setup)
   (global-prettify-symbols-mode)
   (setq inhibit-compacting-font-caches t)
   ;; ;; no need for hook, this whole function runs after init is done
