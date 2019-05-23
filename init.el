@@ -866,6 +866,7 @@ before packages are loaded."
      (prettify-symbols-mode))
   (add-hook 'prog-mode-hook 'my/prettify-symbols-setup)
   (add-hook 'python-mode-hook 'my/prettify-python-setup)
+  (global-prettify-symbols-mode)
   (defun my/unpythonic-syntax-highlight-setup ()
     "Set up additional syntax highlighting for `unpythonic.syntax' in python mode."
     ;; adapted from code in dash.el
@@ -890,7 +891,6 @@ before packages are loaded."
                                               1 font-lock-keyword-face)) 'append)
   ))
   (add-hook 'python-mode-hook 'my/unpythonic-syntax-highlight-setup)
-  (global-prettify-symbols-mode)
   (setq inhibit-compacting-font-caches t)
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
