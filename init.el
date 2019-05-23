@@ -464,14 +464,15 @@ It should only modify the values of Spacemacs settings."
 (eval-when-compile
   (require 'cl))
 
-(defun get-buffers-matching-mode (mode)
-  "Returns a list of buffers where their major-mode is equal to MODE"
-  (let ((buffer-mode-matches '()))
-    (dolist (buf (buffer-list))
-      (with-current-buffer buf
-        (if (eq mode major-mode)
-            (add-to-list 'buffer-mode-matches buf))))
-    buffer-mode-matches))
+;; helm-swoop.el already defines this and automatically invokes buffer-name on each result.
+;; (defun get-buffers-matching-mode (mode)
+;;   "Returns a list of buffers where their major-mode is equal to MODE"
+;;   (let ((buffer-mode-matches '()))
+;;     (dolist (buf (buffer-list))
+;;       (with-current-buffer buf
+;;         (if (eq mode major-mode)
+;;             (add-to-list 'buffer-mode-matches buf))))
+;;     buffer-mode-matches))
 
 (defun multi-occur-this-mode ()
   "Show all lines matching REGEXP in buffers with this major mode."
@@ -480,15 +481,20 @@ It should only modify the values of Spacemacs settings."
    (get-buffers-matching-mode major-mode)
    (car (occur-read-primary-args))))
 
-;; For an example how to do things like this, see helm-multi-swoop-projectile in helm-swoop.el
+;; For an example how to do things like this with helm-swoop, see helm-multi-swoop-projectile
+;; TODO: make a dynamic-let macro for temporarily changing values of special variables (or try harder to find the standard approach on the internet)
 (defun helm-multi-swoop-this-mode (&optional $query)
    "Helm-swoop in buffers matching current major mode."
    (interactive)
-   (setq helm-multi-swoop-query (helm-multi-swoop--get-query $query))
-   (helm-multi-swoop--exec nil
-                           :$query helm-multi-swoop-query
-                           :$buflist (mapcar #'buffer-name
-                                             (get-buffers-matching-mode major-mode))))
+   (let (($p helm-swoop-prompt))
+     ;; change the **dynamic** binding with (set 'var val) so that helm-swoop sees it, if we (setq var val) it changes the lexical binding
+     ;; https://emacs.stackexchange.com/questions/27581/why-do-setq-and-set-quote-act-differently-on-let-bound-variables-with-lexical-sc
+     (set 'helm-swoop-prompt "Swoop (in current major mode):")
+     (setq helm-multi-swoop-query (helm-multi-swoop--get-query $query))
+     (helm-multi-swoop--exec nil
+                             :$query helm-multi-swoop-query
+                             :$buflist (get-buffers-matching-mode major-mode))
+     (set 'helm-swoop-prompt $p)))
 
 ;; https://emacs.stackexchange.com/questions/7742/what-is-the-easiest-way-to-open-the-folder-containing-the-current-file-by-the-de
 ;; need xsel under Linux; xclip has some problem when copying under Linux
@@ -716,6 +722,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; TODO: bad Spacemacs style to require modules in init.el; how to set up lazy autoload for helm-swoop like "SPC s s" does?
+  (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
   ;; custom hotkeys
   ;; (global-set-key (kbd "M-x") 'kill-region)     ; cut
   ;; (global-set-key (kbd "M-c") 'kill-ring-save)  ; copy
