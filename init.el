@@ -707,6 +707,12 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  ;; treemacs-dir is detected incorrectly, icons fail to load
+  ;; https://github.com/Alexander-Miller/treemacs/issues/319
+  ;; This doesn't seem to help, it's set at compile time. Instead, "M-m h d v treemacs-dir",
+  ;; jump to the dir where the help says it's defined, and then "C-0 M-x byte-recompile-directory"
+  ;; (the prefix argument zero forces a recompile of all .el files).
+  ;;(set 'treemacs-dir "~/.emacs.d/elpa/27.0/develop/treemacs-20190513.1513/")
   )
 
 (defun dotspacemacs/user-load ()
