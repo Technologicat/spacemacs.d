@@ -459,29 +459,36 @@ It should only modify the values of Spacemacs settings."
 ;; --------------------------------------------------------------------------------
 ;; Useful custom functions
 ;;
-;; TODO: customize this to use helm-multi-occur instead
 ;; https://www.masteringemacs.org/article/searching-buffers-occur-mode
-;; (eval-when-compile
-;;   (require 'cl))
-;;
-;; (defun get-buffers-matching-mode (mode)
-;;   "Returns a list of buffers where their major-mode is equal to MODE"
-;;   (let ((buffer-mode-matches '()))
-;;     (dolist (buf (buffer-list))
-;;       (with-current-buffer buf
-;;         (if (eq mode major-mode)
-;;             (add-to-list 'buffer-mode-matches buf))))
-;;     buffer-mode-matches))
-;;
-;; (defun multi-occur-in-this-mode ()
-;;   "Show all lines matching REGEXP in buffers with this major mode."
-;;   (interactive)
-;;   (multi-occur
-;;    (get-buffers-matching-mode major-mode)
-;;    (car (occur-read-primary-args))))
-;;
-;; ;; global key for `multi-occur-in-this-mode' - you should change this.
-;; (global-set-key (kbd "C-<f2>") 'multi-occur-in-this-mode)
+;; TODO: is this the right place for a compile-time requirement in Spacemacs?
+(eval-when-compile
+  (require 'cl))
+
+(defun get-buffers-matching-mode (mode)
+  "Returns a list of buffers where their major-mode is equal to MODE"
+  (let ((buffer-mode-matches '()))
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (if (eq mode major-mode)
+            (add-to-list 'buffer-mode-matches buf))))
+    buffer-mode-matches))
+
+(defun multi-occur-this-mode ()
+  "Show all lines matching REGEXP in buffers with this major mode."
+  (interactive)
+  (multi-occur
+   (get-buffers-matching-mode major-mode)
+   (car (occur-read-primary-args))))
+
+;; For an example how to do things like this, see helm-multi-swoop-projectile in helm-swoop.el
+(defun helm-multi-swoop-this-mode (&optional $query)
+   "Helm-swoop in buffers matching current major mode."
+   (interactive)
+   (setq helm-multi-swoop-query (helm-multi-swoop--get-query $query))
+   (helm-multi-swoop--exec nil
+                           :$query helm-multi-swoop-query
+                           :$buflist (mapcar #'buffer-name
+                                             (get-buffers-matching-mode major-mode))))
 
 ;; https://emacs.stackexchange.com/questions/7742/what-is-the-easiest-way-to-open-the-folder-containing-the-current-file-by-the-de
 ;; need xsel under Linux; xclip has some problem when copying under Linux
@@ -736,6 +743,7 @@ before packages are loaded."
   (global-set-key (kbd "M-S-q") 'unfill-paragraph)
   (global-set-key (kbd "M-Q") 'unfill-paragraph)
   (global-set-key (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
+  (spacemacs/set-leader-keys "s m" 'helm-multi-swoop-this-mode)  ; M-m s m
   (define-key 'iso-transl-ctl-x-8-map "l" [?λ])  ; automatically gives sensible display label for which-key
   ;; but can be done manually like this
   ;; (global-set-key (kbd "C-x 8 l") [?λ])
