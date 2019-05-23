@@ -807,8 +807,7 @@ before packages are loaded."
                 ("!=" . ?≠)
                 ("=>" . ?⇒)
                 ("->" . ?→)
-                ("<-" . ?←)
-                ;("==" . ?＝)  ; maybe too much of a trap.
+                ("<-" . ?←)  ; Haskell do-notation
                 )))
       (dolist (x xs nil)
         (push x prettify-symbols-alist)))
@@ -832,6 +831,8 @@ before packages are loaded."
                  ;("not in" . ?∉)
                  ("is" . ?≡)
                  ("is not" . ?≢)
+                 ("==" . ?＝)  ; maybe too much of a trap...
+                 ("=" . ?←)    ; unless we do this too?
                  ("all" . ?∀)
                  ("any" . ?∃)
                  ("None" . ?∅)
