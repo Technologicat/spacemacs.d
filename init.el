@@ -473,13 +473,13 @@ It should only modify the values of Spacemacs settings."
 ;;         (if (eq mode major-mode)
 ;;             (add-to-list 'buffer-mode-matches buf))))
 ;;     buffer-mode-matches))
-
-(defun multi-occur-this-mode ()
-  "Show all lines matching REGEXP in buffers with this major mode."
-  (interactive)
-  (multi-occur
-   (get-buffers-matching-mode major-mode)
-   (car (occur-read-primary-args))))
+;;
+;; (defun multi-occur-this-mode ()
+;;   "Show all lines matching REGEXP in buffers with this major mode."
+;;   (interactive)
+;;   (multi-occur
+;;    (get-buffers-matching-mode major-mode)
+;;    (car (occur-read-primary-args))))
 
 ;; For an example how to do things like this with helm-swoop, see helm-multi-swoop-projectile
 ;; TODO: make a dynamic-let macro for temporarily changing values of special variables (or try harder to find the standard approach on the internet)
