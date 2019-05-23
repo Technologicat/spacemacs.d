@@ -801,8 +801,8 @@ before packages are loaded."
                  ("prod" . ?∏)  ; unpythonic.fold.prod  https://github.com/Technologicat/unpythonic
                  ("and" . ?∩)
                  ("or" . ?∪)
-                 ("in" . ?∈)
-                 ("not in" . ?∉)
+                 ;("in" . ?∈)  ; in general fine, but confusing with unpythonic.syntax.let: let[(x, 21) in 2*x]
+                 ;("not in" . ?∉)
                  ("is" . ?≡)
                  ("is not" . ?≢)
                  ("all" . ?∀)
