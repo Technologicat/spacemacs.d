@@ -458,6 +458,30 @@ It should only modify the values of Spacemacs settings."
 
 ;; --------------------------------------------------------------------------------
 ;; Useful custom functions
+;;
+;; TODO: customize this to use helm-multi-occur instead
+;; https://www.masteringemacs.org/article/searching-buffers-occur-mode
+;; (eval-when-compile
+;;   (require 'cl))
+;;
+;; (defun get-buffers-matching-mode (mode)
+;;   "Returns a list of buffers where their major-mode is equal to MODE"
+;;   (let ((buffer-mode-matches '()))
+;;     (dolist (buf (buffer-list))
+;;       (with-current-buffer buf
+;;         (if (eq mode major-mode)
+;;             (add-to-list 'buffer-mode-matches buf))))
+;;     buffer-mode-matches))
+;;
+;; (defun multi-occur-in-this-mode ()
+;;   "Show all lines matching REGEXP in buffers with this major mode."
+;;   (interactive)
+;;   (multi-occur
+;;    (get-buffers-matching-mode major-mode)
+;;    (car (occur-read-primary-args))))
+;;
+;; ;; global key for `multi-occur-in-this-mode' - you should change this.
+;; (global-set-key (kbd "C-<f2>") 'multi-occur-in-this-mode)
 
 ;; https://emacs.stackexchange.com/questions/7742/what-is-the-easiest-way-to-open-the-folder-containing-the-current-file-by-the-de
 ;; need xsel under Linux; xclip has some problem when copying under Linux
