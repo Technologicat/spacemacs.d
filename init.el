@@ -799,17 +799,20 @@ before packages are loaded."
         scroll-preserve-screen-position 1)
   ;; prettify symbols
   (defun my/prettify-symbols-setup ()
-     "Set up symbol prettification (base settings for all programming languages)."
-     (let ((xs '(;("lambda" . ?λ)  ; lambda is already there by default
-                 ("<=" . ?≤)
-                 (">=" . ?≥)
-                 ("!=" . ?≠)
-                 ("=>" . ?⇒)
-                 ;("==" . ?＝)  ; maybe too much of a trap.
-                 )))
-       (dolist (x xs nil)
-         (push x prettify-symbols-alist)))
-     (prettify-symbols-mode))
+    "Set up symbol prettification (base settings for all programming languages)."
+    ;; see counsel-unicode-char and C-x 8 RET
+    (let ((xs '(;("lambda" . ?λ)  ; lambda is already there by default
+                ("<=" . ?≤)
+                (">=" . ?≥)
+                ("!=" . ?≠)
+                ("=>" . ?⇒)
+                ("->" . ?→)
+                ("<-" . ?←)
+                ;("==" . ?＝)  ; maybe too much of a trap.
+                )))
+      (dolist (x xs nil)
+        (push x prettify-symbols-alist)))
+    (prettify-symbols-mode))
   ;; TODO: test and yak-shave this to something actually productive
   (defun my/prettify-python-setup ()  ; suggestions from https://wolfecub.github.io/dotfiles/
      "Set up symbol prettification (additional settings for Python)."
