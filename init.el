@@ -864,6 +864,7 @@ before packages are loaded."
                  ("any" . ?∃)
                  ("None" . ?∅)
                  ("return" . ?➡)
+                 ;("inf" . ?∞)  ; TODO: but it's not a symbol...
                  ;("def" . ?ƒ)  ; looks silly; literal "def" easier to spot.
                  )))
        (dolist (x xs nil)
