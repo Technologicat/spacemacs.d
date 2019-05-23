@@ -792,6 +792,7 @@ before packages are loaded."
     "Enable some completers for Company in Text mode, and enable company-mode."
     (add-to-list 'company-backends 'company-dabbrev)
     (company-mode))
+  ;;(add-hook 'latex-mode-hook #'outline-minor-mode)  ; maybe not needed, we have reftex
   ;; default modes
   (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
   (global-visual-line-mode t)
