@@ -483,19 +483,20 @@ It should only modify the values of Spacemacs settings."
 
 ;; For an example how to do things like this with helm-swoop, see helm-multi-swoop-projectile
 ;; TODO: make a dynamic-let macro for temporarily changing values of special variables (or try harder to find the standard approach on the internet)
-;; FIXME: unwind-protect this to always set back the original prompt
 (defun helm-multi-swoop-this-mode (&optional $query)
-   "Helm-swoop in buffers matching current major mode."
-   (interactive)
-   (let (($p helm-swoop-prompt))
-     ;; change the **dynamic** binding with (set 'var val) so that helm-swoop sees it, if we (setq var val) it changes the lexical binding
-     ;; https://emacs.stackexchange.com/questions/27581/why-do-setq-and-set-quote-act-differently-on-let-bound-variables-with-lexical-sc
-     (set 'helm-swoop-prompt "Swoop (in current major mode):")
-     (setq helm-multi-swoop-query (helm-multi-swoop--get-query $query))
-     (helm-multi-swoop--exec nil
-                             :$query helm-multi-swoop-query
-                             :$buflist (get-buffers-matching-mode major-mode))
-     (set 'helm-swoop-prompt $p)))
+  "Helm-swoop in buffers matching current major mode."
+  (interactive)
+  (let (($p helm-swoop-prompt))
+    (unwind-protect
+        (progn
+          ;; change the **dynamic** binding with (set 'var val) so that helm-swoop sees it, if we (setq var val) it changes the lexical binding
+          ;; https://emacs.stackexchange.com/questions/27581/why-do-setq-and-set-quote-act-differently-on-let-bound-variables-with-lexical-sc
+          (set 'helm-swoop-prompt "Swoop (in current major mode):")
+          (setq helm-multi-swoop-query (helm-multi-swoop--get-query $query))
+          (helm-multi-swoop--exec nil
+                                  :$query helm-multi-swoop-query
+                                  :$buflist (get-buffers-matching-mode major-mode)))
+        (set 'helm-swoop-prompt $p))))
 
 ;; https://emacs.stackexchange.com/questions/7742/what-is-the-easiest-way-to-open-the-folder-containing-the-current-file-by-the-de
 ;; need xsel under Linux; xclip has some problem when copying under Linux
