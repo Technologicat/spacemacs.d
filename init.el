@@ -539,6 +539,7 @@ It should only modify the values of Spacemacs settings."
           (start-process-shell-command "emacs-dedicated-terminal" nil (format dedicated-terminal-command-template $dir)))
       (message "no such directory `%s'" $dir))))
 
+;; TODO: detect whether projectile is available (using condition-case)
 (defun call-in-current-or-project-directory (func in-project-root)
   "Call `func' with one argument, set to the directory of the current buffer or the project root from Projectile.
 
