@@ -755,7 +755,6 @@ before packages are loaded."
   ;;(require 'sublimity-scroll)
   (require 'sublimity-map)
   (sublimity-map-set-delay nil)
-  ;;(sublimity-mode)  ; FIXME: for some reason, if not enabled at startup, requires *three* presses of F9 to show the minimap for the first time in a session.
   ;; (setq sublimity-scroll-weight 3
   ;;       sublimity-scroll-drift-length 3)
   ;; (require 'sublimity-attractive)
