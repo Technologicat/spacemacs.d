@@ -891,7 +891,7 @@ before packages are loaded."
                                               1 font-lock-keyword-face)) 'append)
   ))
   (add-hook 'python-mode-hook 'my/unpythonic-syntax-highlight-setup)
-  (setq inhibit-compacting-font-caches t)
+  (setq inhibit-compacting-font-caches t)  ; https://wolfecub.github.io/dotfiles/
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
