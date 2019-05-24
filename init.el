@@ -770,6 +770,9 @@ before packages are loaded."
   ;; code folding
   (global-set-key (kbd "S-<f12>") 'yafolding-go-parent-element)
   (global-set-key (kbd "<f12>") 'yafolding-toggle-element)
+  ;; see commands kmacro-name-last-macro and insert-kbd-macro
+  (fset 'sort-lines-and-save
+        (kmacro-lambda-form [?í ?x ?l ?s ?í ?f ?s] 0 "%d"))
   ;; minimap
   (defun toggle-minimap ()
     "Toggle the minimap."
