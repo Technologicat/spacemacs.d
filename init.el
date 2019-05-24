@@ -803,6 +803,7 @@ before packages are loaded."
   (spacemacs/toggle-zero-based-column-indexing-off)  ; one of the few things that is nice to index 1-based.
   (add-hook 'prog-mode-hook 'yafolding-mode)
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  (add-hook 'prog-mode-hook 'which-function-mode)
   ;(add-hook 'prog-mode-hook 'rainbow-mode)  ; display color specifications (e.g. #A0A080, green) using the color they describe
   ;(add-hook 'text-mode-hook 'rainbow-mode)
   ;; TODO: how to add multiple modes in the same call?
