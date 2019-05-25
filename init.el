@@ -463,6 +463,9 @@ It should only modify the values of Spacemacs settings."
 ;; https://www.masteringemacs.org/article/searching-buffers-occur-mode
 ;; TODO: is this the right place for a compile-time requirement in Spacemacs?
 
+;; with-current-buffer is slow; use buffer-local-value instead; see:
+;; https://alphapapa.github.io/emacs-package-dev-handbook/
+;;
 ;; helm-swoop.el already defines this and automatically invokes buffer-name on each result.
 ;; (defun get-buffers-matching-mode (mode)
 ;;   "Returns a list of buffers where their major-mode is equal to MODE"
