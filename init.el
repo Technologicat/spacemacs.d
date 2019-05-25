@@ -92,7 +92,8 @@ This function should only modify configuration layer settings."
                                       sublimity
                                       yafolding
                                       beacon
-                                      rainbow-mode)
+                                      rainbow-mode
+                                      mwim)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -802,6 +803,14 @@ before packages are loaded."
   ;;(add-hook 'latex-mode-hook #'outline-minor-mode)  ; maybe not needed, we have reftex
   ;; default modes
   (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
+  (defun setup-mwim-keys ()
+    "Set up smart home/end using the MWIM package."
+    (define-key visual-line-mode-map (kbd "<home>") 'mwim-beginning-of-code-or-line)
+    (define-key visual-line-mode-map (kbd "C-a") 'mwim-beginning-of-code-or-line)
+    (define-key visual-line-mode-map (kbd "<end>") 'mwim-end-of-code-or-line)
+    (define-key visual-line-mode-map (kbd "C-e") 'mwim-end-of-code-or-line)
+    )
+  (add-hook 'visual-line-mode-hook 'setup-mwim-keys)
   (global-visual-line-mode t)
   (spacemacs/toggle-zero-based-column-indexing-off)  ; one of the few things that is nice to index 1-based.
   (add-hook 'prog-mode-hook 'yafolding-mode)
