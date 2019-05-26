@@ -486,6 +486,7 @@ It should only modify the values of Spacemacs settings."
 
 ;; For an example how to do things like this with helm-swoop, see helm-multi-swoop-projectile
 ;; TODO: make a dynamic-let macro for temporarily changing values of special variables (or try harder to find the standard approach on the internet)
+;; TODO: just use a regular let here, Elisp should notice helm-swoop-prompt is a special variable and dynamically let-assign it.
 (defun helm-multi-swoop-this-mode (&optional $query)
   "Helm-swoop in buffers matching current major mode."
   (interactive)
