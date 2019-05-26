@@ -93,7 +93,8 @@ This function should only modify configuration layer settings."
                                       yafolding
                                       beacon
                                       rainbow-mode
-                                      mwim)
+                                      mwim
+                                      (bookmark+ :location (recipe :fetcher github :repo "emacsmirror/bookmark-plus")))
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -735,6 +736,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   ;; TODO: bad Spacemacs style to require modules in init.el; how to set up lazy autoload for helm-swoop like "SPC s s" does?
   (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
+  (require 'bookmark+)
   ;; custom hotkeys
   ;; (global-set-key (kbd "M-x") 'kill-region)     ; cut
   ;; (global-set-key (kbd "M-c") 'kill-ring-save)  ; copy
@@ -949,6 +951,9 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(beacon-color "goldenrod")
+ '(bmkp-auto-light-when-jump 'any-bookmark)
+ '(bmkp-auto-light-when-set 'any-bookmark)
+ '(bmkp-last-as-first-bookmark-file "/home/jje/.emacs.d/.cache/bookmarks")
  '(evil-want-Y-yank-to-eol nil)
  '(flycheck-flake8rc "~/.config/flake8")
  '(flycheck-python-flake8-executable "python3")
@@ -974,6 +979,10 @@ This function is called at the very end of Spacemacs initialization."
  '(default ((t (:background nil))))
  '(ahs-face ((t (:background "olive drab" :foreground "GhostWhite"))))
  '(ahs-plugin-whole-buffer-face ((t (:background "dark olive green" :foreground "ghost white"))))
+ '(bmkp-light-autonamed ((t (:background "saddle brown"))))
+ '(bmkp-light-autonamed-region ((t (:background "dark green"))))
+ '(bmkp-light-fringe-autonamed ((t (:background "saddle brown"))))
+ '(bmkp-light-fringe-non-autonamed ((t (:background "dark green"))))
  '(minimap-active-region-background ((t (:background "dark olive green"))))
  '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
  '(minimap-font-face ((t (:height 20 :family "Source Code Variable"))))
