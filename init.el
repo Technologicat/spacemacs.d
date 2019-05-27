@@ -738,6 +738,11 @@ before packages are loaded."
   ;; TODO: bad Spacemacs style to require modules in init.el; how to set up lazy autoload for helm-swoop like "SPC s s" does?
   (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
   (require 'bookmark+)
+  (spacemacs|diminish beacon-mode "⛯" "*")
+  (spacemacs|diminish flyspell-mode "📜" "Sp")
+  ;;(spacemacs|diminish flycheck-mode "✔" "Stx")
+  (spacemacs|diminish which-key-mode "⌘" "Key")
+  (spacemacs|diminish visual-line-mode "⏎" "Vis")
   ;; custom hotkeys
   ;; (global-set-key (kbd "M-x") 'kill-region)     ; cut
   ;; (global-set-key (kbd "M-c") 'kill-ring-save)  ; copy
