@@ -698,6 +698,17 @@ A buffer is skipped as not representing a file, if:
   (interactive)
   (switch-to-next-file t))
 
+;; based on https://www.emacswiki.org/emacs/BookmarkPlus#toc63
+(defun my-auto-l+c-name (position)
+  "Return a name for POSITION that uses line & column numbers."
+  (let* ((line  (line-number-at-pos position))
+         (col0   (save-excursion
+                  (goto-char position) (current-column)))
+         (col (if (bound-and-true-p column-number-indicator-zero-based) col0 (1+ col0)))
+         (fn0 (which-function))
+         (fn (if fn0 (format ":%s" fn0) "")))
+    (format "%s:%d,%d%s" (buffer-name) line col fn)))
+
 ;; --------------------------------------------------------------------------------
 
 (defun dotspacemacs/user-env ()
@@ -959,6 +970,7 @@ This function is called at the very end of Spacemacs initialization."
  '(beacon-color "goldenrod")
  '(bmkp-auto-light-when-jump 'any-bookmark)
  '(bmkp-auto-light-when-set 'any-bookmark)
+ '(bmkp-autoname-bookmark-function 'my-auto-l+c-name)
  '(bmkp-last-as-first-bookmark-file "/home/jje/.emacs.d/.cache/bookmarks")
  '(evil-want-Y-yank-to-eol nil)
  '(flycheck-flake8rc "~/.config/flake8")
