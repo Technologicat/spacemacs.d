@@ -752,8 +752,10 @@ before packages are loaded."
   (spacemacs|diminish beacon-mode "⛯" "*")
   (spacemacs|diminish flyspell-mode "📜" "Sp")
   ;;(spacemacs|diminish flycheck-mode "✔" "Stx")
-  (spacemacs|diminish which-key-mode "⌘" "Key")
-  (spacemacs|diminish visual-line-mode "⏎" "Vis")
+  (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
+  (spacemacs|diminish visual-line-mode "⏎" "Vl")
+  (spacemacs|diminish reftex-mode "🖹" "Ref")
+  ;;(spacemacs|diminish auto-fill-mode "□" "Fl")
   ;; custom hotkeys
   ;; (global-set-key (kbd "M-x") 'kill-region)     ; cut
   ;; (global-set-key (kbd "M-c") 'kill-ring-save)  ; copy
