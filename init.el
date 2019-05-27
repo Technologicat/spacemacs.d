@@ -749,6 +749,7 @@ before packages are loaded."
   ;; TODO: bad Spacemacs style to require modules in init.el; how to set up lazy autoload for helm-swoop like "SPC s s" does?
   (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
   (require 'bookmark+)
+  (setq bmkp-autoname-format "^%B:[0-9]+,[0-9]+.*")  ; see my-auto-l+c-name
   (spacemacs|diminish beacon-mode "⛯" "*")
   (spacemacs|diminish flyspell-mode "📜" "Sp")
   ;;(spacemacs|diminish flycheck-mode "✔" "Stx")
