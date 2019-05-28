@@ -976,7 +976,7 @@ This function is called at the very end of Spacemacs initialization."
  '(bmkp-autoname-bookmark-function 'my-auto-l+c-name)
  '(bmkp-autotemp-bookmark-predicates nil)
  '(bmkp-bookmark-map-prefix-keys '("p" [134217837 66]))
- '(bmkp-last-as-first-bookmark-file "/home/jje/.emacs.d/.cache/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/.cache/bookmarks")
  '(evil-want-Y-yank-to-eol nil)
  '(flycheck-flake8rc "~/.config/flake8")
  '(flycheck-python-flake8-executable "python3")
