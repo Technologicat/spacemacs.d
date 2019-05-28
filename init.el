@@ -537,7 +537,7 @@ It should only modify the values of Spacemacs settings."
 (defvar dedicated-terminal-command-template "gnome-terminal --working-directory='%s'" "Command used by `dedicated-terminal-f'. Must contain exactly one `\%s', for the path to open the terminal in.")
 (defun dedicated-terminal-f (&optional directory)
   "Open a terminal window, setting cwd to directory (default: directory of current buffer)."
-  (let (($dir (if directory directory default-directory)))
+  (let (($dir (expand-file-name (if directory directory default-directory))))
     (if (and $dir (file-directory-p $dir))
         (progn
           (message (format "terminal in `%s'" $dir))
@@ -555,7 +555,7 @@ If `in-project-root' is `nil', use the currect directory. If non-nil, use the pr
         (funcall func $dir)
         (message "not in a project")))
     (if default-directory
-      (funcall func default-directory)
+        (funcall func (expand-file-name default-directory))
       (message "current buffer not associated with a directory"))))
 
 (defun copy-fullpath-of-current-directory (&optional in-project-root)
