@@ -749,12 +749,17 @@ before packages are loaded."
   (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
   (require 'bookmark+)
   (setq bmkp-autoname-format "^%B:[0-9]+,[0-9]+.*")  ; see my-auto-l+c-name
-  (spacemacs|diminish beacon-mode "⛯" "*")
+  (spacemacs|diminish beacon-mode)
+  ;; (spacemacs|diminish beacon-mode "⛯" "*")
   (spacemacs|diminish flyspell-mode "📜" "Sp")
-  ;;(spacemacs|diminish flycheck-mode "✔" "Stx")
-  (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
-  (spacemacs|diminish visual-line-mode "⏎" "Vl")
+  ;; (spacemacs|diminish flycheck-mode "✔" "Stx")
+  ;; (spacemacs|diminish visual-line-mode "⏎" "Vl")
+  (spacemacs|diminish visual-line-mode)
   (spacemacs|diminish reftex-mode "🖹" "Ref")
+  ;; (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
+  (spacemacs|diminish which-key-mode)
+  (spacemacs|diminish magit-gitflow-mode "🌊" "Flow")
+  (spacemacs|diminish holy-mode)
   ;;(spacemacs|diminish auto-fill-mode "□" "Fl")
   ;; custom hotkeys
   ;; (global-set-key (kbd "M-x") 'kill-region)     ; cut
