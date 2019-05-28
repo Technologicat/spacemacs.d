@@ -552,7 +552,7 @@ If `in-project-root' is `nil', use the currect directory. If non-nil, use the pr
   (if in-project-root
     (let (($dir (projectile-project-root)))
       (if $dir
-        (funcall func $dir)
+        (funcall func (expand-file-name $dir))
         (message "not in a project")))
     (if default-directory
         (funcall func (expand-file-name default-directory))
