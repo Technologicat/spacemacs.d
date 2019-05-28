@@ -975,6 +975,7 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-pylint-executable "python3")
  '(importmagic-python-interpreter "ipython3")
  '(ispell-program-name "~/.local/bin/enchant")
+ '(major-mode 'text-mode)
  '(minimap-update-delay 0)
  '(minimap-window-location 'right)
  '(nil nil t)
