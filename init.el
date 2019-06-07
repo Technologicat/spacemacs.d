@@ -705,7 +705,9 @@ A buffer is skipped as not representing a file, if:
          (col0   (save-excursion
                   (goto-char position) (current-column)))
          (col (if (bound-and-true-p column-number-indicator-zero-based) col0 (1+ col0)))
-         (fn0 (which-function))
+         (fn0 (condition-case nil
+                  (which-function)
+               (error nil)))
          (fn (if fn0 (format ":%s" fn0) "")))
     (format "%s:%d,%d%s" (buffer-name) line col fn)))
 
