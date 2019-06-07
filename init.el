@@ -748,6 +748,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
   ;; TODO: bad Spacemacs style to require modules in init.el; how to set up lazy autoload for helm-swoop like "SPC s s" does?
   (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
   (require 'bookmark+)
@@ -950,6 +951,8 @@ before packages are loaded."
 ;; In custom settings, use tmispell instead of classic ispell to check also Finnish; part of Voikko.
 ;; EDIT: in 2019, deprecated. Use enchant instead, Voikko has a provider also for that.
 ;; https://voikko.puimula.org/
+
+;; major-mode text-mode takes effect for `C-x b'; `M-m b N n' uses spacemacs-new-empty-buffer-major-mode.
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
