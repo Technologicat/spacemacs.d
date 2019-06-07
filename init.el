@@ -749,6 +749,13 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
+  ;; https://www.reddit.com/r/emacs/comments/90si1c/why_cant_i_have_truly_persistent_undo_on_emacs/
+  ;; default undo-limit is 80k, which is way too small in a large file if I accidentally `C-x C-p RET'
+  ;; (mark page, replace all with an empty line) instead of `C-x p RET' (set BookmarkPlus bookmark).
+  ;; (Happens with source code way too often, for any project that happens to have large modules.)
+  (setq undo-limit 78643200)
+  (setq undo-outer-limit 104857600)
+  (setq undo-strong-limit 157286400)
   ;; TODO: bad Spacemacs style to require modules in init.el; how to set up lazy autoload for helm-swoop like "SPC s s" does?
   (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
   (require 'bookmark+)
