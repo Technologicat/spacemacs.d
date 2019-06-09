@@ -95,7 +95,9 @@ This function should only modify configuration layer settings."
                                       beacon
                                       rainbow-mode
                                       mwim
-                                      (bookmark+ :location (recipe :fetcher github :repo "emacsmirror/bookmark-plus")))
+                                      (bookmark+ :location (recipe :fetcher github :repo "emacsmirror/bookmark-plus"))
+                                      ;; https://github.com/tlikonen/suomalainen-kalenteri
+                                      suomalainen-kalenteri)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -799,6 +801,8 @@ before packages are loaded."
   (setq org-agenda-files (list "~/org/todo.org"))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
   (setq calendar-week-start-day 1)
+  (setq calendar-mark-holidays-flag t)
+  (require 'suomalainen-kalenteri)
   ;; https://github.com/syl20bnr/spacemacs/pull/12383
   (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
   ;; https://www.reddit.com/r/emacs/comments/90si1c/why_cant_i_have_truly_persistent_undo_on_emacs/
