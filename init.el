@@ -816,7 +816,7 @@ before packages are loaded."
   (spacemacs|diminish reftex-mode "🖹" "Ref")
   ;; (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
   (spacemacs|diminish which-key-mode)
-  (spacemacs|diminish magit-gitflow-mode "🌊" "Flow")
+  (spacemacs|diminish magit-gitflow-mode "🌊" "Flow")  ; TODO: has no effect, why?
   (spacemacs|diminish holy-mode)
   ;;(spacemacs|diminish auto-fill-mode "□" "Fl")
   ;; custom hotkeys
