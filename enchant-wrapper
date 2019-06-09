@@ -1,0 +1,70 @@
+#!/bin/bash
+# Map dictionary names used by Emacs's ispell.el to hunspell-style
+# locale names used by the enchant spellchecker. This is easier than
+# adding enchant support to ispell.el.
+#
+# Only maps the "-d foo" option if present, passes through the rest of the args as-is.
+
+# https://stackoverflow.com/questions/1494178/how-to-define-hash-tables-in-bash
+# https://linuxconfig.org/how-to-use-arrays-in-bash-script
+# https://stackoverflow.com/questions/15028567/get-the-index-of-a-value-in-a-bash-array
+# https://stackoverflow.com/questions/18568706/check-number-of-arguments-passed-to-a-bash-script
+# https://stackoverflow.com/questions/169511/how-do-i-iterate-over-a-range-of-numbers-defined-by-variables-in-bash
+# https://stackoverflow.com/questions/1497811/how-to-get-the-nth-positional-argument-in-bash
+# https://stackoverflow.com/questions/4827690/how-to-change-a-command-line-argument-in-bash
+
+declare -A name2locale=(
+    ["american"]="en_US"
+    ["brasileiro"]="pt_BR"
+    ["british"]="en_GB"
+    ["castellano"]="es_ES"
+    ["castellano8"]="es_ES"
+    ["czech"]="cs_CZ"
+    ["dansk"]="da_DK"
+    ["deutsch"]="de_DE"
+    ["deutsch8"]="de_DE"
+    ["english"]="en_US"
+    ["esperanto"]="eo"
+    ["esperanto-tex"]="eo"
+    ["finnish"]="fi_FI"
+    ["francais7"]="fr_FR"
+    ["francais"]="fr_FR"
+    ["francais-tex"]="fr_FR"
+    ["german"]="de_DE"
+    ["german8"]="de_DE"
+    ["italiano"]="it_IT"
+    ["nederlands"]="nl_NL"
+    ["nederlands8"]="nl_NL"
+    ["norsk"]="nn_NO"
+    ["norsk7-tex"]="nn_NO"
+    ["polish"]="pl_PL"
+    ["portugues"]="pt_PT"
+    ["russian"]="ru_RU"
+    ["russianw"]="ru_RU"
+    ["slovak"]="sk_SK"
+    ["slovenian"]="sl_SI"
+    ["svenska"]="sv_SE"
+    ["hebrew"]="he_IL")
+
+# find the index of the "-d" and check there is at least one more arg after it
+j=-1
+for ((i=1;i<=$#;i++)); do
+    if [[ "${!i}" == "-d" && $# > $i ]]; then
+        j=$(($i + 1))
+        break
+    fi
+done
+# echo $j
+
+# map the -d option through the dictionary name map
+declare -a args=("$@")
+# echo ${args[@]}
+if [ $j -ne -1 ]; then
+    idx=$((j - 1))  # 0-based
+    key=${args[idx]}
+    val=${name2locale[$key]}
+    args[$idx]=$val
+fi
+
+# echo ${args[@]}
+enchant ${args[@]}
