@@ -799,6 +799,7 @@ before packages are loaded."
   (setq org-agenda-files (list "~/org/todo.org"))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
   (setq calendar-week-start-day 1)
+  ;; https://github.com/syl20bnr/spacemacs/pull/12383
   (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
   ;; https://www.reddit.com/r/emacs/comments/90si1c/why_cant_i_have_truly_persistent_undo_on_emacs/
   ;; default undo-limit is 80k, which is way too small in a large file if I accidentally `C-x C-p RET'
