@@ -712,6 +712,53 @@ A buffer is skipped as not representing a file, if:
     (format "%s:%d,%d%s" (buffer-name) line col fn)))
 
 ;; --------------------------------------------------------------------------------
+;; global keymap customizations
+
+;; https://clojureverse.org/t/share-your-spacemacs-tweaks/1496/9
+(defvar custom-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    ;; Ctrl+Z undo shadows helm's action list viewer; let's place that on Alt+Z
+    (define-key map (kbd "M-z") 'helm-select-action)  ; this seems to be the "C-z Actions"?
+    (define-key map (kbd "C-z") 'undo-tree-undo)
+    (define-key map (kbd "C-S-z") 'undo-tree-redo)
+    (define-key map (kbd "C-S-c") 'copy-fullpath-of-current-buffer)
+    (define-key map (kbd "C-S-d") 'copy-fullpath-of-current-directory)
+    (define-key map (kbd "C-t") 'spacemacs/shell-pop-inferior-shell)  ; much more useful than transpose-chars
+    (define-key map (kbd "C-S-t") 'open-dedicated-terminal)
+    (define-key map (kbd "C-S-e") 'browse-file-directory)
+    ;; (define-key map (kbd "C-e") 'move-end-of-line)  ; FIXME: unshadowing a default
+    (define-key map (kbd "C-c e") 'eval-and-replace-sexp)
+    (define-key map (kbd "C-<next>") 'switch-to-next-file)
+    (define-key map (kbd "C-<prior>") 'switch-to-previous-file)
+    (define-key map (kbd "M-S-q") 'unfill-paragraph)
+    (define-key map (kbd "M-Q") 'unfill-paragraph)
+    ;; (define-key map (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
+    (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
+    (define-key map (kbd "<f12>") 'yafolding-toggle-element)
+    map)
+  "Minor mode for custom keymap.")
+
+(define-minor-mode custom-keys-minor-mode
+  "Minor mode for global keymap overrides."
+  :init-value t
+  :lighter nil
+  :keymap custom-keys-minor-mode-map
+  :global t
+  (if custom-keys-minor-mode
+      (progn  ; on
+        (define-key evil-emacs-state-map (kbd "C-z") nil)  ; prevent shadowing "C-z" undo-tree-undo in custom map
+        (spacemacs/set-leader-keys "s m" 'helm-multi-swoop-this-mode)  ; M-m s m
+        (spacemacs/set-leader-keys "s C-p" 'helm-multi-swoop-projectile)  ; M-m s C-p (NOTE: searches open project buffers only)
+        (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" 'reftex-toc)  ; M-m m O (same as in Spacemacs pdf layer)
+        )
+      (progn  ; off
+        (define-key evil-emacs-state-map (kbd "C-z") 'evil-exit-emacs-state)
+        (spacemacs/set-leader-keys "s m" nil)
+        (spacemacs/set-leader-keys "s C-p" nil)
+        (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" nil)
+        )))
+
+;; --------------------------------------------------------------------------------
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
@@ -773,42 +820,12 @@ before packages are loaded."
   (spacemacs|diminish holy-mode)
   ;;(spacemacs|diminish auto-fill-mode "□" "Fl")
   ;; custom hotkeys
-  ;; (global-set-key (kbd "M-x") 'kill-region)     ; cut
-  ;; (global-set-key (kbd "M-c") 'kill-ring-save)  ; copy
-  ;; (global-set-key (kbd "M-v") 'yank)            ; paste
-  ;; (global-set-key (kbd "M-Z") 'undo-tree-redo)
-  ;; (global-set-key (kbd "M-z") 'undo-tree-undo)
-  (define-key evil-emacs-state-map (kbd "C-z") nil)  ; prevent shadowing undo
-  ;; Ctrl+Z undo shadows helm's action list viewer; let's place that on Alt+Z
-  ;; (define-key undo-tree-map (kbd "M-z") (lookup-key helm--minor-mode-map (kbd "C-z")))  ; gahh, where is it?!
-  (define-key undo-tree-map (kbd "M-z") 'helm-select-action)  ; this seems to be the "C-z Actions"?
-  (define-key undo-tree-map (kbd "C-z") 'undo-tree-undo)
-  (define-key undo-tree-map (kbd "C-S-z") 'undo-tree-redo)
-  ;; (global-set-key (kbd "C-z") 'undo-tree-undo)
-  ;; (global-set-key (kbd "C-S-z") 'undo-tree-redo)
-  ;; (global-set-key (kbd "M-C") 'copy-fullpath-of-current-buffer)
-  (global-set-key (kbd "C-S-c") 'copy-fullpath-of-current-buffer)
-  (global-set-key (kbd "C-S-d") 'copy-fullpath-of-current-directory)
-  (global-set-key (kbd "C-t") 'spacemacs/shell-pop-inferior-shell)  ; much more useful than transpose-chars
-  (global-set-key (kbd "C-S-t") 'open-dedicated-terminal)
-  (global-set-key (kbd "C-S-e") 'browse-file-directory)
-  (global-set-key (kbd "C-e") 'move-end-of-line)  ; FIXME: unshadowing a default
-  (global-set-key (kbd "C-c e") 'eval-and-replace-sexp)
-  (global-set-key (kbd "C-<next>") 'switch-to-next-file)
-  (global-set-key (kbd "C-<prior>") 'switch-to-previous-file)
-  (global-set-key (kbd "M-S-q") 'unfill-paragraph)
-  (global-set-key (kbd "M-Q") 'unfill-paragraph)
-  (global-set-key (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
-  (spacemacs/set-leader-keys "s m" 'helm-multi-swoop-this-mode)  ; M-m s m
-  (spacemacs/set-leader-keys "s C-p" 'helm-multi-swoop-projectile)  ; M-m s C-p (NOTE: searches open project buffers only)
-  (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" 'reftex-toc)  ; M-m m O (same as in Spacemacs pdf layer)
   (define-key 'iso-transl-ctl-x-8-map "l" [?λ])  ; automatically gives sensible display label for which-key
   ;; but can be done manually like this
   ;; (global-set-key (kbd "C-x 8 l") [?λ])
   ;; (which-key-add-key-based-replacements "C-x 8 l" "λ")
-  ;; code folding
-  (global-set-key (kbd "S-<f12>") 'yafolding-go-parent-element)
-  (global-set-key (kbd "<f12>") 'yafolding-toggle-element)
+  (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
+  (custom-keys-minor-mode 1)
   ;; see commands kmacro-name-last-macro and insert-kbd-macro
   (fset 'sort-lines-and-save
         (kmacro-lambda-form [?í ?x ?l ?s ?í ?f ?s] 0 "%d"))
@@ -840,7 +857,6 @@ before packages are loaded."
     (company-mode))
   ;;(add-hook 'latex-mode-hook #'outline-minor-mode)  ; maybe not needed, we have reftex
   ;; default modes
-  (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
   (defun setup-mwim-keys ()
     "Set up smart home/end using the MWIM package."
     (define-key visual-line-mode-map (kbd "<home>") 'mwim-beginning-of-code-or-line)
