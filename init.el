@@ -797,6 +797,8 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
   (setq org-agenda-files (list "~/org/todo.org"))
+  ;;https://www.emacswiki.org/emacs/CalendarLocalization
+  (setq calendar-week-start-day 1)
   (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
   ;; https://www.reddit.com/r/emacs/comments/90si1c/why_cant_i_have_truly_persistent_undo_on_emacs/
   ;; default undo-limit is 80k, which is way too small in a large file if I accidentally `C-x C-p RET'
