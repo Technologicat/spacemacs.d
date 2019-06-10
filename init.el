@@ -810,6 +810,9 @@ before packages are loaded."
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
   (setq calendar-week-start-day 1)
   (setq calendar-mark-holidays-flag t)
+  (setq calendar-latitude +61.5)
+  (setq calendar-longitude +23.8)
+  (setq calendar-location-name "Tampere, Finland")
   (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date)
   (require 'suomalainen-kalenteri)
   ;; https://github.com/syl20bnr/spacemacs/pull/12383
