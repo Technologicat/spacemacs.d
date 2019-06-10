@@ -805,6 +805,14 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; fix tab completion in Helm when Treemacs is open (workaround by Simon Bourne)
+  ;; https://github.com/syl20bnr/spacemacs/issues/7446#issuecomment-417334718
+  (with-eval-after-load "helm"
+    (defun helm-persistent-action-display-window (&optional split-onewindow)
+      "Return the window that will be used for persistent action.
+If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
+      (with-helm-window
+        (setq helm-persistent-action-display-window (get-mru-window)))))
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
   (setq org-agenda-files (list "~/org/todo.org"))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
