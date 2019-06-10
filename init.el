@@ -713,6 +713,14 @@ A buffer is skipped as not representing a file, if:
          (fn (if fn0 (format ":%s" fn0) "")))
     (format "%s:%d,%d%s" (buffer-name) line col fn)))
 
+;; https://emacs.stackexchange.com/questions/42529/insert-date-using-a-calendar
+(defun calendar-insert-date ()
+  "Capture the date at point, exit the Calendar, insert the date."
+  (interactive)
+  (seq-let (month day year) (save-match-data (calendar-cursor-to-date))
+    (calendar-exit)
+    (insert (format "%d-%02d-%02d" year month day))))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
@@ -802,6 +810,7 @@ before packages are loaded."
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
   (setq calendar-week-start-day 1)
   (setq calendar-mark-holidays-flag t)
+  (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date)
   (require 'suomalainen-kalenteri)
   ;; https://github.com/syl20bnr/spacemacs/pull/12383
   (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
