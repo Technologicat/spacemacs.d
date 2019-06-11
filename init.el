@@ -721,6 +721,12 @@ A buffer is skipped as not representing a file, if:
     (calendar-exit)
     (insert (format "%d-%02d-%02d" year month day))))
 
+(defun toggle-minimap ()
+  "Toggle the minimap."
+  (interactive)
+  ;; (minimap-mode 'toggle)
+  (sublimity-mode 'toggle))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
@@ -743,6 +749,7 @@ A buffer is skipped as not representing a file, if:
     (define-key map (kbd "M-S-q") 'unfill-paragraph)
     (define-key map (kbd "M-Q") 'unfill-paragraph)
     ;; (define-key map (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
+    (define-key map (kbd "<f9>") 'toggle-minimap)
     (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
     (define-key map (kbd "<f12>") 'yafolding-toggle-element)
     map)
@@ -862,12 +869,6 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (fset 'sort-lines-and-save
         (kmacro-lambda-form [?í ?x ?l ?s ?í ?f ?s] 0 "%d"))
   ;; minimap
-  (defun toggle-minimap ()
-    "Toggle the minimap."
-    (interactive)
-    ;; (minimap-mode 'toggle)
-    (sublimity-mode 'toggle))
-  (global-set-key (kbd "<f9>") 'toggle-minimap)
   ;; https://github.com/zk-phi/sublimity
   (require 'sublimity)
   ;;(require 'sublimity-scroll)
