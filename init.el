@@ -821,6 +821,14 @@ before packages are loaded."
 If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
       (with-helm-window
         (setq helm-persistent-action-display-window (get-mru-window)))))
+  ;; http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
+  (setq ispell-local-dictionary "english")
+  (setq ispell-local-dictionary-alist
+        '(("english" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)  ;; default to en_US
+          ("american" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)
+          ("british" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_UK") nil utf-8)
+          ("finnish" "[[:alpha:]]" "[^[:alpha:]]" "['-]" t ("-d" "fi") nil utf-8)))
+  (setq ispell-program-name "enchant")
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
   (setq org-agenda-files (list "~/org/todo.org"))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
@@ -1037,7 +1045,6 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
  '(importmagic-python-interpreter "ipython3")
- '(ispell-program-name "~/.spacemacs.d/enchant-wrapper")
  '(major-mode 'text-mode)
  '(minimap-update-delay 0)
  '(minimap-window-location 'right)
