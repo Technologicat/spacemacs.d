@@ -846,7 +846,9 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (spacemacs|diminish reftex-mode "🖹" "Ref")
   ;; (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
   (spacemacs|diminish which-key-mode)
-  (spacemacs|diminish magit-gitflow-mode "🌊" "Flow")  ; TODO: has no effect, why?
+  ;; TODO: these only take effect after a config reload (M-m f e R), why?
+  ;; Wrapping it in a (with-eval-after-load "magit" ...) doesn't help.
+  (spacemacs|diminish magit-gitflow-mode "🌊" "Flow")
   (spacemacs|diminish holy-mode)
   ;;(spacemacs|diminish auto-fill-mode "□" "Fl")
   ;; custom hotkeys
