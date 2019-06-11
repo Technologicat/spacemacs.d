@@ -821,7 +821,8 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (setq calendar-latitude +61.5)
   (setq calendar-longitude +23.8)
   (setq calendar-location-name "Tampere, Finland")
-  (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date)
+  (with-eval-after-load "calendar"
+    (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date))
   (require 'suomalainen-kalenteri)
   ;; https://github.com/syl20bnr/spacemacs/pull/12383
   (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
