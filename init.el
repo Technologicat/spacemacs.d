@@ -859,6 +859,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (spacemacs|diminish beacon-mode)
   ;; (spacemacs|diminish beacon-mode "⛯" "*")
   (spacemacs|diminish flyspell-mode "📜" "Sp")
+  (spacemacs|diminish git-timemachine-mode "🔃" "GTM")  ; no flux capacitor symbol in Unicode...
   ;; (spacemacs|diminish flycheck-mode "✔" "Stx")
   ;; (spacemacs|diminish visual-line-mode "⏎" "Vl")
   (spacemacs|diminish visual-line-mode)
