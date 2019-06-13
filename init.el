@@ -209,6 +209,11 @@ It should only modify the values of Spacemacs settings."
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
 
+   ;; Default major mode for a new empty buffer. Possible values are mode
+   ;; names such as `text-mode'; and `nil' to use Fundamental mode.
+   ;; (default `text-mode')
+   dotspacemacs-new-empty-buffer-major-mode 'text-mode
+
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
 
@@ -840,8 +845,6 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (with-eval-after-load "calendar"
     (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date))
   (require 'suomalainen-kalenteri)
-  ;; https://github.com/syl20bnr/spacemacs/pull/12383
-  (setq spacemacs-new-empty-buffer-major-mode 'text-mode)
   ;; https://www.reddit.com/r/emacs/comments/90si1c/why_cant_i_have_truly_persistent_undo_on_emacs/
   ;; default undo-limit is 80k, which is way too small in a large file if I accidentally `C-x C-p RET'
   ;; (mark page, replace all with an empty line) instead of `C-x p RET' (set BookmarkPlus bookmark).
@@ -1017,7 +1020,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
 ;; EDIT: in 2019, deprecated. Use enchant instead, Voikko has a provider also for that.
 ;; https://voikko.puimula.org/
 
-;; major-mode text-mode takes effect for `C-x b'; `M-m b N n' uses spacemacs-new-empty-buffer-major-mode.
+;; major-mode text-mode takes effect for `C-x b'; `M-m b N n' uses dotspacemacs-new-empty-buffer-major-mode.
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
