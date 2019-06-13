@@ -53,7 +53,7 @@ To test, restart Emacs, open a new buffer in text mode (Spacemacs: `M-m b N n`, 
 
 ### Personal dictionary
 
- - ****With Enchant 2.2.3**, saving new words to the personal dictionary with the `Save` option in `flyspell-correct-wrapper` (`M-m S c`) works for all languages.
+ - **With Enchant 2.2.3**, saving new words to the personal dictionary with the `Save` option in `flyspell-correct-wrapper` (`M-m S c`) works for all languages.
    - The personal dictionary **does not work with the old Enchant 1.6.0** that is currently in Debian/Ubuntu repos.
  - Note in case of Finnish, without the customization to `enchant.c`, spellchecking e.g. `tämä` will actually spellcheck `täm`, which is not a Finnish word.
    - Emacs sends `tämä` (correctly) to Enchant, and Enchant (incorrectly) lops off the final `ä` before sending the word to Voikko for checking. The result will look confusing in the UI; any word ending in an `ä` or `ö` gets underlined by `flyspell` as misspelled, whereas any extra typoed `ä` or `ö` at the end of a word will not be detected. Also, in the `flyspell-correct-wrapper` popup, Emacs thinks the word checked was `tämä`...
