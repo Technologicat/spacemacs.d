@@ -12,7 +12,7 @@ The only free spellchecker that works properly with Finnish, [Voikko](https://vo
 
 The Debian and Ubuntu packages of `enchant` are currently (2019/06) [eight years out of date](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336). In the old version, personal dictionary saving does not work (maybe not yet implemented).
 
-Recent versions of Enchant, on the other hand, handle the personal dictionary correctly, but have a [bug](https://github.com/AbiWord/enchant/issues/212) in the [tokenize_line](https://github.com/AbiWord/enchant/blob/master/src/enchant.c) function which will silently truncate any `ä` or `ö` at the end of a word (before sending the input to Voikko for actual spellchecking), because the string is walked in the backward pass one byte at a time (and `ä`, `ö` take two bytes each in UTF-8).
+Recent versions of Enchant, on the other hand, handle the personal dictionary correctly, but have a [bug](https://github.com/AbiWord/enchant/issues/212) in the [tokenize_line](https://github.com/AbiWord/enchant/blob/master/src/enchant.c) function which will silently truncate any `ä` or `ö` at the end of a word (before sending the input to Voikko for actual spellchecking), because the string is walked in the backward pass one byte at a time (and `ä`, `ö` take two bytes each in UTF-8). **Update 2019-06-17**: fixed in `rrthomas/master`.
 
 Enchant almost works with Emacs's `ispell.el`. However, `enchant` takes `hunspell`-style *locale names* (`-d fi_FI`) for choosing the dictionary, instead of `ispell`-style language names (`-d finnish`). Hence, **out-of-the-box it will only work with the default dictionary** (which requires no `-d` option). Without further configuration, when `flyspell-mode` is enabled, and `enchant` is set up as the `Ispell program`, trying to switch to a non-default dictionary (`M-m S d` in Spacemacs) causes Emacs to freeze. (`C-g` to `Quit` or `killall -s USR2 emacs` to invoke the Elisp debugger will temporarily help, but the freeze will occur again.)
 
@@ -35,13 +35,13 @@ Add more languages if needed. Important parts are the `-d lang_VARIANT` and the 
  - To spellcheck Finnish, install Voikko.
    - In Debian-based distros, Voikko should be in the default repository, so just `sudo apt install` it. The packages needed are `libvoikko1`, `voikko-fi`.
  - To spellcheck languages other than Finnish, install Aspell and/or Hunspell and the relevant dictionaries, as desired. See e.g. `apt search hunspell`.
- - Get the latest release of [Enchant](https://github.com/AbiWord/enchant). (Releases are slightly easier to build than the git HEAD, unless you are an `autotools` wizard.)
-   - Open `src/enchant.c`. In `tokenize_line`, find the comment that says *Skip backwards over any characters that can't appear at the end of a word.* Comment out the code immediately below that to have Enchant work correctly with Finnish. (Emacs and LyX already trim the input, so that code is not needed anyway, if you're going to use Enchant with these apps.)
-   - On Debian-based distros, make sure you have installed (`sudo apt install`) at least `build-essentials` and `libaspell-dev`, `libhunspell-dev`, `libenchant-voikko`, `libvoikko-dev`. If Enchant's `configure` complains or something looks not quite right, add more packages as needed, and then re-run the `configure` step.
-   - Build and install Enchant. The build process is a rather standard `./configure`, `make`, `make install`, but [LfS has some instructions](http://www.linuxfromscratch.org/blfs/view/cvs/general/enchant.html) just in case.
-     - The goal is to get a config that supports Voikko for Finnish, and some other spellchecker(s) for other languages.
-   - In the `configure` step, use `./configure --prefix=~/.local/bin --disable-static` or some such to get an installation that won't conflict with anything installed from the distro's package manager.
-     - This assumes you *have* a `~/.local/bin` directory, and that it's in your `PATH`. See your `~/.bashrc`, which may need something like `export PATH=/home/youruser/.local/bin:$PATH`
+ - Get the [rrthomas/master version of Enchant](https://github.com/rrthomas/enchant).
+ - Install GNU autotools.
+ - On Debian-based distros, make sure you have installed (`sudo apt install`) at least `build-essentials` and `libaspell-dev`, `libhunspell-dev`, `libenchant-voikko`, `libvoikko-dev`. If Enchant's `configure` complains or something looks not quite right, add more packages as needed, and then re-run the `configure` step.
+ - Build and install Enchant. The build process is a rather standard `./bootstrap`, `./configure`, `make`, `make install`. [LfS has some instructions](http://www.linuxfromscratch.org/blfs/view/cvs/general/enchant.html) just in case.
+   - The goal is to get a config that supports Voikko for Finnish, and some other spellchecker(s) for other languages.
+ - In the `configure` step, use `./configure --prefix=/home/youruser/.local/bin --disable-static` or some such to get an installation that won't conflict with anything installed from the distro's package manager.
+   - This assumes you *have* a `~/.local/bin` directory, and that it's in your `PATH`. See your `~/.bashrc`, which may need something like `export PATH=/home/youruser/.local/bin:$PATH`
  - Make the above customization to your `.spacemacs.d/init.el`.
  - `M-x customize-group RET ispell RET`. Find the setting for `Ispell program` and change it to `~/.local/bin/enchant`. Set and save for future sessions (option `1`).
 
