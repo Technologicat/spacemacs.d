@@ -37,7 +37,7 @@ Add more languages if needed. Important parts are the `-d lang_VARIANT` and the 
  - To spellcheck languages other than Finnish, install Aspell and/or Hunspell and the relevant dictionaries, as desired. See e.g. `apt search hunspell`.
  - Before building Enchant, make sure you have installed the prerequisites. On Debian-based distros, this means `sudo apt install` at least `build-essentials` and `libaspell-dev`, `libhunspell-dev`, `libenchant-voikko`, `libvoikko-dev`.
    - If Enchant's `configure` complains or something looks not quite right, add more packages as needed, and then re-run the `configure` step.
- - Get the Enchant [Enchant](https://github.com/AbiWord/enchant) source code, release 2.2.4 or later.
+ - Get the [Enchant](https://github.com/AbiWord/enchant) source code, release 2.2.4 or later.
    - If you prefer to build from git instead, install also GNU autotools. Start the build by running `./bootstrap` to generate the `configure` script. If you're new to autotools, see [the manual](https://www.gnu.org/software/automake/manual/automake.html), esp. [section 2](https://www.gnu.org/software/automake/manual/automake.html#Autotools-Introduction), for the concepts and an overview.
  - Build and install Enchant. The build process is a rather standard `./configure`, `make`, `make install`. [LfS has some instructions](http://www.linuxfromscratch.org/blfs/view/cvs/general/enchant.html) just in case.
    - The goal is to get a config that supports Voikko for Finnish, and some other spellchecker(s) for other languages.
