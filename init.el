@@ -770,13 +770,13 @@ A buffer is skipped as not representing a file, if:
   (if custom-keys-minor-mode
       (progn  ; on
         (define-key evil-emacs-state-map (kbd "C-z") nil)  ; prevent shadowing "C-z" undo-tree-undo in custom map
-        (spacemacs/set-leader-keys "s m" 'helm-multi-swoop-this-mode)  ; M-m s m
+        (spacemacs/set-leader-keys "s M" 'helm-multi-swoop-this-mode)  ; M-m s M, because M-m s m is taken by multiple-cursors
         (spacemacs/set-leader-keys "s C-p" 'helm-multi-swoop-projectile)  ; M-m s C-p (NOTE: searches open project buffers only)
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" 'reftex-toc)  ; M-m m O (same as in Spacemacs pdf layer)
         )
       (progn  ; off
         (define-key evil-emacs-state-map (kbd "C-z") 'evil-exit-emacs-state)
-        (spacemacs/set-leader-keys "s m" nil)
+        (spacemacs/set-leader-keys "s M" nil)
         (spacemacs/set-leader-keys "s C-p" nil)
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" nil)
         )))
