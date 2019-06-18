@@ -803,6 +803,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; jump to the dir where the help says it's defined, and then "C-0 M-x byte-recompile-directory"
   ;; (the prefix argument zero forces a recompile of all .el files).
   ;;(set 'treemacs-dir "~/.emacs.d/elpa/27.0/develop/treemacs-20190513.1513/")
+  (setq multiple-cursors-backend 'mc)  ; see ~/.emacs.d/layers/+misc/multiple-cursors/packages.el
   )
 
 (defun dotspacemacs/user-load ()
