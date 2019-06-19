@@ -99,7 +99,9 @@ This function should only modify configuration layer settings."
                                       mwim
                                       (bookmark+ :location (recipe :fetcher github :repo "emacsmirror/bookmark-plus"))
                                       ;; https://github.com/tlikonen/suomalainen-kalenteri
-                                      suomalainen-kalenteri)
+                                      suomalainen-kalenteri
+                                      ;; https://github.com/zk-phi/phi-search
+                                      (phi-search :location (recipe :fetcher github :repo "zk-phi/phi-search")))
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -740,6 +742,9 @@ A buffer is skipped as not representing a file, if:
 ;; https://clojureverse.org/t/share-your-spacemacs-tweaks/1496/9
 (defvar custom-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
+    ;; phi-search for a multiple-cursors compatible isearch replacement
+    (define-key map (kbd "C-s") 'phi-search)
+    (define-key map (kbd "C-r") 'phi-search-backward)
     ;; Ctrl+Z undo shadows helm's action list viewer; let's place that on Alt+Z
     (define-key map (kbd "M-z") 'helm-select-action)  ; this seems to be the "C-z Actions"?
     (define-key map (kbd "C-z") 'undo-tree-undo)
