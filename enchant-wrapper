@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# ARCHIVED FOR HISTORIC AND TUTORIAL PURPOSES ONLY
+#
+# This wrapper script is no longer needed. See README.md.
+# It's still here because it shows how to use some advanced
+# features of bash (hash tables, arrays, C-style for loops).
+#
 # Map dictionary names used by Emacs's ispell.el to hunspell-style
 # locale names used by the enchant spellchecker. This is easier than
 # adding enchant support to ispell.el.
