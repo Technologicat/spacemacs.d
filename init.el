@@ -736,6 +736,23 @@ A buffer is skipped as not representing a file, if:
   ;; (minimap-mode 'toggle)
   (sublimity-mode 'toggle))
 
+(defun select-all (&optional leave-point-at-end)
+  "Mark all text in the current buffer.
+
+With no args, leave point at start of buffer. With the universal arg,
+leave point at end of buffer."
+  (interactive "P")
+  (if leave-point-at-end
+    (progn
+      (goto-char (point-min))
+      (push-mark (point) 'nomsg 'activate)
+      (goto-char (point-max)))
+    (progn
+      (goto-char (point-max))
+      (push-mark (point) 'nomsg 'activate)
+      (goto-char (point-min))))
+  (message "Whole buffer marked"))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
