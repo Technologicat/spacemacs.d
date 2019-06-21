@@ -875,7 +875,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; https://github.com/zk-phi/phi-search/issues/53
   (require 'mc-extras)
   (with-eval-after-load "phi-search"
-    (defadvice phi-search-complete (after phi-search-auto-dedup last activate)
+    (defadvice phi-search-complete (after phi-search-auto-dedup last activate protect)
       (mc/remove-duplicated-cursors)))
   ;; https://www.reddit.com/r/emacs/comments/90si1c/why_cant_i_have_truly_persistent_undo_on_emacs/
   ;; default undo-limit is 80k, which is way too small in a large file if I accidentally `C-x C-p RET'
