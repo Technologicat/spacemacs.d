@@ -7,48 +7,59 @@ Any contributions from the internet are attributed in source code comments, as a
 Potentially useful notes below.
 
 
-## Important customizations
+## Customizations
 
- - Quick file switching in current window with `C-<next>`, `C-<prior>`. Skips any non-file buffers and knows when no files are open, or when the current buffer is the only file open. For the purposes of the switcher, Spacemacs's `untitled` buffers count as files.
- - Syntax highlighting for [unpythonic](https://github.com/Technologicat/unpythonic) and [MacroPy](https://github.com/azazel75/macropy).
- - Sensibly autonamed `bookmarkplus` bookmarks in format `file.py:301,12:dostuff`, see `my-auto-l+c-name`.
- - `beacon` to never lose the cursor when scrolling.
- - `mwim` for smart home/end keys.
- - `multiple-cursors` with `phi-search` incremental search.
- - `prettify-symbols-mode` to improve readability of code, with a generic setup and a Python-specific setup.
- - `company` configured to use `dabbrev` in `text-mode`. Auto-complete from any text in any open buffer.
- - Spellcheck with [Enchant](https://github.com/AbiWord/enchant), allows proper spellchecking of both English and Finnish.
- - "Vim scrolloff": cursor always tries to stay at least 10 lines from the upper/lower edge.
- - Bump `undo-limit` to a modern-day useful value.
- - Enable `eldoc-mode`, `paredit-mode` and `smartparens-mode` in the `M-:` Lisp eval minibuffer.
- - Automatic symbol highlight and `which-function-mode` enabled by default.
- - 1-based column indexing.
- - Some diminished lighters.
- - Apply workaround to make tab completion work in Helm when Treemacs is open.
- - New command `M-x select-all` that does exactly as it says on the tin. Alternative to `C-<end> C-SPC C-<home>`.
- - Finnish national holidays for the Emacs calendar (via package `suomalainen-kalenteri`).
- - Python mode: enable `flycheck`, set up `company` for auto-completion. (Requires at least `flake8` and `jedi` from `pip`.)
- - `pdf` layer for viewing and annotating PDFs in Emacs.
+ - **Usability, general**:
+   - Use the Zenburn color theme, easy on the eyes with good highlight colors. See the [theme gallery](https://themegallery.robdor.com/) or [its GitHub repo](https://github.com/robmerrell/spacemacs_theme_gallery).
+   - Quick file switching in current window with `C-<next>`, `C-<prior>`. Skips any non-file buffers and knows when no files are open, or when the current buffer is the only file open. For the purposes of the switcher, Spacemacs's `untitled` buffers count as files.
+     - Mainly to be more convenient than `M-m b n`, `M-m b p`, by having an easily repeatable key combo, and by skipping buffers that are often uninteresting.
+   - In `text-mode`, auto-complete from any text in any open buffer. Configures `company` to use `dabbrev` via a mode hook.
+   - Spellcheck with [Enchant](https://github.com/AbiWord/enchant), allows proper spellchecking of both English and Finnish. Pre-configured for these two languages. (Requires a suitable Enchant and backends, see below for details.)
+   - Bump `undo-limit` to a modern-day useful value ([see here](https://www.reddit.com/r/emacs/comments/90si1c/why_cant_i_have_truly_persistent_undo_on_emacs/)). Helps with *oops, I just deleted the whole document* edits with large files such as source code.
+   - Bookmark tweaks. Use [`bookmarkplus`](https://www.emacswiki.org/emacs/BookmarkPlus), and:
+     - Adjust autoname format to `file.py:301,12:dostuff`, see `my-auto-l+c-name`. The function name part is omitted when `(which-function)` fails or returns nil.
+     - Make autonamed bookmarks persist across sessions.
+     - Tweak the visual style of all bookmarks to a non-intrusive blue. The margin indicator goes on the **left for autonamed** bookmarks, and on the **right for manually named** bookmarks. 
+   - Enable 1-based column indexing. Rows already are, so why not columns too?
+   - Diminish some more minor mode lighters to de-clutter the modeline.
+   - Minimap mode (bound to `<f9>`), provided by `sublimity`.
+   - Several small things such as a single-key typo zapper (`<f8>` for `flyspell-correct-at-point`), and an `unfill-paragraph` function (`M-S-q`, [thanks to Stefan Monnier](https://www.emacswiki.org/emacs/UnfillParagraph)).
+ - **Cursor handling**:
+   - *[Vim scrolloff](https://wolfecub.github.io/dotfiles/)*: cursor always tries to stay at least 10 lines from the upper/lower edge.
+   - [`beacon`](https://github.com/Malabarba/beacon) to never visually lose the cursor when scrolling or switching buffers.
+   - [`mwim`](https://github.com/alezost/mwim.el) for smart home/end keys.
+   - [`multiple-cursors`](https://github.com/magnars/multiple-cursors.el), with [`phi-search`](https://github.com/zk-phi/phi-search) incremental search. Uses the Spacemacs layer, with the `mc` backend.
+ - **Usability, programming**:
+   - `auto-highlight-symbol-mode` and `which-function-mode` enabled by default.
+   - `python-mode`: enable `flycheck`, set up `company` for auto-completion. (Requires at least `flake8` and `jedi` from `pip`.)
+   - `python-mode`: syntax highlighting for [unpythonic](https://github.com/Technologicat/unpythonic) and [MacroPy](https://github.com/azazel75/macropy).
+   - Lisp eval minibuffer (`M-:`): enable `eldoc-mode`, `paredit-mode` and `smartparens-mode`.
+   - Enable `prettify-symbols-mode` for an experimental code-readability improvement, with a generic setup and a Python-specific setup.
+ - **Miscellaneous**:
+   - Make tab completion work in Helm when Treemacs is open ([thanks to Simon Bourne](https://github.com/syl20bnr/spacemacs/issues/7446#issuecomment-417334718)).
+   - New command `M-x select-all` that does exactly as it says on the tin. One-command alternative to `C-<end> C-SPC C-<home>`.
+   - Finnish national holidays for the Emacs calendar (via package [`suomalainen-kalenteri`](https://github.com/tlikonen/suomalainen-kalenteri)). Highlight holidays by default.
+   - Enable `pdf` layer for viewing **and annotating** PDFs in Emacs.
 
-Note you'll need the *Source Code Variable* font.
+Note you'll need the *Source Code Variable* font from [here](https://github.com/adobe-fonts/source-code-pro).
 
 
-## Key bindings
+## Custom key bindings
 
-Custom key bindings in this `init.el`. Most (but not all) are added by a global custom minor mode `custom-keys-minor-mode`, which is enabled by default.
+Most (but not all) of these are added by a global custom minor mode `custom-keys-minor-mode`, which is enabled by default.
 
-This `init.el` is focused on the `emacs` editing mode of Spacemacs. Hence `M-m` instead of `SPC` as the leader in the relevant key bindings.
+This `init.el` is focused on the `emacs` editing mode (`holy-mode`) of Spacemacs. Hence `M-m` instead of `SPC` as the leader key in the relevant key bindings.
 
 Key | Command
 :--- |:---
-`C-x` | cut (CUA mode)
-`C-c` | copy (CUA mode)
-`C-v` | paste (CUA mode)
+`C-x` | cut (via `cua-mode`)
+`C-c` | copy (via `cua-mode`)
+`C-v` | paste (via `cua-mode`)
 `C-z` | `undo-tree-undo`
 `C-S-z` | `undo-tree-redo`
-`M-z` | `helm-select-action`, to unshadow it since `C-z` is now taken
-`C-s` | `phi-search`
-`C-r` | `phi-search-backward`
+`M-z` | `helm-select-action`, to unshadow it since `C-z` is taken by undo
+`C-s` | `phi-search` (supports `multiple-cursors`)
+`C-r` | `phi-search-backward` (supports `multiple-cursors`)
 `C-S-c` | copy full path of current buffer (if file)
 `C-S-d` | copy full path of current directory (if file buffer)
 `C-u C-S-d` | copy full path of project root (if in project)
@@ -57,19 +68,19 @@ Key | Command
 `C-S-t` | open dedicated terminal in current directory, see var `dedicated-terminal-command-template`
 `C-u C-S-t` | open dedicated terminal in project root
 `C-t` | `spacemacs/shell-pop-inferior-shell`
-`C-c e` | eval and replace sexp under point (simple Lisp calculator), the sexp goes to kill ring
+`C-c e` | eval and replace sexp under point (simple Lisp calculator), the sexp goes to the kill ring
 `C-<next>` | next file buffer (in current window)
 `C-<prior>` | previous file buffer (in current window)
 `M-S-q` | unfill paragraph, the counterpart of `fill-paragraph`
 `<f8>` | `flyspell-correct-at-point`, instant typo zapper
-`<f9>` | toggle minimap (`sublimity`)
+`<f9>` | toggle minimap (provided by `sublimity`)
 `<f12>` | toggle folding of current element (`yafolding`)
 `S-<f12>` | go to parent element (`yafolding`)
 `C-x 8 l` | insert λ (for coding in Racket)
 `M-m s M` | `helm-multi-swoop` buffers that have the same major mode as the current one
 `M-m s C-p` | `helm-multi-swoop-projectile` 
-`M-m m O` (LaTeX mode only) | `reftex-toc` (same binding for TOC as in Spacemacs `pdf` layer)
-`RET` (calendar mode only) | insert date under point in `YYYY-MM-DD` format
+`M-m m O` (LaTeX mode) | `reftex-toc` (same binding for TOC as in Spacemacs `pdf` layer)
+`RET` (calendar mode) | insert date under point in `YYYY-MM-DD` format
 
 Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active.
 
@@ -79,75 +90,134 @@ Note the function keys `<f10>` (menu) and `<f11>` (toggle frame full screen) are
 
 We use `sublimity` as the minimap provider, because it works also in LaTeX mode, whereas the `minimap` package does not seem to want to co-operate with it. Upon first activation (globally per session), `sublimity` requires moving the cursor before the minimap actually appears (or alternatively, press `<f9>` three times at the first use during the session to force it to appear immediately).
 
+If you want to use `minimap` instead, be sure to [get it from GitHub](https://github.com/dengste/minimap); the version on ELPA seems to be old even though it has the same version number. As of this writing, only the version on GitHub has the ability to change the color of the highlighted line.
+
 We use `yafolding` instead of the folding features of `evil`, because it requires no configuration, works perfectly for Python, and importantly, *draws nice-looking folding markers at the margin*. I find it very important to have a visual indication that a section has been folded. Spacemacs's `evil` folding of course remains available.
 
 
-## Easy-to-forget but useful standard key bindings
+## Some useful standard key bindings
+
+These should be standard-ish Emacs.
 
 Key | Command
 :--- |:---
-`C-g` | "quit", i.e. cancel the current command or ask Emacs to stop whatever it is currently doing. 
-`C-h k` | "what does this key combo do?"
-`<f1> f` | "what is this Lisp function?"
-`<f1> v` | "what is this Lisp variable?"
+`C-g` | "quit", i.e. cancel the current command or ask Emacs to stop whatever it is currently doing.
+`C-h k` | "what does the following key combo do?"
+`<f1> f` | "what is the Lisp function under point?"
+`<f1> v` | "what is the Lisp variable under point?"
 `<f3>` | start recording keyboard macro
-`<f4>` | stop recording; repeat last keyboard macro (if not recording)
-`C-s` | isearch forward
-`C-r` | isearch backward
-`M-s h` | set/remove highlighting by regexp
+`<f4>` | stop recording; repeat last recorded keyboard macro (if not recording)
+`C-s` | isearch forward (see also `helm-swoop`)
+`C-r` | isearch backward (see also `helm-swoop`)
+`C-SPC` | (via `cua-mode`) set/unset mark, useful to select stuff without holding down shift
+`C-u C-SPC` | (via `cua-mode`) jump to previous location of mark (so `C-SPC C-SPC` to tag a location without leaving mark active, and then later `C-u C-SPC` to jump back to it; consider also using bookmarks)
+`M-s h` | set/remove visual highlighting by regexp (persists for the session until manually removed)
+`M-s h .` | highlight symbol under point
+`M-s h p` | highlight phrase (will ask for phrase and color)
+`M-s h u` | remove highlighting (will ask which)
 `C-x p` | `bookmarkplus` menu ("pookmarks"? `C-x b` is taken for buffer switching...)
 `C-x p RET` | toggle autonamed bookmark at point
-`C-x p e` | edit/view all bookmarks (see its `?` for key bindings)
+`C-x p e` | edit/view all bookmarks (`RET` to jump, `x` to delete, see `?` for more key bindings)
 `C-x p c m` | create named bookmark at point
 `C-x p d` | delete bookmark by name
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
 `C-x 0` | kill current window
-`C-x 4 0` | kill current window and buffer
+`C-x 4 0` | kill current window **and buffer**
 `l` | (help viewer) back to previous viewed help page
 `r` | (help viewer) forward (in the sense of opposite of back)
+`q` | (help viewer, many others) quit, usually kills the window too
+`M-<` | jump to beginning (often works in situations where the `home` key doesn't)
+`M->` | jump to end (often works in situations where the `end` key doesn't)
 `M-.` | (prog-mode) push marker, jump to definition of symbol under point 
 `M-,` | (prog-mode) jump back by popping marker
+`h` | (calendar-mode) show holidays for date under point
+`a` | (calendar-mode) list holidays for current three months 
+`S` | (calendar-mode) show sunrise, sunset, daylight length for today (if location configured)
+`M` | (calendar-mode) list moon phases for current three months
+
+To debug a frozen Emacs (and potentially save your work), when `C-g` does not help, try `killall -s USR2 emacs` in a terminal.
 
 Beside short cursor hops by nearby content, isearch is useful also in keyboard macros, e.g. to jump to a delimiter (usually on the same line). For actual search, see `helm-swoop`.
 
 
-## Especially useful Spacemacs key bindings
+## Some useful Spacemacs key bindings
 
 Key | Command
 :--- |:---
 `M-m h d a` | `helm-apropos`, search Emacs documentation
 `M-m h d f` | ...for Lisp functions only
 `M-m h d v` | ...for Lisp variables only
-`M-m b N n` | new file (buffer)
+`M-m q q` | quit (will ask to save modified buffers; to cancel quitting, use `C-g`)
+`M-m q Q` | quit (just do it)
+`M-m q f` | quit (kill current frame, but leave Emacs open in the background)
+`M-m b N n` | new file (create empty buffer and switch to it)
+`M-m b b` | show currently open buffers
 `M-m f f` | open file
 `M-m f r` | open recent file
-`M-m p p` | switch project
+`M-m p p` | switch to (another) recent project
 `M-m p f` | open file from current project
 `M-m b R` | revert current file from disk
 `M-m f s` | save (at first save of an unsaved buffer, will ask for destination)
 `M-m f R` | rename current file on disk
 `M-m f c` | copy current file (will ask for destination)
-`M-m j j` | avy-timer, jump easily to a fragment of text on screen (type it in quickly, then wait and pick)
-`M-m v` | `expand-region`, *the* way to select word/sentence/paragraph et al.
+`M-m w 2` | 2-column window layout
+`M-m w d` | kill current window (can use `C-x 0` instead, same effect, shorter to type)
+`M-m w m` | kill other windows
+`M-0` | open/focus Treemacs (use `M-0 q` to hide it)
+`M-1` | focus window 1 (other numbers available, too)
+`M-m j j` | avy timer, jump to a fragment of text on screen (type in a few letters or a word quickly, then wait and pick the occurrence to jump to)
+`M-m v` | `expand-region`, select word/sentence/paragraph, sexp, string, ...
 `M-m n` | narrowing, restrict view to current function et al. (to operate on it as if it was the whole document)
 `M-m g s` | open magit, the full-featured git control panel (see its `?`)
-`M-m a u` | open undo-tree viewer (see its `?` for key bindings)
+`M-m a u` | open the undo-tree viewer (see its `?` for key bindings)
 `M-m e L` | open and jump to `flycheck` error list for current file
 `M-m s s` | `helm-swoop`, *the* way to find text (see also its other variants in the `M-m s` menu)
 `M-m r l` | resume Helm session (e.g. continue a `helm-swoop` search that was exited via `RET`)
-`M-m s m` | `multiple-cursors` menu (once in `multiple-cursors-mode`, use `RET` to exit it)
-`M-m s m r` | `mc/edit-lines` (be careful what exactly is selected before you invoke this!)
+`M-m r y` | show kill ring (`RET` to paste an entry, `C-g` to cancel)
+`M-m s m` | `multiple-cursors` menu (once in `multiple-cursors-mode`, use `RET` to exit it; use `C-m` to insert a literal RET at each cursor)
+`M-m s m a` | `mc/mark-all-dwim`
+`M-m s m r` | `mc/edit-lines` (be careful what exactly is selected and where exactly point is before you invoke this!)
 `M-m s m s n` | insert a running number at cursors (starting from 0)
 `C-u 1 M-m s m s n` | insert a running number at cursors, starting from 1 (use a numeric prefix argument)
 
+Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any directory that is under version control](https://jaketrent.com/post/projects-in-spacemacs/), so you don't have to do anything extra to create or manage a project. However, [Treemacs](https://github.com/Alexander-Miller/treemacs) has its own idea of projects, which are essentially directories registered manually; see its `?` for key bindings.
 
-## Especially useful M-x commands
 
- - `counsel-unicode-char` pick and insert unicode char by name, with preview
- - `list-colors-display` pick and insert color, with preview
+## Some useful M-x commands
+
  - `count-words`
  - `calendar`
- - `customize-group`
+ - `counsel-unicode-char` pick and insert unicode char by name, with preview
+ - `list-colors-display` pick and insert color, with preview
+ - `kmacro-name-last-macro`, `insert-kbd-macro` to save keyboard macros
+ - `artist-mode` to draw rectangles and similar
+ - `customize-group` for configuring stuff (a.k.a. Customize; some packages prefer to use this)
+ - `org-todo-list` for overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `q` to quit)
+
+
+## Fast Emacs startup
+
+Use daemon mode. Save this handy script as `~/.local/bin/em`:
+
+```bash
+#!/usr/bin/env bash
+# https://medium.com/@bobbypriambodo/blazingly-fast-spacemacs-with-persistent-server-92260f2118b7
+# https://superuser.com/questions/142945/bash-command-to-focus-a-specific-window
+
+# Check if there's an Emacs frame open
+emacsclient -n -e "(if (> (length (frame-list)) 1) 't)" 2> /dev/null | grep t &> /dev/null
+
+if [ "$?" -eq "1" ]; then
+    emacsclient -a '' -nqc "$@" &> /dev/null
+else
+    emacsclient -nq "$@" &> /dev/null
+fi
+
+# Focus the Emacs window
+wmctrl -a emacs
+```
+
+and then set up your start menu shortcut (if you use one) to invoke that instead of `emacs` directly.
 
 
 ## Configuring flake8
