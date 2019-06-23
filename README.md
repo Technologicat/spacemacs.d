@@ -126,14 +126,16 @@ Key | Command
 `l` | (help viewer) back to previous viewed help page
 `r` | (help viewer) forward (in the sense of opposite of back)
 `q` | (help viewer, many others) quit, usually kills the window too
-`M-<` | jump to beginning (often works in situations where the `home` key doesn't)
-`M->` | jump to end (often works in situations where the `end` key doesn't)
+`M-<` | jump to beginning
+`M->` | jump to end
 `M-.` | (prog-mode) push marker, jump to definition of symbol under point 
 `M-,` | (prog-mode) jump back by popping marker
 `h` | (calendar-mode) show holidays for date under point
 `a` | (calendar-mode) list holidays for current three months 
 `S` | (calendar-mode) show sunrise, sunset, daylight length for today (if location configured)
 `M` | (calendar-mode) list moon phases for current three months
+
+The `M-<` and `M->` keys are useful in contexts where the `home` and `end` keys are reserved for other purposes. For example, in a Helm session, `home` and `end` move the cursor in the text entry field, whereas `M-<` and `M->` jump to the beginning/end of the list of completion suggestions. The `M-<` and `M->` key bindings are also hard-coded into some modes such as the help viewer, and always guaranteed to work.
 
 To debug a frozen Emacs (and potentially save your work), when `C-g` does not help, try `killall -s USR2 emacs` in a terminal.
 
@@ -162,7 +164,7 @@ Key | Command
 `M-m f c` | copy current file (will ask for destination)
 `M-m w 2` | 2-column window layout
 `M-m w d` | kill current window (can use `C-x 0` instead, same effect, shorter to type)
-`M-m w m` | kill other windows
+`M-m w m` | maximize, i.e. kill other windows
 `M-0` | open/focus Treemacs (use `M-0 q` to hide it)
 `M-1` | focus window 1 (other numbers available, too)
 `M-m j j` | avy timer, jump to a fragment of text on screen (type in a few letters or a word quickly, then wait and pick the occurrence to jump to)
