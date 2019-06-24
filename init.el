@@ -862,7 +862,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
           ("finnish" "[[:alpha:]]" "[^[:alpha:]]" "['-]" t ("-d" "fi") nil utf-8)))
   (setq ispell-program-name "~/.local/bin/enchant")
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-  (setq org-agenda-files (list "~/org/todo-personal.org" "~/org/todo-common.org" "~/org/todo-work.org"))
+  (setq org-agenda-files (list "~/org/todo-personal.org" "~/org/todo-home.org" "~/org/todo-work.org"))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
   (setq calendar-week-start-day 1)
   (setq calendar-mark-holidays-flag t)
