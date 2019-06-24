@@ -208,6 +208,40 @@ Key | Command
 Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any directory that is under version control](https://jaketrent.com/post/projects-in-spacemacs/), so you don't have to do anything extra to create or manage a project. However, [Treemacs](https://github.com/Alexander-Miller/treemacs) has its own idea of projects, which are essentially directories registered manually; see its `?` for key bindings.
 
 
+## Notes on Org-mode
+
+So far mostly for managing TODO lists.
+
+Key | Command
+:--- |:---
+`TAB` | cycle folding for current subtree
+`S-TAB` | cycle folding for whole buffer (also `C-u TAB`)
+`C-c C-f` | jump to next heading at same level
+`C-c C-b` | jump to previous heading at same level
+`C-c C-u` | jump up one level
+`C-c C-t` | cycle entry state TODO/DONE/none (also `S-<right>`, `S-<left>`)
+`S-<up>`, `S-<down>` | cycle entry priority #A/#B/#C/none
+`M-<up>`, `M-<down>` | move entry up/down
+`M-<left>`, `M-<right>` | indent/outdent entry (in empty entry, can also use `TAB` to cycle level)
+`M-RET` | insert blank heading at same level
+`M-S-RET` | insert TODO heading at same level
+`C-c C-s` | schedule entry (so it shows up as scheduled in the agenda)
+`C-u C-c C-s` | unschedule entry
+`C-c C-o` | `org-open-at-point`, open thing (such as link) in current entry (will prompt if several exist)
+
+Use `M-x org-sort` with point on a parent entry to move DONE children to end (choose `o` for todo **o**rder).
+
+Syntax for pretty links is `[[target][description]]`. To edit a pretty link, move to its end, and backspace to remove the last bracket.
+
+See also `org-store-link` and `C-c C-l` (`org-insert-link`) to save bookmarks to file locations into the org file.
+
+Shift selection not available by default, use `C-SPC` (set mark) to select a region.
+
+For scheduling, repeater syntax is like `+1h`, `+1d`, `+1w`, `+1m`, `+1y`, such as `<2019-06-24 Mon +1w>`.
+
+See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) and [Org manual](https://orgmode.org/manual/index.html) for more.
+
+
 ## Some useful M-x commands
 
  - `replace-string`, `replace-regexp`
@@ -219,23 +253,7 @@ Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any
  - `artist-mode` to draw rectangles and similar
  - `customize-group` for configuring stuff (a.k.a. Customize; some packages prefer to use this)
  - `org-agenda` for agenda overview
- - `org-todo-list` for overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `q` to quit)
-   - `TAB` cycle folding for selected item
-   - `S-TAB` cycle folding for subtree
-   - `C-u S-TAB` cycle folding for whole buffer
-   - `C-c C-t` cycle item state TODO/DONE/none (also `S-<right>`, `S-<left>`)
-   - `S-<up>`, `S-<down>` cycle item priority
-   - `M-<up>`, `M-<down>` move item up/down
-   - `M-<left>`, `M-<right>` indent/outdent item
-   - `C-c C-s` schedule item (so it shows up as scheduled in the agenda)
-   - `C-c C-o` open item (such as link) at point
-   - `M-S-RET` insert TOOD heading
-   - `M-x org-sort-entries` (to move DONE items to end, try `o` with a forest at the same level selected)
-   - `M-x org-insert-heading` to insert another generic (non-TODO) item at current nesting level
-   - `[[target][description]]` syntax for pretty links
-     - to edit a pretty link, move to its end and backspace to remove the last bracket
-   - see also `org-store-link` and `C-c C-l` (`org-insert-link`) to save bookmarks to file locations into the org file
-   - shift selection not available by default, use `C-SPC` (set mark) to select region
+ - `org-todo-list` for overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `s` to save all org buffers, `q` to quit)
 
 
 ## Fast Emacs startup
