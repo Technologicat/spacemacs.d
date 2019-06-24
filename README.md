@@ -301,7 +301,7 @@ exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,insta
 
 The only free spellchecker that works properly with Finnish, [Voikko](https://voikko.puimula.org/), runs on the [enchant](https://github.com/AbiWord/enchant) meta-spellchecker framework. Voikko does come with an `ispell` emulation layer called `tmispell` (Ubuntu package `tmispell-voikko`), but this is deprecated. To run Voikko in a multilingual environment with multiple different spellchecking engines, `enchant` is the currently recommended (and only) option.
 
-The Debian and Ubuntu packages of `enchant` are currently (2019/06) [eight years out of date](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336**. In the old version (1.6.0), personal dictionary saving does not work.
+The Debian and Ubuntu packages of `enchant` are currently (2019/06) [eight years out of date](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336). In the old version (1.6.0), personal dictionary saving does not work.
 
 **Use Enchant 2.2.4 or later.** Recent versions up to 2.2.3 have a [bug](https://github.com/AbiWord/enchant/issues/212) in the [tokenize_line](https://github.com/AbiWord/enchant/blob/master/src/enchant.c) function which will silently truncate any `ä` or `ö` at the end of a word (before sending the input to Voikko for actual spellchecking).
 
