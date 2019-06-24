@@ -112,8 +112,9 @@ Key | Command
 `<f1> l` | `view-lossage` i.e. "what did I just press?"
 `<f3>` | start recording keyboard macro
 `<f4>` | stop recording; replay last recorded keyboard macro (if not recording)
-`C-x` | prefix: global command
-`C-c` | prefix: major-mode specific command (Spacemacs has also `M-m m`, which is different)
+`C-x` | prefix: global commands
+`C-x z` | repeat last command (that was not caused by an input event), hit more `z` to keep repeating
+`C-c` | prefix: major-mode specific commands (Spacemacs has also `M-m m`, which is different)
 `ESC` | *meta*; same as holding Alt (e.g. `ESC d` is `M-d`), but in Spacemacs allows discovery of `M-something` key bindings
 `C-s` | isearch forward (see also `helm-swoop`)
 `C-r` | isearch backward (see also `helm-swoop`)
@@ -147,7 +148,7 @@ Key | Command
 
 Function keys: by default, `<f2>` is used for 2C two-column mode, which doesn't play well with Spacemacs. Keys `<f5>`...`<f9>` and `<f12>` are unused. (We use some of them, see *Custom key bindings* above.)
 
-Essentially, `<f3>` and `<f4>` together provide the same functionality as vim's `.`. (Two keys, because Emacs is non-modal.)
+Essentially, `<f3>` and `<f4>` together provide the same functionality as vim's `.`.
 
 The `M-<` and `M->` keys are useful in contexts where the `home` and `end` keys are reserved for other purposes. For example, in a Helm session, `home` and `end` move the cursor in the text entry field, whereas `M-<` and `M->` jump to the beginning/end of the list of completion suggestions. The `M-<` and `M->` key bindings are also hard-coded into some modes such as the help viewer, and always guaranteed to work.
 
@@ -161,7 +162,7 @@ Beside short cursor hops by nearby content, isearch is useful also in keyboard m
 Key | Command
 :--- |:---
 `M-m` | Spacemacs menu
-`M-m m` | major-mode specific Spacemacs menu
+`M-m m` | major-mode specific Spacemacs menu (different from prefix `C-c`)
 `M-m h d a` | `helm-apropos`, search Emacs documentation
 `M-m h d f` | ...for Lisp functions only
 `M-m h d v` | ...for Lisp variables only
