@@ -72,6 +72,7 @@ Key | Command
 `C-<next>` | next file buffer (in current window)
 `C-<prior>` | previous file buffer (in current window)
 `M-S-q` | unfill paragraph, the counterpart of `fill-paragraph`
+`<f7>` | `org-agenda`
 `<f8>` | `flyspell-correct-at-point`, instant typo zapper (same as `M-s S s`)
 `<f9>` | toggle minimap (provided by `sublimity`)
 `<f12>` | toggle folding of current element (`yafolding`)
