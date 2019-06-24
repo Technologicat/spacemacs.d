@@ -217,8 +217,24 @@ Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any
  - `kmacro-name-last-macro`, `insert-kbd-macro` to save keyboard macros
  - `artist-mode` to draw rectangles and similar
  - `customize-group` for configuring stuff (a.k.a. Customize; some packages prefer to use this)
- - `org-todo-list` for overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `q` to quit)
- - `org-agenda` for full agenda overview
+ - `org-agenda` for agenda overview
+ - `org-todo-list` for overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `q` to quit)
+   - `TAB` cycle folding for selected item
+   - `S-TAB` cycle folding for subtree
+   - `C-u S-TAB` cycle folding for whole buffer
+   - `C-c C-t` cycle item state TODO/DONE/none (also `S-<right>`, `S-<left>`)
+   - `S-<up>`, `S-<down>` cycle item priority
+   - `M-<up>`, `M-<down>` move item up/down
+   - `M-<left>`, `M-<right>` indent/outdent item
+   - `C-c C-s` schedule item (so it shows up as scheduled in the agenda)
+   - `C-c C-o` open item (such as link) at point
+   - `M-S-RET` insert TOOD heading
+   - `M-x org-sort-entries` (to move DONE items to end, try `o` with a forest at the same level selected)
+   - `M-x org-insert-heading` to insert another generic (non-TODO) item at current nesting level
+   - `[[target][description]]` syntax for pretty links
+     - to edit a pretty link, move to its end and backspace to remove the last bracket
+   - see also `org-store-link` and `C-c C-l` (`org-insert-link`) to save bookmarks to file locations into the org file
+   - shift selection not available by default, use `C-SPC` (set mark) to select region
 
 
 ## Fast Emacs startup
