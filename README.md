@@ -218,6 +218,7 @@ Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any
  - `artist-mode` to draw rectangles and similar
  - `customize-group` for configuring stuff (a.k.a. Customize; some packages prefer to use this)
  - `org-todo-list` for overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `q` to quit)
+ - `org-agenda` for full agenda overview
 
 
 ## Fast Emacs startup
@@ -249,7 +250,9 @@ When using this, use `M-m q f` to quit Emacs so that it stays running in the bac
 
 ## Configuring flake8
 
-The default location for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
+For static analysis of Python. The default location (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
+
+However, Emacs thinks the default location is `~/.config/flake8rc` (note the `rc`), so if you want `flycheck-verify-setup` (`M-m e v`) to see it, the value must be customized (via `M-x customize-group flycheck-executables`). (This is already done in the `init.el` provided here.)
 
 This gives [Spyder](https://github.com/spyder-ide/spyder)-like notes in the margin for statically detected errors and style issues. My flake8 config:
 
@@ -281,9 +284,9 @@ exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,insta
 
 The only free spellchecker that works properly with Finnish, [Voikko](https://voikko.puimula.org/), runs on the [enchant](https://github.com/AbiWord/enchant) meta-spellchecker framework. Voikko does come with an `ispell` emulation layer called `tmispell` (Ubuntu package `tmispell-voikko`), but this is deprecated. To run Voikko in a multilingual environment with multiple different spellchecking engines, `enchant` is the currently recommended (and only) option.
 
-The Debian and Ubuntu packages of `enchant` are currently (2019/06) [eight years out of date](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336). In the old version, personal dictionary saving does not work.
+The Debian and Ubuntu packages of `enchant` are currently (2019/06) [eight years out of date](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336**. In the old version (1.6.0), personal dictionary saving does not work.
 
-Recent versions of Enchant, on the other hand, handle the personal dictionary correctly, but up to version 2.2.3 have a [bug](https://github.com/AbiWord/enchant/issues/212) in the [tokenize_line](https://github.com/AbiWord/enchant/blob/master/src/enchant.c) function which will silently truncate any `ä` or `ö` at the end of a word (before sending the input to Voikko for actual spellchecking). **Update 2019-06-18: Fixed in Enchant 2.2.4, use that!**
+**Use Enchant 2.2.4 or later.** Recent versions up to 2.2.3 have a [bug](https://github.com/AbiWord/enchant/issues/212) in the [tokenize_line](https://github.com/AbiWord/enchant/blob/master/src/enchant.c) function which will silently truncate any `ä` or `ö` at the end of a word (before sending the input to Voikko for actual spellchecking).
 
 Enchant almost works with Emacs's `ispell.el`. However, `enchant` takes `hunspell`-style *locale names* (`-d fi_FI`) for choosing the dictionary, instead of `ispell`-style language names (`-d finnish`). Hence, **out-of-the-box it will only work with the default dictionary** (which requires no `-d` option). Without further configuration, when `flyspell-mode` is enabled, and `enchant` is set up as the `Ispell program`, trying to switch to a non-default dictionary (`M-m S d` in Spacemacs) causes Emacs to freeze. (`C-g` to `Quit` or `killall -s USR2 emacs` to invoke the Elisp debugger (see [here](https://emacs.stackexchange.com/questions/506/debugging-a-frozen-emacs)) will temporarily help, but the freeze will occur again.)
 
@@ -298,6 +301,8 @@ To use non-default dictionaries, put this in your `dotspacemacs/user-config` (in
           ("finnish" "[[:alpha:]]" "[^[:alpha:]]" "['-]" t ("-d" "fi") nil utf-8)))
   (setq ispell-program-name "~/.local/bin/enchant")
 ```
+
+(This is already included in the `init.el` provided in this repository.)
 
 Add more languages if needed. Important parts are the `-d lang_VARIANT` and the `utf-8`. Emacs is overly conservative here - the default settings still assume iso-8859-1, which will break the handling of `ä` and `ö` in any 21st century setup where everything is utf-8.
 
