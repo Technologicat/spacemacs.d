@@ -118,6 +118,8 @@ Key | Command
 `ESC` | *meta*; same as holding Alt (e.g. `ESC d` is `M-d`), but in Spacemacs allows discovery of `M-something` key bindings
 `C-s` | isearch forward (see also `helm-swoop`)
 `C-r` | isearch backward (see also `helm-swoop`)
+`M-g M-g` | goto line (also `M-g g`, so doesn't matter whether Alt is held down or not)
+`C-u M-g M-g` | goto line in most recently used other buffer (sometimes useful with a stack trace in an inferior shell)
 `C-SPC` | (via `cua-mode`) set/unset mark, useful to select stuff without holding down shift
 `C-u C-SPC` | (via `cua-mode`) jump to previous location of mark (so `C-SPC C-SPC` to tag a location without leaving mark active, and then later `C-u C-SPC` to jump back to it; consider also using bookmarks)
 `M-s h` | set/remove visual highlighting (persists for the session until manually removed)
