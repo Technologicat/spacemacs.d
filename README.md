@@ -128,7 +128,7 @@ Key | Command
 `C-x p RET` | toggle autonamed bookmark at point
 `C-x p n` | jump to next bookmark in current buffer (wraps around)
 `C-x p p` | jump to previous bookmark in current buffer (wraps around)
-`C-x p e` | edit/view all bookmarks (`RET` to jump, `x` to delete, see `?` for more key bindings)
+`C-x p e` | edit/view all bookmarks (`RET` to jump, `x` to delete, `s u` to sort by url, `s f n` to sort by file name; see `?` for more key bindings)
 `C-x p c m` | create named bookmark at point
 `C-x p d` | delete bookmark by name
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
