@@ -935,6 +935,8 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; add thesaurus to text-mode
   (add-hook 'text-mode-hook 'synosaurus-mode)
   (setq synosaurus-choose-method 'popup)
+  ;; enable smartparens also when writing text files (TODO: maybe just use the Spacemacs global toggle for this?)
+  (add-hook 'text-mode-hook 'smartparens-mode)
   ;; add company-dabbrev to company-backends in text mode to enable completion from text already in buffer
   (eval-after-load "company"
     '(add-hook 'text-mode-hook 'my-company-text-mode-hook))
