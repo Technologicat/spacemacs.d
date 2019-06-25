@@ -141,6 +141,7 @@ Key | Command
 `M->` | jump to end
 `M-.` | (prog-mode) push marker, jump to definition of symbol under point 
 `M-,` | (prog-mode) jump back by popping marker
+`S` | (flycheck error list) sort by column under point (if possible)
 `h` | (calendar-mode) show holidays for date under point
 `a` | (calendar-mode) list holidays for current three months 
 `S` | (calendar-mode) show sunrise, sunset, daylight length for date under point (if location configured; see `calendar-latitude`, `calendar-longitude`, `calendar-location-name`)
