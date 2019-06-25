@@ -626,6 +626,21 @@ from Projectile)."
   (interactive "P")
   (call-in-current-or-project-directory 'pyan-f in-project-root))
 
+(defun run-buffer-in-python ()
+  "Start an inferior-python and send the current buffer to it.
+
+Only has an effect if the current buffer is in the 'python-mode major mode.
+
+Reuses existing python shell if already running.
+"
+  (interactive)
+  (when (eq major-mode 'python-mode)
+    (let (($b (current-buffer)))
+      (message "Running buffer contents in python shell...")
+      (run-python)
+      (with-current-buffer $b
+        (python-shell-send-buffer 'send-main)))))
+
 ;; (defun ansi-term-bash ()
 ;;   "Run /bin/bash in ansi-term."
 ;;   (interactive)
@@ -902,6 +917,9 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (setq calendar-location-name "Tampere, Finland")
   (with-eval-after-load "calendar"
     (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date))
+  ;; make <f5> in python-mode run buffer like in racket-mode
+  (with-eval-after-load "python"
+    (define-key python-mode-map (kbd "<f5>") 'run-buffer-in-python))
   (require 'suomalainen-kalenteri)
 
   ;; make M-. (look up definition) work in C/C++ projects
