@@ -561,6 +561,16 @@ It should only modify the values of Spacemacs settings."
           (start-process-shell-command "emacs-dedicated-terminal" nil (format dedicated-terminal-command-template $dir)))
       (message "no such directory `%s'" $dir))))
 
+(defun pyan-f (&optional directory)
+  "Run Pyan, the Python static call graphing tool. Visualize results in xdot."
+  (interactive "P")
+  (let (($dir (expand-file-name (if directory directory default-directory))))
+    (if (and $dir (file-directory-p $dir))
+        (progn
+          (message (format "Python call graph analysis in `%s'" $dir))
+          (start-process-shell-command "pyan" nil (format "cd \"%s\" && pyan3 -nuca --dot **/*.py | xdot" $dir)))
+      (message "no such directory `%s'" $dir))))
+
 ;; TODO: detect whether projectile is available (using condition-case)
 (defun call-in-current-or-project-directory (func in-project-root)
   "Call `func' with one argument, set to the directory of the current buffer or the project root from Projectile.
@@ -604,6 +614,17 @@ universal argument), set terminal cwd to root directory of project (queried
 from Projectile)."
   (interactive "P")
   (call-in-current-or-project-directory 'dedicated-terminal-f in-project-root))
+
+(defun run-pyan (&optional in-project-root)
+  "Run Pyan, the Python static call graphing tool. Visualize results in xdot.
+
+With no argument or `nil', set terminal cwd to directory of current buffer.
+
+If `in-project-root' is non-nil (can be set interactively by setting the
+universal argument), set terminal cwd to root directory of project (queried
+from Projectile)."
+  (interactive "P")
+  (call-in-current-or-project-directory 'pyan-f in-project-root))
 
 ;; (defun ansi-term-bash ()
 ;;   "Run /bin/bash in ansi-term."
