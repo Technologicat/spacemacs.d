@@ -877,6 +877,17 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (with-eval-after-load "calendar"
     (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date))
   (require 'suomalainen-kalenteri)
+
+  ;; make M-. (look up definition) work in C/C++ projects
+  ;; TODO: should maybe update the tags file when it goes out of date?
+  ;; https://www.emacswiki.org/emacs/TagsFile
+  (defadvice xref-find-definitions (before c-tag-file activate)
+    "Automatically create tags file."
+    (let ((tag-file (concat default-directory "TAGS")))
+      (unless (file-exists-p tag-file)
+        (shell-command "etags *.[ch] *.cpp -o TAGS 2>/dev/null"))
+      (visit-tags-table tag-file)))
+
   ;; https://github.com/zk-phi/phi-search/issues/53
   (require 'mc-extras)
   (with-eval-after-load "phi-search"
