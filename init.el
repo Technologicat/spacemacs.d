@@ -957,7 +957,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;(add-hook 'text-mode-hook 'rainbow-mode)
   ;; TODO: how to add multiple modes in the same call?
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'smartparens-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'show-smartparens-mode)
   ;; (add-hook 'eval-expression-minibuffer-setup-hook #'rainbow-delimiters-mode)  ; does nothing in minibuffer
   ;; (add-hook 'eval-expression-minibuffer-setup-hook #'highlight-parentheses-mode)  ; does nothing in minibuffer
