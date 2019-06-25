@@ -239,7 +239,7 @@ See also `org-store-link` and `C-c C-l` (`org-insert-link`) to save bookmarks to
 
 Shift selection not available by default, use `C-SPC` (set mark) to select a region.
 
-For scheduling, repeater syntax is like `+1h`, `+1d`, `+1w`, `+1m`, `+1y`, such as `<2019-06-24 Mon +1w>`. See [here](https://orgmode.org/manual/Repeated-tasks.html).
+For scheduling, repeater syntax is like `+1h`, `+1d`, `+1w`, `+1m`, `+1y`, such as `<2019-06-24 Mon +1w>`. Also `++` and `.+`. See [here](https://orgmode.org/manual/Repeated-tasks.html).
 
 See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) and [Org manual](https://orgmode.org/manual/index.html) for more.
 
