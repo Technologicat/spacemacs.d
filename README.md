@@ -110,6 +110,7 @@ Key | Command
 `<f1> f` | "what is the Lisp function under point?"
 `<f1> v` | "what is the Lisp variable under point?"
 `<f1> l` | `view-lossage` i.e. "what did I just press?"
+`C-u C-x =` | `what-cursor-position` i.e. "what is the character under cursor?" (without the `C-u` gives just the number, with `C-u` also the name along with other info)
 `<f3>` | start recording keyboard macro
 `<f4>` | stop recording; replay last recorded keyboard macro (if not recording)
 `C-x` | prefix: global commands
