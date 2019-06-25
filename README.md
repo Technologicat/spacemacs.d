@@ -263,10 +263,10 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
  - `counsel-unicode-char` pick and insert unicode char by name, with preview
  - `list-colors-display` pick and insert color, with preview
  - `kmacro-name-last-macro`, `insert-kbd-macro` to save keyboard macros
- - `artist-mode` to draw rectangles and similar
- - `customize-group` for configuring stuff (a.k.a. Customize; some packages prefer to use this)
- - `org-agenda` for agenda overview
- - `org-todo-list` for overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `s` to save all org buffers, `q` to quit)
+ - `artist-mode` draw rectangles and similar
+ - `customize-group` configure stuff (a.k.a. Customize; some packages prefer to use this)
+ - `org-agenda` agenda overview
+ - `org-todo-list` overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `s` to save all org buffers, `q` to quit)
 
 
 ## Fast Emacs startup
