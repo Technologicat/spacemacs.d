@@ -259,6 +259,7 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
  - `count-words`
  - `calendar`
  - `link-hint-open-link-at-point`
+ - `helm-for-files` find a file ([see e.g. this](http://pragmaticemacs.com/emacs/find-and-open-files-from-anywhere-with-helm-for-files/))
  - `counsel-unicode-char` pick and insert unicode char by name, with preview
  - `list-colors-display` pick and insert color, with preview
  - `kmacro-name-last-macro`, `insert-kbd-macro` to save keyboard macros
