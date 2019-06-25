@@ -249,6 +249,7 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
  - `replace-string`, `replace-regexp`
  - `count-words`
  - `calendar`
+ - `link-hint-open-link-at-point`
  - `counsel-unicode-char` pick and insert unicode char by name, with preview
  - `list-colors-display` pick and insert color, with preview
  - `kmacro-name-last-macro`, `insert-kbd-macro` to save keyboard macros
