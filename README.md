@@ -83,7 +83,7 @@ Key | Command
 `M-m m O` (LaTeX mode) | `reftex-toc` (same binding for TOC as in Spacemacs `pdf` layer)
 `RET` (calendar mode) | insert date under point in `YYYY-MM-DD` format
 
-Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active.
+Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active - or if pressed quickly twice in succession (e.g. `C-x C-x`).
 
 The `custom-keys-minor-mode` (while enabled) unmaps `C-z` from `evil-emacs-state-map`, because emulation maps precede minor mode maps and we want `C-z` for undo.
 
