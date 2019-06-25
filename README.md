@@ -141,6 +141,9 @@ Key | Command
 `M-c` | `capitalize-word`, make word have one uppercase letter (at point; if at whitespace, apply to next word)
 `M-u` | `upcase-word`, make word all-uppercase (starting at point; if at whitespace, apply to next word)
 `C-x C-x` | `exchange-point-and-mark` (e.g. jump cursor to other end of selected region, but preserve selection). When using `cua-mode`, if a region is selected, must use a quick `C-x C-x` and then another `C-x`, otherwise the first `C-x` will cut instead!
+`C-c C-s i` | `synosaurus-choose-and-insert` ([thesaurus minor mode](https://github.com/hpdeifel/synosaurus) using [WordNet](https://wordnet.princeton.edu/) for English (`sudo apt install wordnet`))
+`C-c C-s l` | `synosaurus-lookup`
+`C-c C-s r` | `synosaurus-choose-and-replace`
 `l` | (help viewer) back to previous viewed help page
 `r` | (help viewer) forward (in the sense of opposite of back)
 `q` | (help viewer, many others) quit, usually kills the window too

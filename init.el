@@ -104,7 +104,8 @@ This function should only modify configuration layer settings."
                                       ;; https://github.com/zk-phi/phi-search
                                       (phi-search :location (recipe :fetcher github :repo "zk-phi/phi-search"))
                                       ;; https://github.com/knu/mc-extras.el
-                                      mc-extras)
+                                      mc-extras
+                                      synosaurus)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -900,6 +901,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; (spacemacs|diminish visual-line-mode "⏎" "Vl")
   (spacemacs|diminish visual-line-mode)
   (spacemacs|diminish reftex-mode "🖹" "Ref")
+  (spacemacs|diminish synosaurus-mode "＝" "Syn")
   ;; (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
   (spacemacs|diminish which-key-mode)
   ;; TODO: only takes effect after a config reload (M-m f e R), why?
@@ -930,6 +932,9 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (eval-after-load "company"
     '(add-to-list 'company-backends 'company-anaconda))
   (add-hook 'python-mode-hook 'anaconda-mode)
+  ;; add thesaurus to text-mode
+  (add-hook 'text-mode-hook 'synosaurus-mode)
+  (setq synosaurus-choose-method 'popup)
   ;; add company-dabbrev to company-backends in text mode to enable completion from text already in buffer
   (eval-after-load "company"
     '(add-hook 'text-mode-hook 'my-company-text-mode-hook))
