@@ -252,6 +252,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    ;; https://github.com/adobe-fonts/source-code-pro
+   ;; doesn't work; https://github.com/syl20bnr/spacemacs/issues/3477
    dotspacemacs-default-font '("Source Code Variable"
                                :size 13
                                :weight normal
@@ -850,6 +851,10 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; fix default font
+  ;; https://github.com/syl20bnr/spacemacs/issues/3477
+  (set-face-attribute 'default nil :family "Source Code Variable")
+  (set-face-attribute 'default nil :height 100)
   ;; fix tab completion in Helm when Treemacs is open (workaround by Simon Bourne)
   ;; https://github.com/syl20bnr/spacemacs/issues/7446#issuecomment-417334718
   (with-eval-after-load "helm"
