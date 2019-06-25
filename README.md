@@ -213,6 +213,8 @@ Key | Command
 `M-m s m r` | `mc/edit-lines` (be careful what exactly is selected and where exactly point is before you invoke this!)
 `M-m s m s n` | insert a running number at cursors (starting from 0)
 `C-u 1 M-m s m s n` | insert a running number at cursors, starting from 1 (use a numeric prefix argument)
+`M-m b w` | toggle buffer read-only
+`M-m b w` (dired-mode) | make Dired listing writable (`C-c C-c` commit changes; `C-c C-k` cancel), e.g. for easy mass rename using the full power of Emacs
 
 Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any directory that is under version control](https://jaketrent.com/post/projects-in-spacemacs/), so you don't have to do anything extra to create or manage a project. However, [Treemacs](https://github.com/Alexander-Miller/treemacs) has its own idea of projects, which are essentially directories registered manually; see its `?` for key bindings.
 
