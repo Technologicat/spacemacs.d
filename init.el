@@ -641,7 +641,7 @@ universal argument), switch to previous file.
 
 A buffer is skipped as not representing a file, if:
   - its name begins and ends with `*'
-  - its purpose is \"general\" or \"minibuf\"
+  - its purpose is \"general\", \"dired\" or \"minibuf\"
 "
   (interactive "P")
   (catch 'stnf-exit
@@ -663,6 +663,7 @@ A buffer is skipped as not representing a file, if:
             (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
             (s-starts-with? "Dired " $n)
             (equal $p 'general)
+            (equal $p 'dired)
             (equal $p 'minibuf)))
           ))
       ($next)
@@ -681,7 +682,7 @@ A buffer is skipped as not representing a file, if:
 ;;
 ;; A buffer is skipped as not representing a file, if:
 ;;   - its name begins and ends with `*'
-;;   - its purpose is `general' or `minibuf'
+;;   - its purpose is `general', `dired' or `minibuf'
 ;; "
 ;;   (interactive "P")
 ;;   (catch 'stnf-exit
@@ -694,6 +695,7 @@ A buffer is skipped as not representing a file, if:
 ;;           (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
 ;;           (s-starts-with? "Dired " $n)
 ;;           (equal $p 'general)
+;;           (equal $p 'dired)
 ;;           (equal $p 'minibuf)))))
 ;;     (let (($bufs (cdr (buffer-list (selected-frame)))))  ; current buffer is first, skip it
 ;;       (when backwards (setq $bufs (reverse $bufs)))
