@@ -87,7 +87,7 @@ Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is ac
 
 The `custom-keys-minor-mode` (while enabled) unmaps `C-z` from `evil-emacs-state-map`, because emulation maps precede minor mode maps and we want `C-z` for undo.
 
-Note the function keys `<f10>` (menu) and `<f11>` (toggle frame full screen) are already taken, hence we use `<f8>`, `<f9>` and `<f12>`.
+Note the function keys `<f10>` (menu) and `<f11>` (toggle frame full screen) are already taken.
 
 The `<f10>` menu is missing many useful commands and includes many useless ones. Instead, in Spacemacs, for discovery use `M-m` (Spacemacs menu), `M-x` (Helm M-x), `M-m h d a` (Helm apropos).
 
@@ -238,7 +238,7 @@ See also `org-store-link` and `C-c C-l` (`org-insert-link`) to save bookmarks to
 
 Shift selection not available by default, use `C-SPC` (set mark) to select a region.
 
-For scheduling, repeater syntax is like `+1h`, `+1d`, `+1w`, `+1m`, `+1y`, such as `<2019-06-24 Mon +1w>`.
+For scheduling, repeater syntax is like `+1h`, `+1d`, `+1w`, `+1m`, `+1y`, such as `<2019-06-24 Mon +1w>`. See [here](https://orgmode.org/manual/Repeated-tasks.html).
 
 See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) and [Org manual](https://orgmode.org/manual/index.html) for more.
 
