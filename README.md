@@ -137,6 +137,9 @@ Key | Command
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
 `C-x 0` | kill current window
 `C-x 4 0` | kill current window **and buffer**
+`M-l` | `downcase-word`, make word all-lowercase (starting at point; if at whitespace, apply to next word)
+`M-c` | `capitalize-word`, make word have one uppercase letter (at point; if at whitespace, apply to next word)
+`M-u` | `upcase-word`, make word all-uppercase (starting at point; if at whitespace, apply to next word)
 `l` | (help viewer) back to previous viewed help page
 `r` | (help viewer) forward (in the sense of opposite of back)
 `q` | (help viewer, many others) quit, usually kills the window too
