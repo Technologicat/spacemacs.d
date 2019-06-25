@@ -19,7 +19,7 @@ Potentially useful notes below.
    - Bookmark tweaks. Use [`bookmarkplus`](https://www.emacswiki.org/emacs/BookmarkPlus), and:
      - Adjust autoname format to `file.py:301,12:dostuff`, see `my-auto-l+c-name`. The function name part is omitted when `(which-function)` fails or returns nil.
      - Make autonamed bookmarks persist across sessions.
-     - Tweak the visual style of all bookmarks to a non-intrusive blue (`SteelBlue4`). The margin indicator goes on the **left for autonamed** bookmarks, and on the **right for manually named** bookmarks. 
+     - Tweak the visual style of all bookmarks to a non-intrusive blue (`SteelBlue4`). The fringe indicator goes on the **left for autonamed** bookmarks, and on the **right for manually named** bookmarks. 
    - Enable 1-based column indexing. Rows already are, so why not columns too?
    - Diminish some more minor mode lighters to de-clutter the modeline.
    - Minimap mode (bound to `<f9>`), provided by `sublimity`.
@@ -95,7 +95,7 @@ We use `sublimity` as the minimap provider, because it works also in LaTeX mode,
 
 If you want to use `minimap` instead, be sure to [get it from GitHub](https://github.com/dengste/minimap); the version on ELPA seems to be old even though it has the same version number. As of this writing, only the version on GitHub has the ability to change the color of the highlighted line.
 
-We use `yafolding` instead of the folding features of `evil`, because it requires no configuration, works perfectly for Python, and importantly, *draws nice-looking folding markers at the margin*. Spacemacs's `evil` folding (required for languages not based on indentation) of course remains available.
+We use `yafolding` instead of the folding features of `evil`, because it requires no configuration, works perfectly for Python, and importantly, *draws nice-looking folding markers at the fringe*. Spacemacs's `evil` folding (required for languages not based on indentation) of course remains available.
 
 
 ## Some useful standard key bindings
@@ -305,7 +305,7 @@ For static analysis of Python. [The default location](https://flake8.pycqa.org/e
 
 However, Emacs thinks the default location is `~/.config/flake8rc` (note the `rc`), so if you want `flycheck-verify-setup` (`M-m e v`) to see it, the value must be customized (via `M-x customize-group flycheck-executables`). (This is already done in the `init.el` provided here.)
 
-This gives [Spyder](https://github.com/spyder-ide/spyder)-like notes in the margin for statically detected errors and style issues. My flake8 config:
+This gives [Spyder](https://github.com/spyder-ide/spyder)-like notes in the fringe for statically detected errors and style issues. My flake8 config:
 
 ```INI
 [flake8]
