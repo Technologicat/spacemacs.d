@@ -290,7 +290,7 @@ When using this, use `M-m q f` to quit Emacs so that it stays running in the bac
 
 ## Configuring flake8
 
-For static analysis of Python. The default location (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
+For static analysis of Python. [The default location](https://flake8.pycqa.org/en/latest/user/configuration.html) (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
 
 However, Emacs thinks the default location is `~/.config/flake8rc` (note the `rc`), so if you want `flycheck-verify-setup` (`M-m e v`) to see it, the value must be customized (via `M-x customize-group flycheck-executables`). (This is already done in the `init.el` provided here.)
 
