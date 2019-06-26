@@ -80,6 +80,7 @@ Key | Command
 `C-x 8 l` | insert `λ`
 `M-m s M` | `helm-multi-swoop` buffers that have the same major mode as the current one
 `M-m s C-p` | `helm-multi-swoop-projectile` 
+`C-c s` (org-mode) | schedule entry (so it shows up as scheduled in the agenda)
 `M-m m O` (LaTeX mode) | `reftex-toc` (same binding for TOC as in Spacemacs `pdf` layer)
 `RET` (calendar mode) | insert date under point in `YYYY-MM-DD` format
 `<f5>` (python-mode) | run buffer contents in python shell (similarly as in racket-mode)
@@ -240,7 +241,7 @@ Key | Command
 `M-<left>`, `M-<right>` | indent/outdent entry (in empty entry, can also use `TAB` to cycle level)
 `M-RET` | insert blank heading at same level
 `M-S-RET` | insert TODO heading at same level
-`C-c C-s` | schedule entry (so it shows up as scheduled in the agenda)
+`C-c C-s` | schedule entry (so it shows up as scheduled in the agenda) (synosaurus eats this, so we use `C-c s` instead)
 `C-u C-c C-s` | unschedule entry
 `C-c C-o` | `org-open-at-point`, open thing (such as link) in current entry (will prompt if several exist)
 

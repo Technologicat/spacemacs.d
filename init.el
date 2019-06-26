@@ -920,6 +920,9 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (setq calendar-location-name "Tampere, Finland")
   (with-eval-after-load "calendar"
     (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date))
+  ;; synosaurus eats `C-c C-s', so let's rebind org entry scheduling to `C-c s'
+  (with-eval-after-load "org"
+    (define-key org-mode-map (kbd "C-c s") 'org-schedule))
   ;; make <f5> in python-mode run buffer like in racket-mode
   (with-eval-after-load "python"
     (define-key python-mode-map (kbd "<f5>") 'run-buffer-in-python))
