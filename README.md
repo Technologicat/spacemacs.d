@@ -156,7 +156,7 @@ Key | Command
 `q` | (help viewer, many others) quit, usually kills the window too
 `M-<` | jump to beginning
 `M->` | jump to end
-`M-.` | (prog-mode) push marker, jump to definition of symbol under point 
+`M-.` | (prog-mode) jump to definition of symbol under point, after pushing marker
 `M-,` | (prog-mode) jump back by popping marker
 `S` | (flycheck error list) sort by column under point (if possible)
 `h` | (calendar-mode) show holidays for date under point
