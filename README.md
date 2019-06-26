@@ -23,7 +23,7 @@ Potentially useful notes below.
    - Enable 1-based column indexing. Rows already are, so why not columns too?
    - Diminish some more minor mode lighters to de-clutter the modeline.
    - Minimap mode (bound to `<f9>`), provided by `sublimity`.
-   - Several small things such as a single-key typo zapper (`<f8>` for `flyspell-correct-at-point`), and an `unfill-paragraph` function (`M-S-q`, [thanks to Stefan Monnier](https://www.emacswiki.org/emacs/UnfillParagraph)).
+   - Several small things such as binding a key to the typo zapper (`<f8>` for `flyspell-correct-previous`), and adding an `unfill-paragraph` function (`M-S-q`, [thanks to Stefan Monnier](https://www.emacswiki.org/emacs/UnfillParagraph)).
  - **Cursor handling**:
    - *[Vim scrolloff](https://wolfecub.github.io/dotfiles/)*: cursor always tries to stay at least 10 lines from the upper/lower edge.
    - [`beacon`](https://github.com/Malabarba/beacon) to never visually lose the cursor when scrolling or switching buffers.
