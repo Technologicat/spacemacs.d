@@ -126,6 +126,8 @@ This function should only modify configuration layer settings."
 This function is called at the very beginning of Spacemacs startup,
 before layer configuration.
 It should only modify the values of Spacemacs settings."
+  (setq my-default-font (if (eq system-type 'windows-nt) "Source Code Pro" "Source Code Variable"))
+
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
@@ -253,7 +255,7 @@ It should only modify the values of Spacemacs settings."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    ;; https://github.com/adobe-fonts/source-code-pro
    ;; doesn't work; https://github.com/syl20bnr/spacemacs/issues/3477
-   dotspacemacs-default-font '("Source Code Variable"
+   dotspacemacs-default-font `(,my-default-font
                                :size 13
                                :weight normal
                                :width normal)
@@ -889,7 +891,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   ;; fix default font
   ;; https://github.com/syl20bnr/spacemacs/issues/3477
-  (set-face-attribute 'default nil :family "Source Code Variable")
+  (set-face-attribute 'default nil :family my-default-font)
   (set-face-attribute 'default nil :height 100)
   ;; fix tab completion in Helm when Treemacs is open (workaround by Simon Bourne)
   ;; https://github.com/syl20bnr/spacemacs/issues/7446#issuecomment-417334718
@@ -1177,6 +1179,6 @@ This function is called at the very end of Spacemacs initialization."
  '(bmkp-light-non-autonamed-region ((t (:background "SteelBlue4"))))
  '(minimap-active-region-background ((t (:background "dark olive green"))))
  '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
- '(minimap-font-face ((t (:height 20 :family "Source Code Variable"))))
+ '(minimap-font-face ((t (:height 20 :family my-default-font))))
  '(spacemacs-emacs-face ((t (:inherit 'mode-line :background "SkyBlue4")))))
 )
