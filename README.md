@@ -107,6 +107,9 @@ These should be standard-ish Emacs.
 Key | Command
 :--- |:---
 `C-g` | "quit", i.e. cancel the current command or ask Emacs to stop whatever it is currently doing.
+`C-x C-c` | quit Emacs
+`C-x C-s` | save
+`C-x C-w` | save as
 `<f1>` | `help-command`, same as `C-h`
 `<f1> k` | "what does the following key combo do?"
 `<f1> f` | "what is the Lisp function under point?"
