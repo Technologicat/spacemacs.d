@@ -184,7 +184,8 @@ Key | Command
 `M-m` | Spacemacs menu
 `M-m m` | major-mode specific Spacemacs menu (different from prefix `C-c`)
 `M-m ?` | show keybindings (searchable, opens a Helm window)
-`M-m a k` | `paradox-list-packages`, list package status
+`M-m h p` | `helm-spacemacs-help-packages`, list package status (with Spacemacs layer info)
+`M-m a k` | `paradox-list-packages`, package manager (DANGER: bypasses Spacemacs layer system)
 `M-m h d a` | `helm-apropos`, search Emacs documentation
 `M-m h d f` | ...for Lisp functions only
 `M-m h d v` | ...for Lisp variables only
