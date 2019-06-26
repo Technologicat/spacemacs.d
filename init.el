@@ -933,6 +933,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
 
   ;; make M-. (look up definition) work in C/C++ projects
   ;; TODO: should maybe update the tags file when it goes out of date?
+  ;; TODO: don't auto-create tags file unless in C/C++ mode?
   ;; https://www.emacswiki.org/emacs/TagsFile
   (defadvice xref-find-definitions (before c-tag-file activate)
     "Automatically create tags file."
