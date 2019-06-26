@@ -132,6 +132,7 @@ Key | Command
 `M-s h .` | highlight symbol under point
 `M-s h p` | highlight phrase (will ask for phrase and color)
 `M-s h u` | remove highlighting (will ask which)
+`C-x d' | `dired` current directory
 `C-x p` | `bookmarkplus` menu ("pookmarks"? `C-x b` is taken for buffer switching...) Spacemacs has this as `M-m B`.
 `C-x p RET` | toggle autonamed bookmark at point
 `C-x p n` | jump to next bookmark in current buffer (wraps around)
@@ -162,6 +163,8 @@ Key | Command
 `a` | (calendar-mode) list holidays for current three months 
 `S` | (calendar-mode) show sunrise, sunset, daylight length for date under point (if location configured; see `calendar-latitude`, `calendar-longitude`, `calendar-location-name`)
 `M` | (calendar-mode) list moon phases for current three months
+`d` | (dired-mode) mark file for deletion
+`x` | (dired-mode) actually delete files marked for deletion
 
 Function keys: by default, `<f2>` is used for 2C two-column mode, which doesn't play well with Spacemacs. Keys `<f5>`...`<f9>` and `<f12>` are unused. (We use some of them, see *Custom key bindings* above.)
 
