@@ -926,6 +926,9 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; make <f5> in python-mode run buffer like in racket-mode
   (with-eval-after-load "python"
     (define-key python-mode-map (kbd "<f5>") 'run-buffer-in-python))
+  ;; helm-top is really nice. Hint from here: https://ambrevar.xyz/emacs-eshell/
+  (with-eval-after-load "helm"
+    (helm-top-poll-mode))
   (require 'suomalainen-kalenteri)
 
   ;; make M-. (look up definition) work in C/C++ projects
