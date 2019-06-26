@@ -824,7 +824,7 @@ leave point at end of buffer."
     (define-key map (kbd "M-Q") 'unfill-paragraph)
     ;; (define-key map (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
     (define-key map (kbd "<f7>") 'org-agenda)
-    (define-key map (kbd "<f8>") 'flyspell-correct-at-point)
+    (define-key map (kbd "<f8>") 'flyspell-correct-previous)
     (define-key map (kbd "<f9>") 'toggle-minimap)
     (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
     (define-key map (kbd "<f12>") 'yafolding-toggle-element)

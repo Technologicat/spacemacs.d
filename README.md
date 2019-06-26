@@ -73,7 +73,7 @@ Key | Command
 `C-<prior>` | previous file buffer (in current window)
 `M-S-q` | unfill paragraph, the counterpart of `fill-paragraph`
 `<f7>` | `org-agenda`
-`<f8>` | `flyspell-correct-at-point`, instant typo zapper (same as `M-s S s`)
+`<f8>` | `flyspell-correct-previous`, instant typo zapper
 `<f9>` | toggle minimap (provided by `sublimity`)
 `<f12>` | toggle folding of current element (`yafolding`)
 `S-<f12>` | go to parent element (`yafolding`)
@@ -216,6 +216,7 @@ Key | Command
 `M-m S .` | spellchecking transient state
 `M-m S d` | dictionary, i.e. switch to another language
 `M-m S b` | spellcheck whole buffer
+`M-m S s` | spellcheck word at point
 `M-m z f` | zoom frame transient state
 `M-m s m` | `multiple-cursors` menu (once in `multiple-cursors-mode`, use `RET` to exit it; use `C-m` to insert a literal RET at each cursor)
 `M-m s m a` | `mc/mark-all-dwim` (useful with `narrow-to-region`)
