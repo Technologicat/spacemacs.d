@@ -135,7 +135,8 @@ Key | Command
 `C-x p p` | jump to previous bookmark in current buffer (wraps around)
 `C-x p e` | edit/view all bookmarks (`RET` to jump, `x` to delete, `s u` to sort by url, `s f n` to sort by file name; see `?` for more key bindings)
 `C-x p c m` | create named bookmark at point
-`C-x p d` | delete bookmark by name
+`C-x p <delete>` | delete bookmark at point
+`C-x p d` | delete bookmark by name (will prompt)
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
 `C-x 0` | kill current window
 `C-x 4 0` | kill current window **and buffer**
