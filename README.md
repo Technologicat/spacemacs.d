@@ -246,7 +246,7 @@ Key | Command
 `C-c C-f` | jump to next heading at same level
 `C-c C-b` | jump to previous heading at same level
 `C-c C-u` | jump up one level
-`C-c C-t` | cycle entry state TODO/DONE/none (also `S-<right>`, `S-<left>`)
+`S-<right>`, `S-<left>` | cycle entry state TODO/DONE/none (also `C-c C-t`); when on a timestamp, shift the date
 `S-<up>`, `S-<down>` | cycle entry priority #A/#B/#C/none
 `M-<up>`, `M-<down>` | move entry up/down
 `M-<left>`, `M-<right>` | indent/outdent entry (in empty entry, can also use `TAB` to cycle level)
