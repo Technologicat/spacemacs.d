@@ -128,10 +128,10 @@ before layer configuration.
 It should only modify the values of Spacemacs settings."
   (setq my-on-winnt (eq system-type 'windows-nt))
   (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
-  ;; On Windows/MSYS2, by default, PATH in process-environment seems to be set incorrectly (missing MSYS2 directories),
-  ;; but the shell (and Emacs itself, in exec-path) sees it correctly.
+  ;; On Windows/MSYS2, by default, PATH in process-environment seems to be set incorrectly
+  ;; (missing MSYS2 directories), but Emacs's exec-path sees it correctly.
   (when my-on-winnt
-    (set-exec-path-from-shell-PATH))
+    (setenv "PATH" exec-path))
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
