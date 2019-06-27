@@ -126,7 +126,8 @@ This function should only modify configuration layer settings."
 This function is called at the very beginning of Spacemacs startup,
 before layer configuration.
 It should only modify the values of Spacemacs settings."
-  (setq my-default-font (if (eq system-type 'windows-nt) "Source Code Pro" "Source Code Variable"))
+  (setq my-on-winnt (eq system-type 'windows-nt))
+  (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
@@ -909,7 +910,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
           ("british" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_UK") nil utf-8)
           ("finnish" "[[:alpha:]]" "[^[:alpha:]]" "['-]" t ("-d" "fi") nil utf-8)))
   ;; TODO fix enchant on Windows/MSYS2 (builds fine with aspell and voikko, but fails to find any dictionaries)
-  (setq ispell-program-name (if (eq system-type 'windows-nt) "c:/msys64/usr/bin/aspell" "~/.local/bin/enchant"))
+  (setq ispell-program-name (if my-on-winnt "c:/msys64/usr/bin/aspell" "~/.local/bin/enchant"))
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
   (setq org-agenda-files (list "~/org/todo-personal.org" "~/org/todo-home.org" "~/org/todo-work.org"))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
