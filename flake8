@@ -1,0 +1,20 @@
+[flake8]
+# ignore silly style items
+ignore =
+    # overhanging indent
+    E126,
+    # continuation line over-indented for visual indent
+    E127,
+    # block comment should start with #
+    E265,
+    # expected 1 blank line, found 0
+    E301,
+    # expected 2 blank lines before def
+    E302,
+    # expected 2 blank lines after def
+    E305,
+    # expected blank line before nested def
+    E306,
+    # line too long >79 chars
+    E501
+exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,instance,00_stuff,00_old
