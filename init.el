@@ -930,7 +930,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
   (if my-on-winnt
       (setq org-agenda-files (list "~/org/todo.org"))
-      (setq org-agenda-files (list "~/org/todo-personal.org" "~/org/todo-home.org" "~/org/todo-work.org")))
+      (setq org-agenda-files (list "~/org/personal.org" "~/org/home.org" "~/org/work.org")))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
   (setq calendar-week-start-day 1)
   (setq calendar-mark-holidays-flag t)
