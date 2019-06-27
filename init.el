@@ -1138,6 +1138,9 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ))
   (add-hook 'python-mode-hook 'my/unpythonic-syntax-highlight-setup)
   (setq inhibit-compacting-font-caches t)  ; https://wolfecub.github.io/dotfiles/
+  ;; this comboes with the .bashrc "alias em='emacsclient -c'"; use `C-x #' (M-x server-edit) to close a file.
+  (when my-on-winnt
+    (server-start))
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
