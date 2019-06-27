@@ -928,7 +928,9 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; TODO fix enchant on Windows/MSYS2 (builds fine with aspell and voikko, but fails to find any dictionaries)
   (setq ispell-program-name (if my-on-winnt "c:/msys64/usr/bin/aspell" "~/.local/bin/enchant"))
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-  (setq org-agenda-files (list "~/org/todo-personal.org" "~/org/todo-home.org" "~/org/todo-work.org"))
+  (if my-on-winnt
+      (setq org-agenda-files (list "~/org/todo.org"))
+      (setq org-agenda-files (list "~/org/todo-personal.org" "~/org/todo-home.org" "~/org/todo-work.org")))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
   (setq calendar-week-start-day 1)
   (setq calendar-mark-holidays-flag t)
