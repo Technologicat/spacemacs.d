@@ -976,19 +976,20 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (require 'bookmark+)
   (setq bmkp-autoname-format "^%B:[0-9]+,[0-9]+.*")  ; see my-auto-l+c-name
   (spacemacs|diminish beacon-mode)
-  ;; (spacemacs|diminish beacon-mode "⛯" "*")
-  (spacemacs|diminish flyspell-mode "📜" "Sp")
-  (spacemacs|diminish git-timemachine-mode "🔃" "GTM")  ; no flux capacitor symbol in Unicode...
+  ;; TODO: Seems either Source Code Pro is missing some symbols Source Code Variable has, or the Linux fallback font for missing symbols is different.
+  ;; (spacemacs|diminish beacon-mode (if my-on-winnt "*" "⛯") "*")
+  (spacemacs|diminish flyspell-mode (if my-on-winnt "Sp" "📜") "Sp")
+  (spacemacs|diminish git-timemachine-mode (if my-on-winnt "GTM" "🔃") "GTM")  ; no flux capacitor symbol in Unicode...
   ;; (spacemacs|diminish flycheck-mode "✔" "Stx")
   ;; (spacemacs|diminish visual-line-mode "⏎" "Vl")
   (spacemacs|diminish visual-line-mode)
-  (spacemacs|diminish reftex-mode "🖹" "Ref")
+  (spacemacs|diminish reftex-mode (if my-on-winnt "Ref" "🖹") "Ref")
   (spacemacs|diminish synosaurus-mode "＝" "Syn")
   ;; (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
   (spacemacs|diminish which-key-mode)
   ;; TODO: only takes effect after a config reload (M-m f e R), why?
   ;; Wrapping it in a (with-eval-after-load "magit" ...) doesn't help.
-  (spacemacs|diminish magit-gitflow-mode "🌊" "Flow")
+  (spacemacs|diminish magit-gitflow-mode (if my-on-winnt "Fl" "🌊") "Flow")
   (spacemacs|diminish holy-mode)
   ;;(spacemacs|diminish auto-fill-mode "□" "Fl")
   ;; custom hotkeys
