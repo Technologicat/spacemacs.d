@@ -260,9 +260,9 @@ Key | Command
 
 Use `M-x org-sort` with point on a parent entry to move DONE children to end (choose `o` for todo **o**rder).
 
-Syntax for pretty links is `[[target][description]]`. To edit a pretty link, move to its end, and backspace to remove the last bracket - or use `M-x org-toggle-link-display`.
+Syntax for pretty links is `[[target][description]]`. To create or edit a link, `M-x org-insert-link` (`C-c C-l`). Also available: `M-x org-toggle-link-display`, or just move to a link's end, and backspace to delete the last bracket.
 
-See also `org-store-link` and `C-c C-l` (`org-insert-link`) to save bookmarks to file locations into the org file.
+See also `org-store-link` to stash a link to file location at point (in whatever file). The stashed link can then be inserted at point, when editing an org file, with `C-c C-l`.
 
 Shift selection not available by default, use `C-SPC` (set mark) to select a region.
 
