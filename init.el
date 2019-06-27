@@ -128,6 +128,10 @@ before layer configuration.
 It should only modify the values of Spacemacs settings."
   (setq my-on-winnt (eq system-type 'windows-nt))
   (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
+  ;; On Windows/MSYS2, by default, PATH in process-environment seems to be set incorrectly (missing MSYS2 directories),
+  ;; but the shell (and Emacs itself, in exec-path) sees it correctly.
+  (when my-on-winnt
+    (set-exec-path-from-shell-PATH))
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
@@ -798,6 +802,17 @@ leave point at end of buffer."
       (push-mark (point) 'nomsg 'activate)
       (goto-char (point-min))))
   (message "Whole buffer marked"))
+
+;; https://stackoverflow.com/questions/8606954/path-and-exec-path-set-but-emacs-does-not-find-executable
+;; see also https://github.com/purcell/exec-path-from-shell
+(defun set-exec-path-from-shell-PATH ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell.
+
+This is particularly useful under Mac OSX, where GUI apps are not started from a shell."
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
 
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
