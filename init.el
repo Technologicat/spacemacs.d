@@ -131,7 +131,7 @@ It should only modify the values of Spacemacs settings."
   ;; On Windows/MSYS2, by default, PATH in process-environment seems to be set incorrectly
   ;; (missing MSYS2 directories), but Emacs's exec-path sees it correctly.
   (when my-on-winnt
-    (setenv "PATH" exec-path))
+    (setenv "PATH" (mapconcat #'identity exec-path path-separator)))
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
