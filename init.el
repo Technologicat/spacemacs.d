@@ -128,6 +128,8 @@ before layer configuration.
 It should only modify the values of Spacemacs settings."
   (setq my-on-winnt (eq system-type 'windows-nt))
   (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
+  (when my-on-winnt
+    (setq dedicated-terminal-command-template "C:/msys64/msys2_shell.cmd -mingw64 -where '%s'"))
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
