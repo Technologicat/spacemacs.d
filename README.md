@@ -143,6 +143,7 @@ Key | Command
 `C-x p d` | delete bookmark by name (will prompt)
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
 `C-x 0` | kill current window
+`C-x 1` | maximize, i.e. kill other windows
 `C-x 4 0` | kill current window **and buffer**
 `M-l` | `downcase-word`, make word all-lowercase (starting at point; if at whitespace, apply to next word)
 `M-c` | `capitalize-word`, make word have one uppercase letter (at point; if at whitespace, apply to next word)
@@ -204,7 +205,7 @@ Key | Command
 `M-m f c` | copy current file (will ask for destination)
 `M-m w 2` | 2-column window layout (Spacemacs compatible)
 `M-m w d` | kill current window (same as `C-x 0`)
-`M-m w m` | maximize, i.e. kill other windows
+`M-m w m` | maximize, i.e. kill other windows (same as `C-x 1`)
 `M-0` | open/focus Treemacs (use `M-0 q` to hide it)
 `M-1` | focus window 1 (other numbers available, too)
 `M-m j j` | avy timer, jump to a fragment of text on screen (type in a few letters or a word quickly, then wait and pick the occurrence to jump to)
