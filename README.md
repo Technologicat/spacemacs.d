@@ -143,8 +143,9 @@ Key | Command
 `C-x p d` | delete bookmark by name (will prompt)
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
 `C-x 0` | kill current window
-`C-x 1` | maximize, i.e. kill other windows
+`C-x k` | kill buffer (will ask which)
 `C-x 4 0` | kill current window **and buffer**
+`C-x 1` | maximize, i.e. kill other windows
 `M-l` | `downcase-word`, make word all-lowercase (starting at point; if at whitespace, apply to next word)
 `M-c` | `capitalize-word`, make word have one uppercase letter (at point; if at whitespace, apply to next word)
 `M-u` | `upcase-word`, make word all-uppercase (starting at point; if at whitespace, apply to next word)
@@ -191,6 +192,7 @@ Key | Command
 `M-m h d f` | ...for Lisp functions only
 `M-m h d v` | ...for Lisp variables only
 `M-m b N n` | new file (create empty buffer and switch to it)
+`M-m b d` | close file (kill current buffer)
 `M-m f s` | save (at first save of an unsaved buffer, will ask for destination) (same as `C-x C-s`)
 `M-m q q` | quit Emacs (will ask to save modified buffers; to cancel quitting, use `C-g`)
 `M-m q Q` | quit Emacs (just do it)
