@@ -16,5 +16,9 @@ ignore =
     # expected blank line before nested def
     E306,
     # line too long >79 chars
-    E501
+    E501,
+    # multiple statements on one line (def)
+    E704,
+    # line break after binary operator
+    W504
 exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,instance,00_stuff,00_old
