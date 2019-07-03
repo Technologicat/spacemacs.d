@@ -575,7 +575,9 @@ It should only modify the values of Spacemacs settings."
     (if (and $dir (file-directory-p $dir))
         (progn
           (message (format "Python call graph analysis in `%s'" $dir))
-          (start-process-shell-command "pyan" nil (format "cd \"%s\" && shopt -s globstar && pyan3 -nuca --dot **/*.py | xdot" $dir)))
+          ;; (start-process-shell-command "pyan" nil (format "cd \"%s\" && shopt -s globstar && pyan3 -nuca --dot **/*.py | xdot" $dir))
+          (start-process-shell-command "pyan" nil (format "cd \"%s\" && find . -not -iwholename '*/test*/*' -name '*.py' | xargs pyan3 -nuca --dot | xdot" $dir))
+          )
       (message "no such directory `%s'" $dir))))
 
 ;; TODO: detect whether projectile is available (using condition-case)
