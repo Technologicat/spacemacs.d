@@ -570,7 +570,7 @@ It should only modify the values of Spacemacs settings."
 
 (defun pyan-f (&optional directory)
   "Run Pyan, the Python static call graphing tool. Visualize results in xdot."
-  (interactive "P")
+  (interactive)
   (let (($dir (expand-file-name (if directory directory default-directory))))
     (if (and $dir (file-directory-p $dir))
         (progn
