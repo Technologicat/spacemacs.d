@@ -819,12 +819,28 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
+;; pdf-tools doesn't support helm-swoop or phi-search in PDF text, only the builtin isearch.
+;; http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
+(defun my-isearch-forward (&rest args)
+  "phi-search or isearch as appropriate."
+  (interactive "P")
+  (if (eq major-mode 'pdf-view-mode)
+    (apply 'isearch-forward args)
+    (apply 'phi-search args)))
+
+(defun my-isearch-backward (&rest args)
+  "phi-search-backward or isearch-backward as appropriate."
+  (interactive "P")
+  (if (eq major-mode 'pdf-view-mode)
+    (apply 'isearch-backward args)
+    (apply 'phi-search-backward args)))
+
 ;; https://clojureverse.org/t/share-your-spacemacs-tweaks/1496/9
 (defvar custom-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     ;; phi-search for a multiple-cursors compatible isearch replacement
-    (define-key map (kbd "C-s") 'phi-search)
-    (define-key map (kbd "C-r") 'phi-search-backward)
+    (define-key map (kbd "C-s") 'my-isearch-forward)
+    (define-key map (kbd "C-r") 'my-isearch-backward)
     ;; Ctrl+Z undo shadows helm's action list viewer; let's place that on Alt+Z
     (define-key map (kbd "M-z") 'helm-select-action)  ; this seems to be the "C-z Actions"?
     (define-key map (kbd "C-z") 'undo-tree-undo)
