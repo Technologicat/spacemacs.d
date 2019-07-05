@@ -826,14 +826,18 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
   (interactive "P")
   (if (eq major-mode 'pdf-view-mode)
     (apply 'isearch-forward args)
-    (apply 'phi-search args)))
+    (if phi-search--active
+      (phi-search-next)
+      (apply 'phi-search args))))
 
 (defun my-isearch-backward (&rest args)
   "phi-search-backward or isearch-backward as appropriate."
   (interactive "P")
   (if (eq major-mode 'pdf-view-mode)
     (apply 'isearch-backward args)
-    (apply 'phi-search-backward args)))
+    (if phi-search--active
+      (phi-search-previous)
+      (apply 'phi-search-backward args))))
 
 ;; https://clojureverse.org/t/share-your-spacemacs-tweaks/1496/9
 (defvar custom-keys-minor-mode-map
