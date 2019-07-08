@@ -1176,6 +1176,15 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; this comboes with the .bashrc "alias em='emacsclient -c'"; use `C-x #' (M-x server-edit) to close a file.
   (when my-on-winnt
     (server-start))
+  ;; https://www.reddit.com/r/bashonubuntuonwindows/comments/70i8aa/making_emacs_on_wsl_open_links_in_windows_web/
+  (when my-on-wsl
+    (setq
+     cmdExeBin"/mnt/c/Windows/System32/cmd.exe"
+     cmdExeArgs '("/c" "start" "") )
+    (setq
+     browse-url-generic-program  cmdExeBin
+     browse-url-generic-args     cmdExeArgs
+     browse-url-browser-function 'browse-url-generic))
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
