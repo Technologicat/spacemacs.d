@@ -129,6 +129,7 @@ This function is called at the very beginning of Spacemacs startup,
 before layer configuration.
 It should only modify the values of Spacemacs settings."
   (setq my-on-winnt (eq system-type 'windows-nt))
+  (setq my-on-wsl (string-match-p "Microsoft" (shell-command-to-string "uname -a")))
   (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
   (when my-on-winnt
     (setq dedicated-terminal-command-template "C:/msys64/msys2_shell.cmd -mingw64 -where '%s'"))
@@ -903,7 +904,7 @@ See the header of this file for more information."
   (when my-on-winnt
     (setenv "PATH" (mapconcat #'identity exec-path path-separator)))
   ;; Doesn't seem to use the LANG from the Linux environment on WSL (Windows Subsystem for Linux).
-  (when (string-match-p "Microsoft" (shell-command-to-string "uname -a"))
+  (when my-on-wsl
     (setenv "LANG" "en_US.utf8"))
   )
 
@@ -960,7 +961,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; TODO fix enchant on Windows/MSYS2 (builds fine with aspell and voikko, but fails to find any dictionaries)
   (setq ispell-program-name (if my-on-winnt "c:/msys64/usr/bin/aspell" "~/.local/bin/enchant"))
   ;; https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-  (if my-on-winnt
+  (if (or my-on-winnt my-on-wsl)
       (setq org-agenda-files (list "~/org/todo.org"))
       (setq org-agenda-files (list "~/org/personal.org" "~/org/home.org" "~/org/work.org")))
   ;;https://www.emacswiki.org/emacs/CalendarLocalization
@@ -1011,19 +1012,19 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (setq bmkp-autoname-format "^%B:[0-9]+,[0-9]+.*")  ; see my-auto-l+c-name
   (spacemacs|diminish beacon-mode)
   ;; TODO: Seems either Source Code Pro is missing some symbols Source Code Variable has, or the Linux fallback font for missing symbols is different.
-  ;; (spacemacs|diminish beacon-mode (if my-on-winnt "*" "⛯") "*")
-  (spacemacs|diminish flyspell-mode (if my-on-winnt "Sp" "📜") "Sp")
-  (spacemacs|diminish git-timemachine-mode (if my-on-winnt "GTM" "🔃") "GTM")  ; no flux capacitor symbol in Unicode...
+  ;; (spacemacs|diminish beacon-mode (if (or my-on-winnt my-on-wsl) "*" "⛯") "*")
+  (spacemacs|diminish flyspell-mode (if (or my-on-winnt my-on-wsl) "Sp" "📜") "Sp")
+  (spacemacs|diminish git-timemachine-mode (if (or my-on-winnt my-on-wsl) "GTM" "🔃") "GTM")  ; no flux capacitor symbol in Unicode...
   ;; (spacemacs|diminish flycheck-mode "✔" "Stx")
   ;; (spacemacs|diminish visual-line-mode "⏎" "Vl")
   (spacemacs|diminish visual-line-mode)
-  (spacemacs|diminish reftex-mode (if my-on-winnt "Ref" "🖹") "Ref")
+  (spacemacs|diminish reftex-mode (if (or my-on-winnt my-on-wsl) "Ref" "🖹") "Ref")
   (spacemacs|diminish synosaurus-mode "＝" "Syn")
   ;; (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
   (spacemacs|diminish which-key-mode)
   ;; TODO: only takes effect after a config reload (M-m f e R), why?
   ;; Wrapping it in a (with-eval-after-load "magit" ...) doesn't help.
-  (spacemacs|diminish magit-gitflow-mode (if my-on-winnt "Fl" "🌊") "Flow")
+  (spacemacs|diminish magit-gitflow-mode (if (or my-on-winnt my-on-wsl) "Fl" "🌊") "Flow")
   (spacemacs|diminish holy-mode)
   ;;(spacemacs|diminish auto-fill-mode "□" "Fl")
   ;; custom hotkeys
