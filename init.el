@@ -935,6 +935,9 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; Our custom isearch functions (that work around phi-search's lack of pdf-tools support)
+  ;; need the var phi-search--active to be defined, which it isn't until phi-search loads.
+  (require 'phi-search)
   ;; fix default font
   ;; https://github.com/syl20bnr/spacemacs/issues/3477
   (set-face-attribute 'default nil :family my-default-font)
