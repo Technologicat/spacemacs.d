@@ -902,6 +902,9 @@ See the header of this file for more information."
   ;; (missing MSYS2 directories), but Emacs's exec-path sees it correctly.
   (when my-on-winnt
     (setenv "PATH" (mapconcat #'identity exec-path path-separator)))
+  ;; Doesn't seem to use the LANG from the Linux environment on WSL (Windows Subsystem for Linux).
+  (when (string-match-p "Microsoft" (shell-command-to-string "uname -a"))
+    (setenv "LANG" "en_US.utf8"))
   )
 
 (defun dotspacemacs/user-init ()
