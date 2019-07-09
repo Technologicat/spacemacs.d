@@ -571,6 +571,16 @@ It should only modify the values of Spacemacs settings."
           (start-process-shell-command "emacs-dedicated-terminal" nil (format dedicated-terminal-command-template $dir)))
       (message "no such directory `%s'" $dir))))
 
+(defvar dedicated-file-browser-template "/usr/bin/nemo '%s'" "Command used by `browse-file-f'. Must contain exactly one `\%s', for the path to open the file browser in.")
+(defun browse-file-f (&optional directory)
+  "Open a file browser in directory (default: directory of current buffer)."
+  (let (($dir (expand-file-name (if directory directory default-directory))))
+    (if (and $dir (file-directory-p $dir))
+        (progn
+          (message (format "file browser in `%s'" $dir))
+          (start-process-shell-command "emacs-dedicated-file-browser" nil (format dedicated-file-browser-template $dir)))
+      (message "no such directory `%s'" $dir))))
+
 (defun pyan-f (&optional directory)
   "Run Pyan, the Python static call graphing tool. Visualize results in xdot."
   (interactive)
@@ -611,10 +621,19 @@ universal argument), show and copy root path of project (queried from Projectile
 (defun browse-file-directory (&optional in-project-root)
   "Open the directory of the current buffer however the OS would.
 
-If `in-project-root' is non-nil (can be set interactively by setting the
-universal argument), instead open root directory of project (queried from Projectile)."
+If `in-project-root' is non-nil (can be set interactively by
+setting the universal argument), instead open root directory of
+project (queried from Projectile).
+
+On WSL, instead of opening the directory as the OS would, this
+calls `browse-file-f', because the Linux filesystem is not
+visible to Windows, and so the directories in it cannot be
+browsed in Windows Explorer.
+"
   (interactive "P")
-  (call-in-current-or-project-directory 'browse-url-of-file in-project-root))
+  (call-in-current-or-project-directory
+   (if my-on-wsl 'browse-file-f 'browse-url-of-file)
+   in-project-root))
 
 (defun open-dedicated-terminal (&optional in-project-root)
   "Open a system terminal window.
