@@ -133,6 +133,8 @@ It should only modify the values of Spacemacs settings."
   (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
   (when my-on-winnt
     (setq dedicated-terminal-command-template "C:/msys64/msys2_shell.cmd -mingw64 -where '%s'"))
+  (when my-on-wsl
+    (setq dedicated-terminal-command-template "/usr/bin/lxterminal --working-directory='%s'"))
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
