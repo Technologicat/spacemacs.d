@@ -1036,9 +1036,11 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; (which-key-add-key-based-replacements "C-x 8 l" "λ")
   (cua-mode)  ; standard cut, copy, paste hotkeys, also delete region on highlight & insert
   (custom-keys-minor-mode 1)
-  ;; see commands kmacro-name-last-macro and insert-kbd-macro
+  ;; see commands kmacro-name-last-macro (name-last-kbd-macro) and insert-kbd-macro
   (fset 'sort-lines-and-save
         (kmacro-lambda-form [?í ?x ?l ?s ?í ?f ?s] 0 "%d"))
+  (fset 'unparenthesize-python-return-stmt
+        [?\C-s ?r ?e ?t ?u ?r ?n ?\( return left ?  ?\M-x ?s ?p ?- ?u ?n tab return])
   ;; minimap
   ;; https://github.com/zk-phi/sublimity
   (require 'sublimity)
