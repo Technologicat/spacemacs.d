@@ -888,6 +888,19 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
     (define-key map (kbd "<f9>") 'toggle-minimap)
     (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
     (define-key map (kbd "<f12>") 'yafolding-toggle-element)
+    ;; Replace EMACS's default sexp navigation keybindings with smartparens-enabled ones
+    ;; https://www.emacswiki.org/emacs/NavigatingParentheses#toc7
+    ;; https://github.com/Fuco1/smartparens  (works also with Python!)
+    (define-key map (kbd "C-M-f") 'sp-forward-sexp)
+    (define-key map (kbd "C-M-b") 'sp-backward-sexp)
+    (define-key map (kbd "C-M-d") 'sp-down-sexp)
+    (define-key map (kbd "C-M-a") 'sp-backward-down-sexp)
+    (define-key map (kbd "C-M-e") 'sp-up-sexp)  ;; mnemonic: "Exit sexp"
+    (define-key map (kbd "C-M-u") 'sp-backward-up-sexp)
+    (define-key map (kbd "C-M-n") 'sp-next-sexp)
+    (define-key map (kbd "C-M-p") 'sp-previous-sexp)
+    (define-key map (kbd "C-M-k") 'sp-kill-sexp)
+    (define-key map (kbd "C-M-SPC") 'sp-mark-sexp)
     map)
   "Minor mode for custom keymap.")
 
