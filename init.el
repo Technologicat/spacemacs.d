@@ -825,12 +825,20 @@ A buffer is skipped as not representing a file, if:
 ;;       (message (if ($rejectp (current-buffer)) "no files open" "no other files open"))
 ;;       )))
 
-(defun switch-to-previous-file ()
+(defun switch-to-previous-file (&optional forwards)
   "Switch current window to previous file.
 
-  Shorthand for `(switch-to-next-file t)'."
+Shorthand for `(switch-to-next-file (not forwards))',
+i.e. `(switch-to-next-file t)' when no arg given.
+
+The optional argument is there to support negative numeric args
+for `switch-to-previous-file-repeatable'.
+"
   (interactive)
-  (switch-to-next-file t))
+  (switch-to-next-file (not forwards)))
+
+(my-make-repeatable-interactive-command 'switch-to-next-file 'switch-to-next-file-repeatable)
+(my-make-repeatable-interactive-command 'switch-to-previous-file 'switch-to-previous-file-repeatable)
 
 ;; based on https://www.emacswiki.org/emacs/BookmarkPlus#toc63
 (defun my-auto-l+c-name (position)
@@ -927,8 +935,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
     (define-key map (kbd "C-S-e") 'browse-file-directory)
     ;; (define-key map (kbd "C-e") 'move-end-of-line)  ; FIXME: unshadowing a default
     (define-key map (kbd "C-c e") 'eval-and-replace-sexp)
-    (define-key map (kbd "C-<next>") 'switch-to-next-file)
-    (define-key map (kbd "C-<prior>") 'switch-to-previous-file)
+    (define-key map (kbd "C-<next>") 'switch-to-next-file-repeatable)
+    (define-key map (kbd "C-<prior>") 'switch-to-previous-file-repeatable)
     (define-key map (kbd "M-S-q") 'unfill-paragraph)
     (define-key map (kbd "M-Q") 'unfill-paragraph)
     ;; (define-key map (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
