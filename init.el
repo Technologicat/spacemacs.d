@@ -897,7 +897,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
   (interactive "P")
   (if (eq major-mode 'pdf-view-mode)
     (apply 'isearch-forward args)
-    (if phi-search--active
+    (if phi-search--active  ;; FIXME: accessing implementation detail
       (phi-search-next)
       (apply 'phi-search args))))
 
@@ -906,7 +906,7 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
   (interactive "P")
   (if (eq major-mode 'pdf-view-mode)
     (apply 'isearch-backward args)
-    (if phi-search--active
+    (if phi-search--active  ;; FIXME: accessing implementation detail
       (phi-search-previous)
       (apply 'phi-search-backward args))))
 
