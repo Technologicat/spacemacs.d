@@ -1184,6 +1184,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   (add-hook 'prog-mode-hook 'my/prettify-symbols-setup)
   (add-hook 'python-mode-hook 'my/prettify-python-setup)
   (global-prettify-symbols-mode)
+  ;; TODO: takes effect from the **second** Python file opened. Figure out why. (Maybe font-lock for python mode scans the file before the hooks run?)
   (defun my/unpythonic-syntax-highlight-setup ()
     "Set up additional syntax highlighting for `unpythonic.syntax' in python mode."
     ;; adapted from code in dash.el
