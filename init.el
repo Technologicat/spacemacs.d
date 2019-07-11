@@ -702,6 +702,55 @@ Useful as an inline calculator.
     (error (message "eval-and-replace-sexp: invalid expression")
            (insert (current-kill 0)))))
 
+;; TODO: see if someone has already implemented this
+(defun my-make-repeatable-interactive-command (command &optional new-name)
+  "Make a repeatable version of an existing interactive command.
+
+COMMAND is the command name as a symbol.
+
+If NEW-NAME (a symbol) is given, globally bind that function
+name (at the Lisp level) to the new function, as if the new
+function was DEFUN'd with that name.
+
+Return the new command, which behaves exactly as the original,
+except that it accepts a numeric prefix argument to specify how
+many times to repeat.
+
+Prefix argument semantics for the new command:
+
+    With no prefix argument, run the original command once.
+
+    With the universal prefix argument, run the original command
+    once, passing the universal prefix argument to it.
+    NOTE: currently more than one `C-u' is not supported.
+
+    If the prefix argument is numeric and positive, repeat the
+    original command that many times.
+
+    If the prefix argument is numeric and negative, repeat the
+    original command as many times as the absolute value of the
+    argument. Each time, pass the universal argument to the
+    original command.
+
+    If the prefix argument is numeric and zero, do nothing.
+"
+  (let (($newcmd (lambda (&optional num)
+                   ;; https://emacs.stackexchange.com/questions/44407/how-to-implement-a-numeric-prefix-argument-in-emacs
+                   ;; TODO: support several C-u prefixes
+                   (interactive (list (if current-prefix-arg
+                                          (if (equal current-prefix-arg '(4))  ;; C-u
+                                              -1
+                                            (prefix-numeric-value current-prefix-arg))
+                                        1)))
+                   (let (($parg (if (< num 0) '(4) nil))  ;; simulate C-u
+                         ($n (abs num)))
+                     (dotimes ($k $n nil)  ;; TODO: return the return value from the final repeat
+                       (funcall command $parg))))))  ;; TODO: should probably use (call-interactively command), but how to pass the prefix arg then?
+    (when new-name
+      ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Function-Cells.html#Function-Cells
+      (fset new-name $newcmd))
+    $newcmd))
+
 (defun switch-to-next-file (&optional backwards)
   "Switch current window to next file.
 
