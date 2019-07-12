@@ -73,7 +73,8 @@ Key | Command
 `C-<prior>` | previous file buffer (in current window)
 `M-S-q` | unfill paragraph, the counterpart of `fill-paragraph`
 `<f7>` | `org-agenda`
-`<f8>` | `flyspell-correct-previous`, instant typo zapper
+`<f8>` | `flyspell-correct-previous`, auto-accept first suggestion
+`S-<f8>` | `flyspell-correct-previous`, ask
 `<f9>` | toggle minimap (provided by `sublimity`)
 `<f12>` | toggle folding of current element (`yafolding`)
 `S-<f12>` | go to parent element (`yafolding`)

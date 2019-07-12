@@ -897,6 +897,16 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 
+(defun my-flyspell-correct-lucky (&rest args)
+  "`I'm feeling lucky' mode for flyspell-correct-previous.
+
+Accept the first suggestion without prompting.
+"
+  (interactive "P")
+  (let ((flyspell-correct-interface (lambda (candidates misspelled-word)
+                                      (car candidates))))
+      (call-interactively 'flyspell-correct-previous)))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
@@ -943,7 +953,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
     (define-key map (kbd "M-Q") 'unfill-paragraph)
     ;; (define-key map (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
     (define-key map (kbd "<f7>") 'org-agenda)
-    (define-key map (kbd "<f8>") 'flyspell-correct-previous)
+    (define-key map (kbd "S-<f8>") 'flyspell-correct-previous)
+    (define-key map (kbd "<f8>") 'my-flyspell-correct-lucky)
     (define-key map (kbd "<f9>") 'toggle-minimap)
     (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
     (define-key map (kbd "<f12>") 'yafolding-toggle-element)
@@ -1032,6 +1043,10 @@ before packages are loaded."
   ;; Our custom isearch functions (that work around phi-search's lack of pdf-tools support)
   ;; need the var phi-search--active to be defined, which it isn't until phi-search loads.
   (require 'phi-search)
+  ;; my-flyspell-correct-lucky needs flyspell-correct to be loaded so that
+  ;; flyspell-correct-interface is defvar'd (otherwise the let, in
+  ;; effect, does nothing).
+  (require 'flyspell-correct)
   ;; fix default font
   ;; https://github.com/syl20bnr/spacemacs/issues/3477
   (set-face-attribute 'default nil :family my-default-font)
