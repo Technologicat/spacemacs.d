@@ -907,6 +907,24 @@ Accept the first suggestion without prompting.
                                       (car candidates))))
       (call-interactively 'flyspell-correct-previous)))
 
+(defun my-flyspell-correct-unlucky (&rest args)
+  "Wrapper for flyspell-correct-previous.
+
+If invoked right after a `my-flyspell-correct-lucky', undo first.
+
+This allows first hitting \\[my-flyspell-correct-lucky], which is
+often sufficient, but if the default suggestion was not correct,
+it is then possible to immediately hit \\[my-flyspell-correct-unlucky]
+to correct interactively with minimum keypresses."
+  (interactive "P")
+  (when (eq last-command 'my-flyspell-correct-lucky)
+    (undo-tree-undo)
+    ;; Undoing the edit does not restore the misspelled-word status.
+    ;; Force flyspell to update its overlay.
+    ;; TODO: we assume the word that used to be misspelled is now on screen.
+    (flyspell-region (window-start) (window-end)))
+  (call-interactively 'flyspell-correct-previous))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
@@ -953,7 +971,7 @@ Accept the first suggestion without prompting.
     (define-key map (kbd "M-Q") 'unfill-paragraph)
     ;; (define-key map (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
     (define-key map (kbd "<f7>") 'org-agenda)
-    (define-key map (kbd "S-<f8>") 'flyspell-correct-previous)
+    (define-key map (kbd "S-<f8>") 'my-flyspell-correct-unlucky)
     (define-key map (kbd "<f8>") 'my-flyspell-correct-lucky)
     (define-key map (kbd "<f9>") 'toggle-minimap)
     (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
