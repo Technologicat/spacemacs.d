@@ -129,7 +129,9 @@ This function is called at the very beginning of Spacemacs startup,
 before layer configuration.
 It should only modify the values of Spacemacs settings."
   (setq my-on-winnt (eq system-type 'windows-nt))
-  (setq my-on-wsl (string-match-p "Microsoft" (shell-command-to-string "uname -a")))
+  (setq my-on-wsl (condition-case nil
+                      (string-match-p "Microsoft" (shell-command-to-string "uname -a"))
+                      (error nil)))  ;; no uname command, not on WSL
   (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
   (when my-on-winnt
     (setq dedicated-terminal-command-template "C:/msys64/msys2_shell.cmd -mingw64 -where '%s'"))
