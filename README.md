@@ -72,6 +72,7 @@ Key | Command
 `C-<next>` | next file buffer (in current window)
 `C-<prior>` | previous file buffer (in current window)
 `M-S-q` | unfill paragraph, the counterpart of `fill-paragraph`
+`<f6>` | `iedit-mode` on/off, to quickly rename all occurrences of symbol under point
 `<f7>` | `org-agenda`
 `<f8>` | `flyspell-correct-previous`, auto-accept first suggestion
 `S-<f8>` | `flyspell-correct-previous`, ask

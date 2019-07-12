@@ -970,6 +970,7 @@ to correct interactively with minimum keypresses."
     (define-key map (kbd "M-S-q") 'unfill-paragraph)
     (define-key map (kbd "M-Q") 'unfill-paragraph)
     ;; (define-key map (kbd "M-q") 'fill-paragraph)  ; FIXME: unshadowing a default
+    (define-key map (kbd "<f6>") 'iedit-mode)
     (define-key map (kbd "<f7>") 'org-agenda)
     (define-key map (kbd "S-<f8>") 'my-flyspell-correct-unlucky)
     (define-key map (kbd "<f8>") 'my-flyspell-correct-lucky)
