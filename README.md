@@ -74,7 +74,7 @@ Key | Command
 `M-S-q` | unfill paragraph, the counterpart of `fill-paragraph`
 `<f6>` | `iedit-mode` on/off, to quickly rename all occurrences of symbol under point
 `<f7>` | `org-agenda`
-`<f8>` | `flyspell-correct-previous`, auto-accept first suggestion
+`<f8>` | `flyspell-correct-previous`, auto-accept first suggestion (if needed, can then immediately `S-<f8>` to undo and correct interactively)
 `S-<f8>` | `flyspell-correct-previous`, ask
 `<f9>` | toggle minimap (provided by `sublimity`)
 `<f12>` | toggle folding of current element (`yafolding`)
@@ -99,7 +99,9 @@ We use `sublimity` as the minimap provider, because it works also in LaTeX mode,
 
 If you want to use `minimap` instead, be sure to [get it from GitHub](https://github.com/dengste/minimap); the version on ELPA seems to be old even though it has the same version number. As of this writing, only the version on GitHub has the ability to change the color of the highlighted line.
 
-We use `yafolding` instead of the folding features of `evil`, because it requires no configuration, works perfectly for Python, and importantly, *draws nice-looking folding markers at the fringe*. Spacemacs's `evil` folding (required for languages not based on indentation) of course remains available.
+We use `yafolding` instead of the folding features of `evil`, because it requires no configuration, works perfectly for Python, and importantly, *draws nice-looking folding markers at the fringe*. Spacemacs's `evil** folding (required for languages not based on indentation** of course remains available.
+
+**CAUTION**: The undo-and-correct-interactively feature of `<f8> S-<f8>` requires the corrected word still to be on the screen in order to work correctly. This limitation is because the flyspell overlay is deleted when a correction is accepted, and undoing the correction does not restore the overlay. Thus, as a workaround, when you press `<f8> S-<f8>`, after performing the undo, we run `flyspell-region` for the text currently visible on screen (to restore the overlay) before invoking `flyspell-correct-previous` again.
 
 
 ## Some useful standard key bindings
