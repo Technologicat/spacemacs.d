@@ -1255,7 +1255,8 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
                  ("**8" . ?⁸)
                  ("**9" . ?⁹)
                  ("sum" . ?∑)
-                 ("prod" . ?∏)  ; unpythonic.fold.prod  https://github.com/Technologicat/unpythonic
+                 ("prod" . ?∏)  ; numpy.prod; unpythonic.fold.prod  https://github.com/Technologicat/unpythonic
+                 ("product" . ?∏)  ; pandas; also alternative name for prod in numpy
                  ("and" . ?∩)
                  ("or" . ?∪)
                  ;("in" . ?∈)  ; in general fine, but confusing with unpythonic.syntax.let: let[(x, 21) in 2*x]
