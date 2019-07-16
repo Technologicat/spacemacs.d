@@ -762,6 +762,10 @@ universal argument), switch to previous file.
 A buffer is skipped as not representing a file, if:
   - its name begins and ends with `*'
   - its purpose is \"general\", \"dired\" or \"minibuf\"
+  - it matches a special case, e.g. a Dired view or the file
+    \".custom-settings\", which Spacemacs uses as a staging area
+    to update `dotspacemacs/emacs-custom-settings' in init.el
+    (so it occasionally automatically opens in the background).
 "
   (interactive "P")
   (catch 'stnf-exit
@@ -782,6 +786,7 @@ A buffer is skipped as not representing a file, if:
            (or
             (and (s-starts-with? "*" $n) (s-ends-with? "*" $n))
             (s-starts-with? "Dired " $n)
+            (s-starts-with? ".custom-settings" $n)
             (equal $p 'general)
             (equal $p 'dired)
             (equal $p 'minibuf)))
