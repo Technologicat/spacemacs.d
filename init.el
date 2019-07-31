@@ -1012,14 +1012,14 @@ to correct interactively with minimum keypresses."
         (spacemacs/set-leader-keys "s M" 'helm-multi-swoop-this-mode)  ; M-m s M, because M-m s m is taken by multiple-cursors
         (spacemacs/set-leader-keys "s C-p" 'helm-multi-swoop-projectile)  ; M-m s C-p (NOTE: searches open project buffers only)
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" 'reftex-toc)  ; M-m m O (same as in Spacemacs pdf layer)
-        (spacemacs/set-leader-keys "J" 'evil-avy-goto-char-timer)  ; M-m J, less repetitive than default M-m j j
+        (spacemacs/set-leader-keys "M-j" 'evil-avy-goto-char-timer)  ; M-m M-j, less repetitive than default M-m j j
         )
       (progn  ; off
         (define-key evil-emacs-state-map (kbd "C-z") 'evil-exit-emacs-state)
         (spacemacs/set-leader-keys "s M" nil)
         (spacemacs/set-leader-keys "s C-p" nil)
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" nil)
-        (spacemacs/set-leader-keys "J" nil)
+        (spacemacs/set-leader-keys "M-j" nil)
         )))
 
 ;; --------------------------------------------------------------------------------
