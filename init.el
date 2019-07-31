@@ -936,6 +936,7 @@ to correct interactively with minimum keypresses."
 
 ;; pdf-tools doesn't support helm-swoop or phi-search in PDF text, only the builtin isearch.
 ;; http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
+;; TODO: would be much cleaner to switch a "phi-search-mode" on/off depending on major mode. Investigate.
 (defun my-isearch-forward (&rest args)
   "phi-search or isearch as appropriate."
   (interactive "P")
