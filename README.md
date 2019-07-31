@@ -86,6 +86,7 @@ Key | Command
 `M-m m O` (LaTeX mode) | `reftex-toc` (same binding for TOC as in Spacemacs `pdf` layer)
 `RET` (calendar mode) | insert date under point in `YYYY-MM-DD` format
 `<f5>` (python-mode) | run buffer contents in python shell (similarly as in racket-mode)
+`M-m J` | `evil-avy-goto-char-timer` (ergonomics, less repetitive than default `M-m j j`)
 
 Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active - or if pressed quickly twice in succession (e.g. `C-x C-x`).
 
