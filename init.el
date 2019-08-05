@@ -940,6 +940,16 @@ to correct interactively with minimum keypresses."
     (insert-char #x20 1 t)
     (sp-unwrap-sexp)))
 
+(defun insert-key-description ()
+  "Insert a `(kbd ...)' compatible description string for a key sequence.
+
+Prompts for the key sequence."
+  (interactive)
+  (let* (($raw (read-key-sequence "Key sequence to insert:" nil t nil nil))
+         ($k (key-description $raw)))
+    (insert (concat "\"" $k "\""))
+    (message "")))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
