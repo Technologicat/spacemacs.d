@@ -165,6 +165,7 @@ Key | Command
 `M->` | jump to end
 `M-.` | (prog-mode) jump to definition of symbol under point, after pushing marker
 `M-,` | (prog-mode) jump back by popping marker
+`M-?` | (anaconda-mode) show docstring
 `S` | (flycheck error list) sort by column under point (if possible)
 `h` | (calendar-mode) show holidays for date under point
 `a` | (calendar-mode) list holidays for current three months 
