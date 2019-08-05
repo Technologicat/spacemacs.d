@@ -940,6 +940,16 @@ to correct interactively with minimum keypresses."
     (insert-char #x20 1 t)
     (sp-unwrap-sexp)))
 
+(defun newline-and-indent-relative ()
+  "Start a new line and call indent-relative.
+
+Useful when writing Python docstrings, where anaconda-mode
+insists on indenting to the level of the def, even in the
+parameter list in the docstring."
+  (interactive)
+  (newline-and-indent)
+  (indent-relative))
+
 (defun insert-key-description ()
   "Insert a `(kbd ...)' compatible description string for a key sequence.
 
@@ -1003,6 +1013,8 @@ Prompts for the key sequence."
     (define-key map (kbd "<f9>") 'toggle-minimap)
     (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
     (define-key map (kbd "<f12>") 'yafolding-toggle-element)
+    (define-key map (kbd "S-<backspace>") 'delete-indentation)
+    (define-key map (kbd "S-<return>") 'newline-and-indent-relative)
     ;; Replace EMACS's default sexp navigation keybindings with smartparens-enabled ones
     ;; https://www.emacswiki.org/emacs/NavigatingParentheses#toc7
     ;; https://github.com/Fuco1/smartparens  (works also with Python!)
