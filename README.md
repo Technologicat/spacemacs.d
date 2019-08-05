@@ -38,6 +38,10 @@ Potentially useful notes below.
  - **Miscellaneous**:
    - Make tab completion work in Helm when Treemacs is open ([thanks to Simon Bourne](https://github.com/syl20bnr/spacemacs/issues/7446#issuecomment-417334718)).
    - New command `M-x select-all` that does exactly as it says on the tin. One-command alternative to `C-<end> C-SPC C-<home>`.
+   - New command `M-x insert-key-description` to auto-create args for `(kbd ...)`. Prompts for a key sequence.
+   - New command `M-x unparenthesize-python-return-stmts` to strip parentheses around return value from Python return statements, from point forward. Requires `smartparens`.
+     - To strip just one, see `M-x unparenthesize-python-return-stmt`, a recorded keyboard macro.
+   - Utility `my-make-repeatable-interactive-command`, which returns a repeatable (C-digits) version of a non-repeatable interactive command, and optionally `fset`s it to a desired name.
    - Finnish national holidays for the Emacs calendar (via package [`suomalainen-kalenteri`](https://github.com/tlikonen/suomalainen-kalenteri)). Highlight holidays by default.
    - Enable `pdf` layer for viewing **and annotating** PDFs in Emacs.
 
