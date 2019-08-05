@@ -932,6 +932,14 @@ to correct interactively with minimum keypresses."
     (flyspell-region (window-start) (window-end)))
   (call-interactively 'flyspell-correct-previous))
 
+(defun unparenthesize-python-return-stmts ()
+  "Unparenthesize all return values in Python return statements from point forward."
+  (interactive)
+  (while (search-forward "return(" nil t 1)
+    (backward-char)
+    (insert-char #x20 1 t)
+    (sp-unwrap-sexp)))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
