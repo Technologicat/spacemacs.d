@@ -146,6 +146,9 @@ Key | Command
 `C-x p c m` | create named bookmark at point
 `C-x p <delete>` | delete bookmark at point
 `C-x p d` | delete bookmark by name (will prompt)
+`C-x r` | registers menu (for pasting snippets often needed during a session)
+`C-x r s` | copy selection to register ("save")
+`C-x r i` | insert contents of register (in Spacemacs, see also `M-m r r`, a register viewer/selector)
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
 `C-x 0` | kill current window
 `C-x k` | kill buffer (will ask which)
@@ -240,6 +243,7 @@ Key | Command
 `C-u 1 M-m s m s n` | insert a running number at cursors, starting from 1 (use a numeric prefix argument)
 `M-m b w` | toggle buffer read-only
 `M-m b w` (dired-mode) | make Dired listing writable (`C-c C-c` commit changes; `C-c C-k` cancel), e.g. for easy mass rename using the full power of Emacs
+`M-m r r` | `helm-register`, i.e. view contents of registers, choose and paste one (see also `C-x r`, the registers menu)
 
 Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any directory that is under version control](https://jaketrent.com/post/projects-in-spacemacs/), so you don't have to do anything extra to create or manage a project. However, [Treemacs](https://github.com/Alexander-Miller/treemacs) has its own idea of projects, which are essentially directories registered manually; see its `?` for key bindings.
 
