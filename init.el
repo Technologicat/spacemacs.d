@@ -947,7 +947,9 @@ Useful when writing Python docstrings, where anaconda-mode
 insists on indenting to the level of the def, even in the
 parameter list in the docstring."
   (interactive)
-  (newline-and-indent)
+  (if electric-indent-mode
+    (electric-indent-just-newline nil)
+    (newline))
   (indent-relative))
 
 (defun insert-key-description ()

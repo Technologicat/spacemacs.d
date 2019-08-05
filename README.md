@@ -61,7 +61,7 @@ Key | Command
 `C-v` | paste (via `cua-mode`)
 `C-z` | `undo-tree-undo`
 `C-S-z` | `undo-tree-redo`
-`S-RET` | sequence: `newline-and-indent` (like normal RET), `indent-relative`. Handy for working with Python docstrings.
+`S-RET` | sequence: newline, `indent-relative`. Accounts for electric-indent-mode, calling `newline` or `electric-indent-just-newline` as needed. Handy for working with Python docstrings, Org todo lists, and similar.
 `S-<backspace>` | `delete-indentation`. New binding since the default `M-^` is not accessible on Finnish keyboards. Also handy for working with Python docstrings.
 `M-z` | `helm-select-action`, to unshadow it since `C-z` is taken by undo
 `C-s` | `phi-search` (supports `multiple-cursors`)
