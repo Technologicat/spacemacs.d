@@ -1265,6 +1265,16 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Fill-Commands.html
   (setq sentence-end-double-space nil)
   (spacemacs/toggle-automatic-symbol-highlight-on)  ; in addition should configure colors for ahs (see customs below)
+  ;; WORKAROUND: Invoking evil-avy-goto-char-timer crashes
+  ;; auto-highlight-symbol-mode when cursor is on a symbol,
+  ;; so switch it off and back on.
+  (defadvice evil-avy-goto-char-timer (before avy-disable-ahs last activate)
+    (setq my-had-ahs auto-highlight-symbol-mode)
+    (when my-had-ahs
+      (auto-highlight-symbol-mode 0)))
+  (defadvice evil-avy-goto-char-timer (after avy-reenable-ahs first activate)
+    (when my-had-ahs
+      (auto-highlight-symbol-mode 1)))
   (beacon-mode t)  ; highlight cursor after scroll
   ;; "vim scrolloff", gradual scrolling https://wolfecub.github.io/dotfiles/
   (setq scroll-margin 10
