@@ -1296,7 +1296,6 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
       (dolist (x xs nil)
         (push x prettify-symbols-alist)))
     (prettify-symbols-mode))
-  ;; TODO: test and yak-shave this to something actually productive
   (defun my/prettify-python-setup ()  ; suggestions from https://wolfecub.github.io/dotfiles/
      "Set up symbol prettification (additional settings for Python)."
      (let ((xs '(("**2" . ?²)
@@ -1307,22 +1306,38 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
                  ("**7" . ?⁷)
                  ("**8" . ?⁸)
                  ("**9" . ?⁹)
+                 ;; https://emacs.stackexchange.com/questions/34808/using-prettify-symbols-with-strings-instead-of-characters
+                 ("**-1" . (?⁻ (Br . Bl) ?¹))  ; ⁻¹
+                 ("**-2" . (?⁻ (Br . Bl) ?²))  ; ⁻²
+                 ("**-3" . (?⁻ (Br . Bl) ?³))  ; ⁻³
+                 ("**-4" . (?⁻ (Br . Bl) ?⁴))  ; ⁻⁴
+                 ("**-5" . (?⁻ (Br . Bl) ?⁵))  ; ⁻⁵
+                 ("**-6" . (?⁻ (Br . Bl) ?⁶))  ; ⁻⁶
+                 ("**-7" . (?⁻ (Br . Bl) ?⁷))  ; ⁻⁷
+                 ("**-8" . (?⁻ (Br . Bl) ?⁸))  ; ⁻⁸
+                 ("**-9" . (?⁻ (Br . Bl) ?⁹))  ; ⁻⁹
                  ("sum" . ?∑)
                  ("prod" . ?∏)  ; numpy.prod; unpythonic.fold.prod  https://github.com/Technologicat/unpythonic
                  ("product" . ?∏)  ; pandas; also alternative name for prod in numpy
                  ("and" . ?∩)
                  ("or" . ?∪)
-                 ;("in" . ?∈)  ; in general fine, but confusing with unpythonic.syntax.let: let[(x, 21) in 2*x]
-                 ;("not in" . ?∉)
+                 ("not" . ?¬)
+                 ;; Sometimes "in" means "∈", but sometimes not:
+                 ;;   x in A               set membership, ok
+                 ;;   for x in range(10)   iteration, not ok
+                 ;;   let[(x, 21) in 2*x]  marker for let-expression body (unpythonic.syntax.let), not ok
+                 ;; prettify-symbols-mode isn't smart enough to tell these apart, so we leave "in" as-is.
+                 ;("in" . ?∈)
+                 ("not in" . ?∉)  ; "not in" is only used for testing the absence of membership.
                  ("is" . ?≡)
                  ("is not" . ?≢)
-                 ("==" . ?＝)  ; maybe too much of a trap...
-                 ("=" . ?←)    ; unless we do this too?
+                 ("==" . ?＝)
+                 ("=" . ?←)
                  ("all" . ?∀)
                  ("any" . ?∃)
                  ("None" . ?∅)
                  ("return" . ?➡)
-                 ;("inf" . ?∞)  ; TODO: but it's not a symbol...
+                 ;("inf" . ?∞)  ; TODO: not a symbol. Usually seen in a string, float("+inf").
                  ;("def" . ?ƒ)  ; looks silly; literal "def" easier to spot.
                  )))
        (dolist (x xs nil)
