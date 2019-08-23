@@ -1017,6 +1017,7 @@ Prompts for the key sequence."
     (define-key map (kbd "<f12>") 'yafolding-toggle-element)
     (define-key map (kbd "S-<backspace>") 'delete-indentation)
     (define-key map (kbd "S-<return>") 'newline-and-indent-relative)
+    (define-key map (kbd "C-x 8 RET") 'counsel-unicode-char)
     ;; Replace EMACS's default sexp navigation keybindings with smartparens-enabled ones
     ;; https://www.emacswiki.org/emacs/NavigatingParentheses#toc7
     ;; https://github.com/Fuco1/smartparens  (works also with Python!)

@@ -86,6 +86,7 @@ Key | Command
 `<f12>` | toggle folding of current element (`yafolding`)
 `S-<f12>` | go to parent element (`yafolding`)
 `C-x 8 l` | insert `λ`
+`C-x 8 RET` | `counsel-unicode-char`; like the default `insert-char`, but with preview
 `M-m s M` | `helm-multi-swoop` buffers that have the same major mode as the current one
 `M-m s C-p` | `helm-multi-swoop-projectile` 
 `C-c s` (org-mode) | schedule entry (so it shows up as scheduled in the agenda)
