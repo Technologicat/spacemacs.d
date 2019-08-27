@@ -1109,6 +1109,15 @@ before packages are loaded."
   ;; flyspell-correct-interface is defvar'd (otherwise the let, in
   ;; effect, does nothing).
   (require 'flyspell-correct)
+
+  ;; https://emacs.stackexchange.com/questions/19472/how-to-let-auctex-open-pdf-with-pdf-tools
+  (with-eval-after-load "auctex"
+    (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+          TeX-source-correlate-start-server t)
+    ;; Update PDF buffers after successful LaTeX runs
+    (add-hook 'TeX-after-compilation-finished-functions
+              #'TeX-revert-document-buffer))
+
   ;; fix default font
   ;; https://github.com/syl20bnr/spacemacs/issues/3477
   (set-face-attribute 'default nil :family my-default-font)
