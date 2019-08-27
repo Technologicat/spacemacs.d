@@ -90,7 +90,7 @@ Key | Command
 `M-m s M` | `helm-multi-swoop` buffers that have the same major mode as the current one
 `M-m s C-p` | `helm-multi-swoop-projectile` 
 `C-c s` (org-mode) | schedule entry (so it shows up as scheduled in the agenda)
-`M-m m O` (LaTeX mode) | `reftex-toc` (same binding for TOC as in Spacemacs `pdf` layer)
+`M-m m O` or `M-RET O` (LaTeX mode) | `reftex-toc` (same binding for TOC as in Spacemacs `pdf` layer)
 `RET` (calendar mode) | insert date under point in `YYYY-MM-DD` format
 `<f5>` (python-mode) | run buffer contents in python shell (similarly as in racket-mode)
 `M-m M-j` | `evil-avy-goto-char-timer` (ergonomics, less repetitive than default `M-m j j`)
@@ -168,6 +168,8 @@ Key | Command
 `C-c C-s i` | `synosaurus-choose-and-insert` ([thesaurus minor mode](https://github.com/hpdeifel/synosaurus) using [WordNet](https://wordnet.princeton.edu/) for English (`sudo apt install wordnet`))
 `C-c C-s l` | `synosaurus-lookup`
 `C-c C-s r` | `synosaurus-choose-and-replace`
+`M-m m O` or `M-RET O` | (pdf-mode) view outline (table of contents)
+`M-m m n` or `M-RET n` | (pdf-mode) `pdf-view-midnight-minor-mode`, reverse video grayscale view
 `l` | (help viewer) back to previous viewed help page
 `r` | (help viewer) forward (in the sense of opposite of back)
 `q` | (help viewer, many others) quit, usually kills the window too
