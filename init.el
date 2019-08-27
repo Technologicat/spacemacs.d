@@ -1118,6 +1118,11 @@ before packages are loaded."
     (add-hook 'TeX-after-compilation-finished-functions
               #'TeX-revert-document-buffer))
 
+  ;; http://babbagefiles.blogspot.com/2017/11/more-pdf-tools-tricks.html
+  (with-eval-after-load "pdf-tools"
+    (add-hook 'pdf-view-mode-hook (lambda ()
+                                     (pdf-view-midnight-minor-mode))))
+
   ;; fix default font
   ;; https://github.com/syl20bnr/spacemacs/issues/3477
   (set-face-attribute 'default nil :family my-default-font)
