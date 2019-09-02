@@ -962,6 +962,14 @@ Prompts for the key sequence."
     (insert (concat "\"" $k "\""))
     (message "")))
 
+;; TODO: Where does the second "View command" prompt come from, it's not in the AUCTeX sources?
+;; TODO: Call the original if called with a prefix argument.
+(defun my-default-TeX-command (&optional override-confirm)
+  "Like TeX-command-master, but use the default command."
+  (interactive "P")
+  (TeX-command (TeX-command-default (TeX-master-file nil nil t))
+	             'TeX-master-file override-confirm))
+
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
 
@@ -1111,12 +1119,14 @@ before packages are loaded."
   (require 'flyspell-correct)
 
   ;; https://emacs.stackexchange.com/questions/19472/how-to-let-auctex-open-pdf-with-pdf-tools
-  (with-eval-after-load "auctex"
+  ;; https://tex.stackexchange.com/questions/359924/rebinding-key-in-auctex-which-takes-other-argument
+  (with-eval-after-load "latex"
     (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
           TeX-source-correlate-start-server t)
     ;; Update PDF buffers after successful LaTeX runs
     (add-hook 'TeX-after-compilation-finished-functions
-              #'TeX-revert-document-buffer))
+              #'TeX-revert-document-buffer)
+    (define-key LaTeX-mode-map (kbd "<f5>") 'my-default-TeX-command))
 
   ;; http://babbagefiles.blogspot.com/2017/11/more-pdf-tools-tricks.html
   (with-eval-after-load "pdf-tools"
