@@ -133,6 +133,7 @@ Key | Command
 `<f4>` | stop recording; replay last recorded keyboard macro (if not recording)
 `C-x` | prefix: global commands
 `C-x z` | repeat last command (that was not caused by an input event), hit more `z` to keep repeating
+`C-x o` | focus other window (e.g. in two-column view, Spacemacs `M-m w v`)
 `C-c` | prefix: major-mode specific commands (Spacemacs has also `M-m m`, which is different)
 `ESC` | *meta*; same as holding Alt (e.g. `ESC d` is `M-d`), but in Spacemacs allows discovery of `M-something` key bindings
 `C-s` | isearch forward (see also `helm-swoop`)
@@ -186,6 +187,8 @@ Key | Command
 `M` | (calendar-mode) list moon phases for current three months
 `d` | (dired-mode) mark file for deletion
 `x` | (dired-mode) actually delete files marked for deletion
+`C-<mouse-1>` or `<double-mouse-1>` | (pdf-tools) Jump to clicked position in LaTeX source
+`C-c C-v` | (latex-mode) View compiled document / jump to position of point in compiled view (compile first; `C-c C-c`, or in our setup, `<f5>`)
 
 Function keys: by default, `<f2>` is used for 2C two-column mode, which doesn't play well with Spacemacs. Keys `<f5>`...`<f9>` and `<f12>` are unused. (We use some of them, see *Custom key bindings* above.)
 
