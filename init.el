@@ -1293,6 +1293,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; WORKAROUND: Invoking evil-avy-goto-char-timer crashes
   ;; auto-highlight-symbol-mode when cursor is on a symbol,
   ;; so switch it off and back on.
+  (defvar my-had-ahs nil "Internal variable for avy/ahs workaround.")
   (defadvice evil-avy-goto-char-timer (before avy-disable-ahs last activate)
     (setq my-had-ahs auto-highlight-symbol-mode)
     (when my-had-ahs
