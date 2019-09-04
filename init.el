@@ -1442,6 +1442,8 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
 
 ;; major-mode text-mode takes effect for `C-x b'; `M-m b N n' uses dotspacemacs-new-empty-buffer-major-mode.
 
+;; Note matplotlib in inferior-python requires the python3-tk package in Debian/Ubuntu.
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (defun dotspacemacs/emacs-custom-settings ()
@@ -1483,6 +1485,7 @@ This function is called at the very end of Spacemacs initialization."
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(python-shell-interpreter "ipython3")
  '(sort-fold-case t)
+ '(python-shell-interpreter-args "--simple-prompt --matplotlib=tk -i")
  '(sublimity-map-active-region 'secondary-selection))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
