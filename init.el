@@ -1307,6 +1307,27 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
         scroll-step 1
         scroll-conservatively 10000
         scroll-preserve-screen-position 1)
+  ;; Fix scrolloff when scrolling up from bottom of buffer
+  ;; (courtesy of @sollidsnake on GitHub)
+  ;; https://github.com/syl20bnr/spacemacs/issues/8224
+  (defvar sm-use-visual-line t)
+  (defun sm-fix-enable()
+    (advice-add 'previous-line :around 'sm-fix))
+  (defun sm-fix-disable()
+    (advice-remove 'previous-line 'sm-fix))
+  (defun sm-get-lines-from-top ()
+    (if sm-use-visual-line
+        (save-excursion
+          (beginning-of-line)
+          (count-screen-lines (point) (window-start)))
+      (- (line-number-at-pos (point)) (line-number-at-pos (window-start)) )))
+  (defun sm-fix(old-function &rest args)
+    (apply old-function args)
+    (let ((diff (- scroll-margin (sm-get-lines-from-top))))
+      (when (> diff 0)
+        (scroll-down diff))))
+  (sm-fix-enable)
+
   ;; prettify symbols
   (defun my/prettify-symbols-setup ()
     "Set up symbol prettification (base settings for all programming languages)."
