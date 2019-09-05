@@ -1208,6 +1208,7 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; TODO: Seems either Source Code Pro is missing some symbols Source Code Variable has, or the Linux fallback font for missing symbols is different.
   ;; (spacemacs|diminish beacon-mode (if (or my-on-winnt my-on-wsl) "*" "⛯") "*")
   (spacemacs|diminish flyspell-mode (if (or my-on-winnt my-on-wsl) "Sp" "📜") "Sp")
+  (spacemacs|diminish pdf-view-midnight-minor-mode "☾" "Mid")
   (spacemacs|diminish git-timemachine-mode (if (or my-on-winnt my-on-wsl) "GTM" "🔃") "GTM")  ; no flux capacitor symbol in Unicode...
   ;; (spacemacs|diminish flycheck-mode "✔" "Stx")
   ;; (spacemacs|diminish visual-line-mode "⏎" "Vl")
