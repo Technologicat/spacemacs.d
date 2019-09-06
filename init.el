@@ -1214,7 +1214,8 @@ If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
   ;; (spacemacs|diminish visual-line-mode "⏎" "Vl")
   (spacemacs|diminish visual-line-mode)
   (spacemacs|diminish reftex-mode (if (or my-on-winnt my-on-wsl) "Ref" "🖹") "Ref")
-  (spacemacs|diminish synosaurus-mode "＝" "Syn")
+  ;; (spacemacs|diminish synosaurus-mode "＝" "Syn")
+  (spacemacs|diminish synosaurus-mode)
   ;; (spacemacs|diminish which-key-mode "？" "K?")  ; "⌘"
   (spacemacs|diminish which-key-mode)
   ;; TODO: only takes effect after a config reload (M-m f e R), why?
