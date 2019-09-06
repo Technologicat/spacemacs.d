@@ -125,20 +125,19 @@ This function should only modify configuration layer settings."
    ;; (default is `used-only')
    dotspacemacs-install-packages 'used-only))
 
+;; idea from https://github.com/syl20bnr/spacemacs/issues/7257
+(defun my/load-customization (name)
+  "Run Lisp file `~/.emacs.d/<name>.el' if it exists, otherwise do nothing."
+  (let ((filename (expand-file-name (concat "~/.emacs.d/" name ".el"))))
+    (when (file-readable-p filename)
+      (load filename))))
+
 (defun dotspacemacs/init ()
   "Initialization:
 This function is called at the very beginning of Spacemacs startup,
 before layer configuration.
 It should only modify the values of Spacemacs settings."
-  (setq my-on-winnt (eq system-type 'windows-nt))
-  (setq my-on-wsl (condition-case nil
-                      (string-match-p "Microsoft" (shell-command-to-string "uname -a"))
-                      (error nil)))  ;; no uname command, not on WSL
-  (setq my-default-font (if my-on-winnt "Source Code Pro" "Source Code Variable"))
-  (when my-on-winnt
-    (setq dedicated-terminal-command-template "C:/msys64/msys2_shell.cmd -mingw64 -where '%s'"))
-  (when my-on-wsl
-    (setq dedicated-terminal-command-template "/usr/bin/lxterminal --working-directory='%s'"))
+  (my/load-customization "platform-setup")
 
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
