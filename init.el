@@ -128,9 +128,10 @@ This function should only modify configuration layer settings."
 ;; idea from https://github.com/syl20bnr/spacemacs/issues/7257
 (defun my/load-customization (name)
   "Run Lisp file `~/.emacs.d/<name>.el' if it exists, otherwise do nothing."
-  (let ((filename (expand-file-name (concat "~/.emacs.d/" name ".el"))))
+  (let ((filename (expand-file-name (concat "~/.spacemacs.d/" name ".el"))))
     (when (file-readable-p filename)
-      (load filename))))
+      (load filename)
+      t)))
 
 (defun dotspacemacs/init ()
   "Initialization:
