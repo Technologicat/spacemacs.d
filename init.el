@@ -495,7 +495,7 @@ It should only modify the values of Spacemacs settings."
 ;; --------------------------------------------------------------------------------
 
 ;; Useful custom functions
-(my/load-customization "functions")
+(my/load-customization "funcs")
 
 ;; --------------------------------------------------------------------------------
 ;; global keymap customizations
