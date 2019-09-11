@@ -2,6 +2,16 @@
 ;;
 ;; Top-level file for custom elisp functions. Loaded from init.el.
 
+(defun my/funcs-init ()
+  "Top-level file for custom elisp functions. Loaded from init.el."
+  ;; my-flyspell-correct-lucky needs flyspell-correct to be loaded so that
+  ;; flyspell-correct-interface is defvar'd (otherwise the let, in
+  ;; effect, does nothing).
+  (require 'flyspell-correct)
+
+  ;; TODO: bad Spacemacs style to require modules directly; how to set up lazy autoload for helm-swoop like "SPC s s" does?
+  (require 'helm-swoop))  ; for helm-multi-swoop-this-mode
+
 ;; https://www.masteringemacs.org/article/searching-buffers-occur-mode
 ;;
 ;; with-current-buffer is slow; use buffer-local-value instead; see:
@@ -479,3 +489,5 @@ Prompts for the key sequence."
   (interactive "P")
   (TeX-command (TeX-command-default (TeX-master-file nil nil t))
 	             'TeX-master-file override-confirm))
+
+(my/funcs-init)
