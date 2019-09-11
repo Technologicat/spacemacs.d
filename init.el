@@ -2,6 +2,16 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;; idea from https://github.com/syl20bnr/spacemacs/issues/7257
+(defun my/load-customization (name)
+  "Run Lisp file `~/.spacemacs.d/<name>.el' if it exists, otherwise do nothing."
+  (let ((filename (expand-file-name (concat "~/.spacemacs.d/" name ".el"))))
+    (when (file-readable-p filename)
+      (load filename)
+      t)))
+
+;; --------------------------------------------------------------------------------
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -78,8 +88,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      ;; version-control
      themes-megapack
-     pdf
-     )
+     pdf)
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -125,13 +134,7 @@ This function should only modify configuration layer settings."
    ;; (default is `used-only')
    dotspacemacs-install-packages 'used-only))
 
-;; idea from https://github.com/syl20bnr/spacemacs/issues/7257
-(defun my/load-customization (name)
-  "Run Lisp file `~/.spacemacs.d/<name>.el' if it exists, otherwise do nothing."
-  (let ((filename (expand-file-name (concat "~/.spacemacs.d/" name ".el"))))
-    (when (file-readable-p filename)
-      (load filename)
-      t)))
+;; --------------------------------------------------------------------------------
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -490,8 +493,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-pretty-docs nil))
 
 ;; --------------------------------------------------------------------------------
-;; Useful custom functions
 
+;; Useful custom functions
 (my/load-customization "functions")
 
 ;; --------------------------------------------------------------------------------
