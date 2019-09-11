@@ -1,6 +1,6 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;;
-;; Useful custom functions.
+;; Top-level file for custom elisp functions. Loaded from init.el.
 
 ;; https://www.masteringemacs.org/article/searching-buffers-occur-mode
 ;;
