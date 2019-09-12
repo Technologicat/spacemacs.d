@@ -96,6 +96,23 @@ Key | Command
 `<f5>` (latex-mode) | run the default LaTeX command (useful for recompiling after a change; cf. `C-c C-c`, which always asks which operation to perform)
 `M-m M-j` | `evil-avy-goto-char-timer` (ergonomics, less repetitive than default `M-m j j`)
 
+[Smartparens](https://github.com/Fuco1/smartparens) keys:
+
+Key | Command
+:--- |:---
+`C-M-f` | `sp-forward-sexp`
+`C-M-b` | `sp-backward-sexp`
+`C-M-d` | `sp-down-sexp`
+`C-M-a` | `sp-backward-down-sexp` ("ackward" down)
+`C-M-e` | `sp-up-sexp` ("exit")
+`C-M-u` | `sp-backward-up-sexp`
+`C-M-n` | `sp-next-sexp`
+`C-M-p` | `sp-previous-sexp`
+`C-M-k` | `sp-kill-sexp`
+`C-M-SPC` | `sp-mark-sexp`
+`C-M-S-u` | `sp-unwrap-sexp` (note the shift)
+`C-M-S-r` | `sp-rewrap-sexp` (note the shift)
+
 Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active - or if pressed quickly twice in succession (e.g. `C-x C-x`).
 
 The `custom-keys-minor-mode` (while enabled) unmaps `C-z` from `evil-emacs-state-map`, because emulation maps precede minor mode maps and we want `C-z` for undo.
