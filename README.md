@@ -112,6 +112,10 @@ Key | Command
 `C-M-SPC` | `sp-mark-sexp`
 `C-M-S-u` | `sp-unwrap-sexp` (note the shift)
 `C-M-S-r` | `sp-rewrap-sexp` (note the shift)
+`C-M-S-s` | `sp-slurp-hybrid-sexp`
+`C-M-S-b` | `sp-forward-barf-sexp`
+`C-M-S-a` | `sp-backward-slurp-sexp` (one key "back" (left) from slurp)
+`C-M-S-v` | `sp-backward-barf-sexp` (one key "back" (left) from barf)
 
 Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active - or if pressed quickly twice in succession (e.g. `C-x C-x`).
 

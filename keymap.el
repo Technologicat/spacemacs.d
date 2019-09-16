@@ -67,11 +67,15 @@
     ;; https://github.com/Fuco1/smartparens  (works also with Python!)
     (define-key map (kbd "C-M-S-u") 'sp-unwrap-sexp)
     (define-key map (kbd "C-M-S-r") 'sp-rewrap-sexp)
+    (define-key map (kbd "C-M-S-s") 'sp-slurp-hybrid-sexp)
+    (define-key map (kbd "C-M-S-b") 'sp-forward-barf-sexp)
+    (define-key map (kbd "C-M-S-a") 'sp-backward-slurp-sexp)  ; one key back from slurp
+    (define-key map (kbd "C-M-S-v") 'sp-backward-barf-sexp)  ; one key back from barf
     (define-key map (kbd "C-M-f") 'sp-forward-sexp)
     (define-key map (kbd "C-M-b") 'sp-backward-sexp)
     (define-key map (kbd "C-M-d") 'sp-down-sexp)
-    (define-key map (kbd "C-M-a") 'sp-backward-down-sexp)
-    (define-key map (kbd "C-M-e") 'sp-up-sexp)  ;; mnemonic: "Exit sexp"
+    (define-key map (kbd "C-M-a") 'sp-backward-down-sexp)  ; "ackward" down
+    (define-key map (kbd "C-M-e") 'sp-up-sexp)  ; "exit"
     (define-key map (kbd "C-M-u") 'sp-backward-up-sexp)
     (define-key map (kbd "C-M-n") 'sp-next-sexp)
     (define-key map (kbd "C-M-p") 'sp-previous-sexp)
