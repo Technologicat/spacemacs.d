@@ -161,6 +161,10 @@ Key | Command
 `ESC` | *meta*; same as holding Alt (e.g. `ESC d` is `M-d`), but in Spacemacs allows discovery of `M-something` key bindings
 `C-s` | isearch forward (see also `helm-swoop`)
 `C-r` | isearch backward (see also `helm-swoop`)
+`M-a` | jump start of sentence (previous full-stop) (in `python-mode`, start of defun)
+`M-e` | jump end of sentence (next full-stop) (in `python-mode`, end of defun)
+`C-<up>` | jump up paragraph (previous blank line)
+`C-<down>` | jump down paragraph (next blank line)
 `M-g M-g` | goto line (also `M-g g`, so doesn't matter whether Alt is held down or not)
 `C-u M-g M-g` | goto line in most recently used other buffer (sometimes useful with a stack trace in an inferior shell)
 `C-SPC` | (via `cua-mode`) set/unset mark, useful to select stuff without holding down shift
@@ -238,6 +242,7 @@ Key | Command
 `M-m h d v` | ...for Lisp variables only
 `M-m b N n` | new file (create empty buffer and switch to it)
 `M-m b d` | close file (kill current buffer)
+`M-m b u` | re-open last closed file (buffer)
 `M-m f s` | save (at first save of an unsaved buffer, will ask for destination) (same as `C-x C-s`)
 `M-m q q` | quit Emacs (will ask to save modified buffers; to cancel quitting, use `C-g`)
 `M-m q Q` | quit Emacs (just do it)
@@ -252,7 +257,10 @@ Key | Command
 `M-m f c` | copy current file (will ask for destination)
 `M-m w 2` | 2-column window layout (Spacemacs compatible)
 `M-m w d` | kill current window (same as `C-x 0`)
+`M-m w u` | undo kill window (`M-x winner-undo`)
 `M-m w m` | maximize, i.e. kill other windows (same as `C-x 1`)
+`M-m l s` | save frame layout (will prompt for a name), including windows and buffers currently open
+`M-m l L` | load frame layout
 `M-0` | open/focus Treemacs (use `M-0 q` to hide it)
 `M-1` | focus window 1 (other numbers available, too)
 `M-m j j` | avy timer, jump to a fragment of text on screen (type in a few letters or a word quickly, then wait and pick the occurrence to jump to)
@@ -347,6 +355,7 @@ See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.
  - `calendar`
  - `link-hint-open-link-at-point`
  - `grep`, accepts any command that produces output like `grep -nH` (while active, `{`, `}` jump to previous/next file with matches)
+ - `diff` compare files
  - `helm-for-files` find a file ([see e.g. this](http://pragmaticemacs.com/emacs/find-and-open-files-from-anywhere-with-helm-for-files/))
  - `counsel-unicode-char` pick and insert unicode char by name, with preview
  - `list-colors-display` pick and insert color, with preview
@@ -356,6 +365,7 @@ See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.
  - `customize-group` configure stuff (a.k.a. *Customize*; some packages prefer to use this)
  - `org-agenda` agenda overview
  - `org-todo-list` overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `s` to save all org buffers, `q` to quit)
+ - `git-timemachine` quickly see and/or copy text from an old revision (`p`/`n` previous/next revision; `q` to return to file in working tree; while active, save the buffer to overwrite file in working tree with the historical revision being viewed)
 
 
 ## Fast Emacs startup
