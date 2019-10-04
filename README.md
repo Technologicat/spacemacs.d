@@ -163,6 +163,8 @@ Key | Command
 `C-r` | isearch backward (see also `helm-swoop`)
 `M-a` | jump start of sentence (previous full-stop) (in `python-mode`, start of defun)
 `M-e` | jump end of sentence (next full-stop) (in `python-mode`, end of defun)
+`C-M-<home>` | jump beginning of defun
+`C-M-<end>` | jump end of defun
 `C-<up>` | jump up paragraph (previous blank line)
 `C-<down>` | jump down paragraph (next blank line)
 `M-g M-g` | goto line (also `M-g g`, so doesn't matter whether Alt is held down or not)
