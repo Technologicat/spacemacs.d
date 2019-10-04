@@ -320,6 +320,26 @@ For scheduling, repeater syntax is like `+1h`, `+1d`, `+1w`, `+1m`, `+1y`, such 
 See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) and [Org manual](https://orgmode.org/manual/index.html) for more.
 
 
+### Org template for LaTeX output
+
+```org
+#+STARTUP: latexpreview
+#+STARTUP: entitiespretty
+#+STARTUP: showeverything
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage[margin=2.0cm]{geometry}
+#+title:
+#+author:
+```
+
+Just insert document title and author, and start writing.
+
+This converts LaTeX fragments to images (for equations); pretty-render entities as unicode (so that e.g. `\alpha^2` shows as α² right there in Emacs); expand all sections by default; do not number sections; no table of contents (TOC); and a more sensible margin size.
+
+See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.org/manual/Initial-visibility.html) and [[3]](https://www.gnu.org/software/emacs/manual/html_node/org/In_002dbuffer-settings.html).
+
+
 ## Some useful M-x commands
 
  - `replace-string`, `replace-regexp`
