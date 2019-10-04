@@ -117,9 +117,11 @@ Key | Command
 `C-M-S-a` | `sp-backward-slurp-sexp` (one key "back" (left) from slurp)
 `C-M-S-v` | `sp-backward-barf-sexp` (one key "back" (left) from barf)
 
-Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active - or if pressed quickly twice in succession (e.g. `C-x C-x`).
+Smartparens works also for things such as quoted strings and parenthesized remarks in plain text.
 
-The `custom-keys-minor-mode` (while enabled) unmaps `C-z` from `evil-emacs-state-map`, because emulation maps precede minor mode maps and we want `C-z` for undo.
+Note as usual in CUA mode, `C-x`, `C-c` still act as prefixes if no region is active - or, when a region is active, if pressed quickly twice in succession (e.g. `C-x C-x`). So when a region is active, you can e.g. `python-indent-shift-left` with `C-c C-c <`.
+
+The `custom-keys-minor-mode` (while enabled) unmaps `C-z` from `evil-emacs-state-map`, because emulation maps precede minor mode maps and we want to have `C-z` for undo.
 
 Note the function keys `<f10>` (menu) and `<f11>` (toggle frame full screen) are already taken.
 
@@ -131,7 +133,7 @@ If you want to use `minimap` instead, be sure to [get it from GitHub](https://gi
 
 We use `yafolding` instead of the folding features of `evil`, because it requires no configuration, works perfectly for Python, and importantly, *draws nice-looking folding markers at the fringe*. Spacemacs's `evil** folding (required for languages not based on indentation** of course remains available.
 
-**CAUTION**: The undo-and-correct-interactively feature of `<f8> S-<f8>` requires the corrected word still to be on the screen in order to work correctly. This limitation is because the flyspell overlay is deleted when a correction is accepted, and undoing the correction does not restore the overlay. Thus, as a workaround, when you press `<f8> S-<f8>`, after performing the undo, we run `flyspell-region` for the text currently visible on screen (to restore the overlay) before invoking `flyspell-correct-previous` again.
+**CAUTION**: The undo-and-correct-interactively feature of `<f8> S-<f8>` requires the corrected word still to be on the screen in order to work correctly. This limitation is because the flyspell overlay is deleted when a correction is accepted, and `undo-tree-undo` to remove the correction does not restore the overlay. Thus, as a workaround, when you press `<f8> S-<f8>`, after performing the undo, we run `flyspell-region` for the text currently visible on screen (to restore the overlay) before invoking `flyspell-correct-previous` again. This is known to be slow for buffers with only a screenful of text in them (e.g. git commit messages).
 
 
 ## Some useful standard key bindings
@@ -269,7 +271,7 @@ Key | Command
 `M-m S d` | dictionary, i.e. switch to another language
 `M-m S b` | spellcheck whole buffer
 `M-m S s` | spellcheck word at point
-`M-m z f` | zoom frame transient state
+`M-m z f` | zoom frame transient state (increase/decrease font size)
 `M-m s m` | `multiple-cursors` menu (once in `multiple-cursors-mode`, use `RET` to exit it; use `C-m` to insert a literal RET at each cursor)
 `M-m s m a` | `mc/mark-all-dwim` (useful with `narrow-to-region`)
 `M-m s m r` | `mc/edit-lines` (be careful what exactly is selected and where exactly point is before you invoke this!)
@@ -311,7 +313,7 @@ Syntax for pretty links is `[[target][description]]`. To create or edit a link, 
 
 See also `org-store-link` to stash a link to file location at point (in whatever file). The stashed link can then be inserted at point, when editing an org file, with `C-c C-l`.
 
-Shift selection not available by default, use `C-SPC` (set mark) to select a region.
+Shift selection not available by default, use `C-SPC` (set mark) and then cursor movement to select a region.
 
 For scheduling, repeater syntax is like `+1h`, `+1d`, `+1w`, `+1m`, `+1y`, such as `<2019-06-24 Mon +1w>`. Also `++` and `.+`. See [here](https://orgmode.org/manual/Repeated-tasks.html).
 
@@ -330,8 +332,8 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
  - `list-colors-display` pick and insert color, with preview
  - `name-last-kbd-macro`, `insert-kbd-macro` to save keyboard macros as Lisp (for `init.el`)
  - `artist-mode` draw rectangles and similar
- - `define-word-at-point` (needs internet access)
- - `customize-group` configure stuff (a.k.a. Customize; some packages prefer to use this)
+ - `define-word-at-point` (needs internet access) (Spacemacs: `M-m x w d`)
+ - `customize-group` configure stuff (a.k.a. *Customize*; some packages prefer to use this)
  - `org-agenda` agenda overview
  - `org-todo-list` overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `s` to save all org buffers, `q` to quit)
 
@@ -358,9 +360,11 @@ fi
 wmctrl -a emacs
 ```
 
-and then set up your start menu shortcut (if you use one) to invoke that instead of `emacs` directly.
+and then set up your start menu shortcut (if you use one) to invoke that instead of `emacs` directly. (Though the process-spawning features seem to work more reliably if it's invoked from a terminal.)
 
-When using this, use `M-m q f` to quit Emacs so that it stays running in the background; `em` will connect to the running instance, if there is one.
+When using this, use `M-m q f` (`spacemacs/frame-killer`) to quit Emacs so that it stays running in the background; `em` will connect to the running instance, if there is one.
+
+To shut down Emacs, shutting down also the daemon, use `M-m q q` as usual.
 
 
 ## Configuring flake8
