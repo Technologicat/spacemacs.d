@@ -175,6 +175,7 @@
 
   ;; Improve Org mode math UX.
   (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'org-mode-hook #'highlight-parentheses-mode)
 
   ;; Improve the UX of the Lisp minibuffer.
   ;; TODO: how to add multiple modes in the same call?
