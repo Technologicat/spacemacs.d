@@ -173,6 +173,9 @@
   ;(add-hook 'prog-mode-hook 'rainbow-mode)  ; display color specifications (e.g. #A0A080, green) using the color they describe
   ;(add-hook 'text-mode-hook 'rainbow-mode)
 
+  ;; Improve Org mode math UX.
+  (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
+
   ;; Improve the UX of the Lisp minibuffer.
   ;; TODO: how to add multiple modes in the same call?
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
