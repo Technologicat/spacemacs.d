@@ -94,6 +94,7 @@ Key | Command
 `RET` (calendar mode) | insert date under point in `YYYY-MM-DD` format
 `<f5>` (python-mode) | run buffer contents in python shell (similarly as in racket-mode)
 `<f5>` (latex-mode) | run the default LaTeX command (useful for recompiling after a change; cf. `C-c C-c`, which always asks which operation to perform)
+`<f5>` (org-mode) | export via LaTeX to PDF
 `M-m M-j` | `evil-avy-goto-char-timer` (ergonomics, less repetitive than default `M-m j j`)
 
 [Smartparens](https://github.com/Fuco1/smartparens) keys:

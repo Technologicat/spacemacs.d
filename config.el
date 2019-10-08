@@ -51,7 +51,8 @@
   ;; TODO: The problem is, synosaurus makes C-c C-s into a prefix key, so we should rebind that
   ;; TODO: first and "un-make" C-c C-s being a prefix key so we can then rebind it as a regular key.
   (with-eval-after-load "org"
-    (define-key org-mode-map (kbd "C-c s") 'org-schedule))
+    (define-key org-mode-map (kbd "C-c s") 'org-schedule)
+    (define-key org-mode-map (kbd "<f5>") 'org-latex-export-to-pdf))
 
   ;; Bind <f5> in python-mode to run buffer, like in racket-mode.
   (with-eval-after-load "python"
