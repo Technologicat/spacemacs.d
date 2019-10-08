@@ -120,7 +120,10 @@ This function should only modify configuration layer settings."
                                       (phi-search :location (recipe :fetcher github :repo "zk-phi/phi-search"))
                                       ;; https://github.com/knu/mc-extras.el
                                       mc-extras
-                                      synosaurus)
+                                      synosaurus
+                                      ;; https://github.com/cdominik/cdlatex
+                                      ;; https://orgmode.org/manual/CDLaTeX-mode.html
+                                      cdlatex)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
