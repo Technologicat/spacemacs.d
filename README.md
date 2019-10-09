@@ -342,13 +342,14 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
 #+OPTIONS: toc:nil
 #+LATEX_HEADER: \usepackage[margin=2.0cm]{geometry}
 #+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \hypersetup{colorlinks=true,linkcolor=blue}
 #+title:
 #+author:
 ```
 
 Just insert document title and author, and start writing.
 
-This converts LaTeX fragments to images (for equations); pretty-renders entities as unicode (so that e.g. `\alpha^2` shows as α² right there in Emacs); expands all sections by default; does not number sections; no table of contents (TOC); a more sensible margin size; and paragraphs separated by a vskip, no indent.
+This converts LaTeX fragments to images (for equations); pretty-renders entities as unicode (so that e.g. `\alpha^2` shows as α² right there in Emacs); expands all sections by default; does not number sections; no table of contents (TOC); a more sensible margin size; paragraphs separated by a vskip, no indent; and no frames around links.
 
 See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.org/manual/Initial-visibility.html) and [[3]](https://www.gnu.org/software/emacs/manual/html_node/org/In_002dbuffer-settings.html).
 
