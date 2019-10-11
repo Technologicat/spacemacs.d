@@ -174,10 +174,12 @@
   ;(add-hook 'prog-mode-hook 'rainbow-mode)  ; display color specifications (e.g. #A0A080, green) using the color they describe
   ;(add-hook 'text-mode-hook 'rainbow-mode)
 
-  ;; Improve Org mode math UX.
+  ;; Improve org-mode and inferior-python-mode math UX.
   (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'org-mode-hook #'highlight-parentheses-mode)
   (add-hook 'org-mode-hook #'org-cdlatex-mode)
+  (add-hook 'inferior-python-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'inferior-python-mode-hook #'highlight-parentheses-mode)
 
   ;; Improve the UX of the Lisp minibuffer.
   ;; TODO: how to add multiple modes in the same call?
