@@ -132,6 +132,9 @@
     '(add-to-list 'company-backends 'company-anaconda))
   (add-hook 'python-mode-hook 'anaconda-mode)
 
+  (require 'py-autopep8)
+  (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
   ;; Add thesaurus to all text-modes.
   (add-hook 'text-mode-hook 'synosaurus-mode)
   (setq synosaurus-choose-method 'popup)

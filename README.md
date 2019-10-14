@@ -405,13 +405,21 @@ When using this, use `M-m q f` (`spacemacs/frame-killer`) to quit Emacs so that 
 To shut down Emacs, shutting down also the daemon, use `M-m q q` as usual.
 
 
-## Configuring flake8
+## Configuring flake8 and autopep8
 
-For static analysis of Python. [The default location](https://flake8.pycqa.org/en/latest/user/configuration.html) (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
+For static analysis of Python (to detect common trivial problems), and [PEP8](https://www.python.org/dev/peps/pep-0008/) code style enforcement.
+
+[The default location](https://flake8.pycqa.org/en/latest/user/configuration.html) (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
 
 However, Emacs thinks the default location is `~/.config/flake8rc` (note the `rc`), so if you want `flycheck-verify-setup` (`M-m e v`) to see it, the value must be customized (via `M-x customize-group flycheck-executables`). (This is already done in the `init.el` provided here.)
 
-This gives [Spyder](https://github.com/spyder-ide/spyder)-like notes in the fringe for statically detected errors and style issues. My flake8 config:
+This gives [Spyder](https://github.com/spyder-ide/spyder)-like notes in the fringe for statically detected errors and style issues.
+
+For `autopep8`, the default location is `~/.config/pep8`. This can be just a symlink to `~/.config/flake8`, as [it accepts the same format](https://github.com/hhatto/autopep8#configuration), at least for the ignore flags.
+
+The [flake8](flake8) file in this repository contains my actual flake8 config, and `~/.config/flake8` is just a symlink to `~/.spacemacs.d/flake8`. (So `~/.config/pep8` → `~/.config/flake8` → `~/.spacemacs.d/flake8`, which is the actual file.)
+
+A copy of the config is below:
 
 ```INI
 [flake8]
