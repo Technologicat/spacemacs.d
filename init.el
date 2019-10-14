@@ -123,7 +123,9 @@ This function should only modify configuration layer settings."
                                       synosaurus
                                       ;; https://github.com/cdominik/cdlatex
                                       ;; https://orgmode.org/manual/CDLaTeX-mode.html
-                                      cdlatex)
+                                      cdlatex
+                                      ;; https://github.com/paetzke/py-autopep8.el
+                                      py-autopep8)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
