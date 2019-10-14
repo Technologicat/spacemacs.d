@@ -600,6 +600,17 @@ This function is called at the very end of Spacemacs initialization."
      (org-mode . org-beginning-of-line)))
  '(mwim-end-of-line-function '((t . end-of-visual-line) (org-mode . org-end-of-line)))
  '(nil nil t)
+ '(org-emphasis-alist
+   '(("*" bold)
+     ("/" italic)
+     ("_" underline)
+     ("=" org-verbatim verbatim)
+     ("~" org-code verbatim)
+     ("+"
+      (:strike-through t))
+     ("!"
+      (:overline t)
+      verbatim)))
  '(org-format-latex-options
    '(:foreground default :background default :scale 1.25 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
