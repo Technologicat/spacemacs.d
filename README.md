@@ -445,6 +445,25 @@ exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,insta
 ```
 
 
+## Configuring eslint (for JavaScript)
+
+See [Getting started with ESLint](https://eslint.org/docs/user-guide/getting-started).
+
+Roughly:
+
+ - Install `npm` (`sudo apt install npm`) and then `npm init` your home directory.
+   - Of course it's not really a package, but the `eslint --later` step below may crash without producing a configuration file if `package.json` does not exist. So let's play along.
+   - See also [Node.js - installing packages](https://help.dreamhost.com/hc/en-us/articles/115004415628-Node-js-installing-packages).
+ - `npm install eslint --save-dev` should work now without complaining.
+ - Then you can `eslint --init` in your home directory to create a default configuration file (the wizard saves it as e.g. `~/.eslintrc.json`).
+ - Create a symbolic link somewhere on your `PATH` so that Emacs will find the `eslint` executable: `ln -s ~/node_modules/eslint/bin/eslint.js ~/.local/bin/eslint`
+ - [Eslint finds its config automatically](https://github.com/flycheck/flycheck/issues/1195), there's no Emacs-side config for that in flycheck.
+
+Some of this may be nonsense, but that's how I got it working for now.
+
+Then we can disable the very basic internal linter in `js2-mode`; the provided `config.el` does this automatically (so we're really assuming you have `eslint` installed).
+
+
 ## Emacs, flyspell, English and Finnish
 
 The only free spellchecker that works properly with Finnish, [Voikko](https://voikko.puimula.org/), runs on the [enchant](https://github.com/AbiWord/enchant) meta-spellchecker framework. Voikko does come with an `ispell` emulation layer called `tmispell` (Ubuntu package `tmispell-voikko`), but this is deprecated. To run Voikko in a multilingual environment with multiple different spellchecking engines, `enchant` is the currently recommended (and only) option.

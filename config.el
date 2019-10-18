@@ -177,6 +177,15 @@
   ;(add-hook 'prog-mode-hook 'rainbow-mode)  ; display color specifications (e.g. #A0A080, green) using the color they describe
   ;(add-hook 'text-mode-hook 'rainbow-mode)
 
+  (with-eval-after-load "js2-mode"
+    (setq js2-mode-show-parse-errors nil
+          js2-mode-show-strict-warnings nil)
+    ;; https://github.com/bbatsov/prelude/blob/master/modules/prelude-js.el
+    ;; electric-layout-mode doesn't play nice with smartparens
+    (defun my-js-hook ()
+      (setq-local electric-layout-rules '((?\; . after))))
+    (add-hook 'js2-mode-hook #'my-js-hook))
+
   ;; Improve org-mode and inferior-python-mode math UX.
   (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'org-mode-hook #'highlight-parentheses-mode)
