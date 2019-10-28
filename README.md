@@ -318,8 +318,10 @@ Key | Command
 `C-u C-c C-s` | unschedule entry
 `C-c C-d` | insert deadline for entry
 `C-c .` | insert timestamp (see manual sections [8.1](https://orgmode.org/manual/Timestamps.html#Timestamps), [8.2](https://orgmode.org/manual/Creating-Timestamps.html#Creating-Timestamps) and [8.3](https://orgmode.org/manual/Deadlines-and-Scheduling.html#Deadlines-and-Scheduling), and [stackexchange](https://emacs.stackexchange.com/questions/10504/understanding-scheduled-in-org-mode))
+`C-c C-l` | `org-insert-link`, insert a hyperlink
 `C-c C-o` | `org-open-at-point`, open thing (such as link) in current entry (will prompt if several exist)
-`C-c C-x C-l` | `org-toggle-latex-fragment`, preview equation inline as image (if LaTeX installed)
+`C-c C-x C-l` | `org-toggle-latex-fragment`, preview equation inline as image (if LaTeX installed) (with one `C-u`, toggle all equations in current section; with two `C-u`, toggle all equations in document)
+`C-c C-x \` | `org-toggle-pretty-entities`, superscript/subscript/greek prettification on/off
 
 Use `M-x org-sort` with point on a parent entry to move DONE children to end (choose `o` for todo **o**rder).
 
