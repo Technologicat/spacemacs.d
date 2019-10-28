@@ -158,6 +158,8 @@ Key | Command
 `C-x` | prefix: global commands
 `C-x z` | repeat last command (that was not caused by an input event), hit more `z` to keep repeating
 `C-x o` | focus other window (e.g. in two-column view, Spacemacs `M-m w v`)
+`C-x 2` | `split-window-below`, same as Spacemacs `M-m w s`
+`C-x 3` | `split-window-right`, same as Spacemacs `M-m w v`
 `C-c` | prefix: major-mode specific commands (Spacemacs has also `M-m m`, which is different)
 `ESC` | *meta*; same as holding Alt (e.g. `ESC d` is `M-d`), but in Spacemacs allows discovery of `M-something` key bindings
 `C-s` | isearch forward (see also `helm-swoop`)
