@@ -351,7 +351,7 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
 
 Just insert document title and author, and start writing.
 
-This converts LaTeX fragments to images (for equations); pretty-renders entities as unicode (so that e.g. `\alpha^2` shows as α² right there in Emacs); expands all sections by default; does not number sections; no table of contents (TOC); a more sensible margin size; paragraphs separated by a vskip, no indent; and no frames around links.
+This displays LaTeX fragments as images (for equations); pretty-renders entities as unicode (so that e.g. `$\alpha^2$` shows as α² right there in Emacs); expands all sections by default; does not number sections; no table of contents (TOC); a more sensible margin size; paragraphs separated by a vskip, no indent; and no frames around links.
 
 Any `LATEX_HEADER_EXTRA` options only take effect for PDF export, not for fragment preview (such as for equations). If the `hypersetup` optionh is present in fragment preview, the fragment will erroneously show the `colorlinks=true,linkcolor=blue`.
 
