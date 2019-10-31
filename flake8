@@ -15,6 +15,8 @@ ignore =
     E305,
     # expected blank line before nested def
     E306,
+    # module level import not at top of file (can cause problems when autopep8 applies it without thinking)
+    E402,
     # line too long >79 chars
     E501,
     # multiple statements on one line (def)
