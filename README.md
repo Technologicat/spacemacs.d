@@ -411,7 +411,7 @@ To shut down Emacs, shutting down also the daemon, use `M-m q q` as usual.
 
 ## Configuring flake8 and autopep8
 
-For static analysis of Python (to detect common trivial problems), and [PEP8](https://www.python.org/dev/peps/pep-0008/) code style enforcement.
+This is used for static analysis of Python (to detect common trivial problems), and automatic [PEP8](https://www.python.org/dev/peps/pep-0008/) code style enforcement.
 
 [The default location](https://flake8.pycqa.org/en/latest/user/configuration.html) (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
 
@@ -422,31 +422,6 @@ This gives [Spyder](https://github.com/spyder-ide/spyder)-like notes in the frin
 For `autopep8`, the default location is `~/.config/pep8`. This can be just a symlink to `~/.config/flake8`, as [it accepts the same format](https://github.com/hhatto/autopep8#configuration), at least for the ignore flags.
 
 The [flake8](flake8) file in this repository contains my actual flake8 config, and `~/.config/flake8` is just a symlink to `~/.spacemacs.d/flake8`. (So `~/.config/pep8` → `~/.config/flake8` → `~/.spacemacs.d/flake8`, which is the actual file.)
-
-A copy of the config is below:
-
-```INI
-[flake8]
-# ignore silly style items
-ignore =
-    # overhanging indent
-    E126,
-    # continuation line over-indented for visual indent
-    E127,
-    # block comment should start with #
-    E265,
-    # expected 1 blank line, found 0
-    E301,
-    # expected 2 blank lines before def
-    E302,
-    # expected 2 blank lines after def
-    E305,
-    # expected blank line before nested def
-    E306,
-    # line too long >79 chars
-    E501
-exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,instance,00_stuff,00_old
-```
 
 
 ## Configuring eslint (for JavaScript)
