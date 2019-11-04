@@ -21,6 +21,8 @@ ignore =
     E501,
     # multiple statements on one line (def)
     E704,
+    # do not assign a lambda expression, use a def (because autopep8 applies it blindly)
+    E731,
     # line break after binary operator
     W504
 exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,instance,00_stuff,00_old
