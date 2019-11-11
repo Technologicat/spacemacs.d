@@ -66,7 +66,9 @@
     ;; https://www.emacswiki.org/emacs/NavigatingParentheses#toc7
     ;; https://github.com/Fuco1/smartparens  (works also with Python!)
     (define-key map (kbd "C-M-S-u") 'sp-unwrap-sexp)
+    (define-key map (kbd "s-u") 'sp-unwrap-sexp)  ; some Linuxen (Mint 19) reserve C-M-S-u for "insert unicode char by number"
     (define-key map (kbd "C-M-S-r") 'sp-rewrap-sexp)
+    (define-key map (kbd "s-r") 'sp-rewrap-sexp)  ; some Linuxen (Mint 19 w/ Cinnamon) reserve C-M-S-r for "toggle desktop recording"
     (define-key map (kbd "C-M-S-s") 'sp-slurp-hybrid-sexp)
     (define-key map (kbd "C-M-S-b") 'sp-forward-barf-sexp)
     (define-key map (kbd "C-M-S-a") 'sp-backward-slurp-sexp)  ; one key back from slurp
