@@ -83,6 +83,7 @@
     (define-key map (kbd "C-M-p") 'sp-previous-sexp)
     (define-key map (kbd "C-M-k") 'sp-kill-sexp)
     (define-key map (kbd "C-M-SPC") 'sp-mark-sexp)
+    (define-key map (kbd "<menu>") 'helm-M-x)  ; shadow the binding to default execute-extended-command
     map)
   "Minor mode for custom keymap.")
 
