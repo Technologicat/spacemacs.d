@@ -622,8 +622,8 @@ This function is called at the very end of Spacemacs initialization."
  '(paradox-github-token t)
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(python-shell-interpreter "ipython3")
- '(sort-fold-case t)
  '(python-shell-interpreter-args "--simple-prompt --matplotlib=tk -i")
+ '(sort-fold-case t t)
  '(sublimity-map-active-region 'secondary-selection))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
