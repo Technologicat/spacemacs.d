@@ -603,7 +603,6 @@ This function is called at the very end of Spacemacs initialization."
  '(mwim-end-of-line-function '((t . end-of-visual-line) (org-mode . org-end-of-line)))
  '(mwim-end-position-functions '(mwim-code-end mwim-line-end my/where-is-end-of-line))
  '(mwim-next-position-function 'mwim-next-unique-position)
- '(nil nil t)
  '(org-emphasis-alist
    '(("*" bold)
      ("/" italic)
