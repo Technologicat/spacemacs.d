@@ -95,6 +95,7 @@
   ;; Set up BookmarkPlus
   (require 'bookmark+)
   (setq bmkp-autoname-format "^%B:[0-9]+,[0-9]+.*")  ; see my-auto-l+c-name in funcs.el
+  (setq bookmark-save-flag 10)  ; https://help-gnu-emacs.gnu.narkive.com/qR72biV2/bookmark-veeery-slow
 
   ;; Set up minor mode diminishizers
   (spacemacs|diminish beacon-mode)
