@@ -598,7 +598,11 @@ This function is called at the very end of Spacemacs initialization."
    '((t . beginning-of-visual-line)
      (message-mode . message-beginning-of-line)
      (org-mode . org-beginning-of-line)))
+ '(mwim-beginning-position-functions
+   '(mwim-code-beginning mwim-line-beginning my/where-is-beginning-of-line mwim-comment-beginning))
  '(mwim-end-of-line-function '((t . end-of-visual-line) (org-mode . org-end-of-line)))
+ '(mwim-end-position-functions '(mwim-code-end mwim-line-end my/where-is-end-of-line))
+ '(mwim-next-position-function 'mwim-next-unique-position)
  '(nil nil t)
  '(org-emphasis-alist
    '(("*" bold)

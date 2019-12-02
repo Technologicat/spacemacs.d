@@ -154,12 +154,31 @@
     (company-mode))
 
   ;; Use the MWIM package for smart home/end in visual-line-mode.
+  (with-eval-after-load "mwim"
+    (defun my/where-is-beginning-of-line ()
+      "Smart HOME for MWIM.
+
+If point is on a continuation line of a visual line, then return
+`mwim-beginning-of-code' for the first line of that visual line.
+
+If point is on the first line of a visual line, return NIL.
+
+This is useful as a `mwim-beginning-position-function' for the MWIM package."
+      (let* ((continued-line-beg (mwim-point-at (beginning-of-line)))
+             (visual-line-beg (mwim-point-at (beginning-of-visual-line)))
+             (on-first-line-of-visual-line (eq continued-line-beg visual-line-beg)))
+        (if (not on-first-line-of-visual-line)
+            (mwim-point-at (goto-char continued-line-beg) (mwim-beginning-of-code))
+          nil)))
+    (defun my/where-is-end-of-line ()
+      "Return POSITION at the end of the current logical line."
+      (mwim-point-at (end-of-line))))
   (defun setup-mwim-keys ()
     "Set up smart home/end using the MWIM package."
-    (define-key visual-line-mode-map (kbd "<home>") 'mwim-beginning-of-code-or-line)
-    (define-key visual-line-mode-map (kbd "C-a") 'mwim-beginning-of-code-or-line)
-    (define-key visual-line-mode-map (kbd "<end>") 'mwim-end-of-code-or-line)
-    (define-key visual-line-mode-map (kbd "C-e") 'mwim-end-of-code-or-line)
+    (define-key visual-line-mode-map (kbd "<home>") 'mwim-beginning)
+    (define-key visual-line-mode-map (kbd "C-a") 'mwim-beginning)
+    (define-key visual-line-mode-map (kbd "<end>") 'mwim-end)
+    (define-key visual-line-mode-map (kbd "C-e") 'mwim-end)
     )
   (add-hook 'visual-line-mode-hook 'setup-mwim-keys)
 
