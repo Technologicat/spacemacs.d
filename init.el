@@ -125,7 +125,9 @@ This function should only modify configuration layer settings."
                                       ;; https://orgmode.org/manual/CDLaTeX-mode.html
                                       cdlatex
                                       ;; https://github.com/paetzke/py-autopep8.el
-                                      py-autopep8)
+                                      py-autopep8
+                                      ;; https://github.com/Bogdanp/coverage-mode
+                                      (coverage-mode :location (recipe :fetcher github :repo "Bogdanp/coverage-mode")))
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
