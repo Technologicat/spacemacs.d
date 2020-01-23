@@ -640,6 +640,8 @@ This function is called at the very end of Spacemacs initialization."
  '(bmkp-light-fringe-non-autonamed ((t (:background "SteelBlue4"))))
  '(bmkp-light-non-autonamed ((t (:background "SteelBlue4"))))
  '(bmkp-light-non-autonamed-region ((t (:background "SteelBlue4"))))
+ '(coverage/covered-face ((t (:background "dark slate gray"))))
+ '(coverage/uncovered-face ((t (:background "gray30"))))
  '(minimap-active-region-background ((t (:background "dark olive green"))))
  '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
  '(minimap-font-face ((t (:height 20 :family my-default-font))))
