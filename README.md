@@ -424,7 +424,11 @@ For `autopep8`, the default location is `~/.config/pep8`. This can be just a sym
 The [flake8](flake8) file in this repository contains my actual flake8 config, and `~/.config/flake8` is just a symlink to `~/.spacemacs.d/flake8`. (So `~/.config/pep8` → `~/.config/flake8` → `~/.spacemacs.d/flake8`, which is the actual file.)
 
 
-## Configuring eslint (for JavaScript)
+## Configuring essential development tools for JavaScript
+
+(Yes, technically it's called [ECMAScript](https://www.ecma-international.org/ecma-262/), though everyone knows it as JS.)
+
+Let's set up linting and autocompletion.
 
 See [Getting started with ESLint](https://eslint.org/docs/user-guide/getting-started).
 
@@ -441,6 +445,10 @@ Roughly:
 Some of this may be nonsense, but that's how I got it working for now.
 
 Then we can disable the very basic internal linter in `js2-mode`; the provided `config.el` does this automatically (so we're really assuming you have `eslint` installed).
+
+To switch a specific ESLint rule off for a particular line, see [Disabling rules with inline comments](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments). See [ESLint Rules](https://eslint.org/docs/rules/) for the rule names. Basically, usually you'll want something like `// eslint-disable-line some-rule-name` or `// eslint-disable-next-line some-rule-name`. Yes, that's much more verbose than flake8's `noqa: Fxxx`. Tough luck. That's the JS community for you.
+
+To get autocompletion, `npm install tern` and `ln -s ~/node_modules/tern/bin/tern ~/.local/bin/tern`. Spacemacs's `javascript` layer should take it from there, but in case it doesn't, see [Setting up Emacs for JavaScript](https://emacs.cafe/emacs/javascript/setup/2017/05/09/emacs-setup-javascript-2.html). The relevant minor mode is called `tern-mode`, pretty much as expected.
 
 
 ## Emacs, flyspell, English and Finnish
