@@ -68,8 +68,48 @@
          (push x prettify-symbols-alist)))
      (prettify-symbols-mode))
 
+  (defun my/prettify-js-setup ()
+     "Set up symbol prettification (additional settings for JavaScript)."
+     (let ((xs '(("function" . ?λ)
+                 ;; ES7  https://mariusschulz.com/blog/the-exponentiation-operator-in-javascript
+                 ("**2" . ?²)
+                 ("**3" . ?³)
+                 ("**4" . ?⁴)
+                 ("**5" . ?⁵)
+                 ("**6" . ?⁶)
+                 ("**7" . ?⁷)
+                 ("**8" . ?⁸)
+                 ("**9" . ?⁹)
+                 ("**-1" . (?⁻ (Br . Bl) ?¹))  ; ⁻¹
+                 ("**-2" . (?⁻ (Br . Bl) ?²))  ; ⁻²
+                 ("**-3" . (?⁻ (Br . Bl) ?³))  ; ⁻³
+                 ("**-4" . (?⁻ (Br . Bl) ?⁴))  ; ⁻⁴
+                 ("**-5" . (?⁻ (Br . Bl) ?⁵))  ; ⁻⁵
+                 ("**-6" . (?⁻ (Br . Bl) ?⁶))  ; ⁻⁶
+                 ("**-7" . (?⁻ (Br . Bl) ?⁷))  ; ⁻⁷
+                 ("**-8" . (?⁻ (Br . Bl) ?⁸))  ; ⁻⁸
+                 ("**-9" . (?⁻ (Br . Bl) ?⁹))  ; ⁻⁹
+                 ("&&" . ?∩)
+                 ("||" . ?∪)
+                 ("!" . ?¬)
+                 ("===" . ?≡)
+                 ("!==" . ?≢)
+                 ("==" . ?＝)
+                 ("=" . ?←)
+                 ("all" . ?∀)  ; custom
+                 ("any" . ?∃)  ; custom
+                 ("undefined" . ?∅)
+                 ("return" . ?➡)
+                 ("Infinity" . ?∞)
+                 ;("def" . ?ƒ)  ; looks silly; literal "def" easier to spot.
+                 )))
+       (dolist (x xs nil)
+         (push x prettify-symbols-alist)))
+     (prettify-symbols-mode))
+
   (add-hook 'prog-mode-hook 'my/prettify-symbols-setup)
   (add-hook 'python-mode-hook 'my/prettify-python-setup)
+  (add-hook 'js-mode-hook 'my/prettify-js-setup)
   (global-prettify-symbols-mode)
 
   ;; TODO: takes effect from the **second** Python file opened. Figure out why. (Maybe font-lock for python mode scans the file before the hooks run?)

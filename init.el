@@ -125,7 +125,10 @@ This function should only modify configuration layer settings."
                                       ;; https://orgmode.org/manual/CDLaTeX-mode.html
                                       cdlatex
                                       ;; https://github.com/paetzke/py-autopep8.el
-                                      py-autopep8)
+                                      py-autopep8
+                                      ;; https://github.com/Bogdanp/coverage-mode
+                                      ;(coverage-mode :location (recipe :fetcher github :repo "Bogdanp/coverage-mode"))
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -638,6 +641,8 @@ This function is called at the very end of Spacemacs initialization."
  '(bmkp-light-fringe-non-autonamed ((t (:background "SteelBlue4"))))
  '(bmkp-light-non-autonamed ((t (:background "SteelBlue4"))))
  '(bmkp-light-non-autonamed-region ((t (:background "SteelBlue4"))))
+ '(coverage/covered-face ((t (:background "dark slate gray"))))
+ '(coverage/uncovered-face ((t (:background "gray30"))))
  '(minimap-active-region-background ((t (:background "dark olive green"))))
  '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
  '(minimap-font-face ((t (:height 20 :family my-default-font))))

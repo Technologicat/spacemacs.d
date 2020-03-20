@@ -148,7 +148,8 @@
 
   ;; Enable smartparens also when writing text files. (TODO: maybe just use the Spacemacs global toggle for this?)
   (add-hook 'text-mode-hook 'smartparens-mode)
-  (add-hook 'web-mode-hook 'smartparens-mode)
+  ;; web-mode-hook includes spacemacs/toggle-smartparens-off by default. Try to push it after that.
+  (add-hook 'web-mode-hook 'smartparens-mode 50)
 
   ;; Set up completion from text already in open buffers in all text-modes.
   ;; We do this by adding company-dabbrev to company-backends in text-mode.
