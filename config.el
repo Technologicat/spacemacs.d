@@ -58,6 +58,12 @@
   (with-eval-after-load "python"
     (define-key python-mode-map (kbd "<f5>") 'run-buffer-in-python))
 
+  ;; ;; https://emacs.stackexchange.com/questions/328/how-to-override-keybindings-for-term
+  ;; ;; https://stackoverflow.com/questions/4187117/emacs-how-add-custom-key-bindings-to-be-used-with-char-mode-of-ansi-term
+  ;; (with-eval-after-load "term"
+  ;;   (define-key term-raw-map (kbd "<home>") 'term-send-home)
+  ;;   (define-key term-raw-map (kbd "<end>") 'term-send-end))
+
   ;; Make helm-top auto-refresh its view.
   ;; https://ambrevar.xyz/emacs-eshell/
   (with-eval-after-load "helm"
@@ -173,12 +179,24 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
     (defun my/where-is-end-of-line ()
       "Return POSITION at the end of the current logical line."
       (mwim-point-at (end-of-line))))
+  (defun my/smart-beginning ()
+    "Call mwim-beginning, except in term char mode; then term-send-home."
+    (interactive)
+    (if (and (eq major-mode 'term-mode) (term-in-char-mode))
+        (term-send-home)
+      (mwim-beginning)))
+  (defun my/smart-end ()
+    "Call mwim-end, except in term char mode; then term-send-end."
+    (interactive)
+    (if (and (eq major-mode 'term-mode) (term-in-char-mode))
+        (term-send-end)
+      (mwim-end)))
   (defun setup-mwim-keys ()
     "Set up smart home/end using the MWIM package."
-    (define-key visual-line-mode-map (kbd "<home>") 'mwim-beginning)
-    (define-key visual-line-mode-map (kbd "C-a") 'mwim-beginning)
-    (define-key visual-line-mode-map (kbd "<end>") 'mwim-end)
-    (define-key visual-line-mode-map (kbd "C-e") 'mwim-end)
+    (define-key visual-line-mode-map (kbd "<home>") 'my/smart-beginning)
+    (define-key visual-line-mode-map (kbd "C-a") 'my/smart-beginning)
+    (define-key visual-line-mode-map (kbd "<end>") 'my/smart-end)
+    (define-key visual-line-mode-map (kbd "C-e") 'my/smart-end)
     )
   (add-hook 'visual-line-mode-hook 'setup-mwim-keys)
 
