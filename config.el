@@ -180,18 +180,18 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
     (defun my/where-is-end-of-line ()
       "Return POSITION at the end of the current logical line."
       (mwim-point-at (end-of-line))))
-  (defun my/smart-beginning ()
+  (defun my/smart-beginning (&rest args)
     "Call mwim-beginning, except in term char mode; then term-send-home."
-    (interactive)
+    (interactive "P")
     (if (and (eq major-mode 'term-mode) (term-in-char-mode))
-        (term-send-home)
-      (mwim-beginning)))
-  (defun my/smart-end ()
+        (apply #'term-send-home args)
+      (apply #'mwim-beginning args)))
+  (defun my/smart-end (&rest args)
     "Call mwim-end, except in term char mode; then term-send-end."
-    (interactive)
+    (interactive "P")
     (if (and (eq major-mode 'term-mode) (term-in-char-mode))
-        (term-send-end)
-      (mwim-end)))
+        (apply #'term-send-end args)
+      (apply #'mwim-end args)))
   (defun setup-mwim-keys ()
     "Set up smart home/end using the MWIM package."
     (define-key visual-line-mode-map (kbd "<home>") 'my/smart-beginning)
