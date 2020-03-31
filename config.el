@@ -182,13 +182,15 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
       (mwim-point-at (end-of-line))))
   (defun my/smart-beginning (&rest args)
     "Call mwim-beginning, except in term char mode; then term-send-home."
-    (interactive "P")
+    ;; Functions like home/end that need shift-translation must use "^P", not just "P".
+    ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Interactive-Codes.html
+    (interactive "^P")
     (if (and (eq major-mode 'term-mode) (term-in-char-mode))
         (apply #'term-send-home args)
       (apply #'mwim-beginning args)))
   (defun my/smart-end (&rest args)
     "Call mwim-end, except in term char mode; then term-send-end."
-    (interactive "P")
+    (interactive "^P")
     (if (and (eq major-mode 'term-mode) (term-in-char-mode))
         (apply #'term-send-end args)
       (apply #'mwim-end args)))
