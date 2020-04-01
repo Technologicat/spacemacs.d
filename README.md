@@ -486,16 +486,19 @@ Add more languages if needed. Important parts are the `-d lang_VARIANT` and the 
  - To spellcheck Finnish, install Voikko.
    - In Debian-based distros, Voikko should be in the default repository, so just `sudo apt install` it. The packages needed are `libvoikko1`, `voikko-fi`.
  - To spellcheck languages other than Finnish, install Aspell and/or Hunspell and the relevant dictionaries, as desired. See e.g. `apt search hunspell`.
- - Before building Enchant, make sure you have installed the prerequisites. On Debian-based distros, this means `sudo apt install` at least `build-essentials` and `libaspell-dev`, `libhunspell-dev`, `libenchant-voikko`, `libvoikko-dev`.
-   - If Enchant's `configure` complains or something looks not quite right, add more packages as needed, and then re-run the `configure` step.
- - Get the [Enchant](https://github.com/AbiWord/enchant) source code, release 2.2.4 or later.
-   - If you prefer to build from git instead, install also GNU autotools.
-   - Make sure `libtool` and `pkg-config` are installed **before** starting the build. If not, misleading error messages may occur (e.g. complaining about `GLIB` during `configure`, when the actual problem is that `PKG_CONFIG_MODULES` was not defined at the time when `bootstrap` was run).
-   - Start the build by running `./bootstrap` to generate the `configure` script. If you're new to autotools, see [the manual](https://www.gnu.org/software/automake/manual/automake.html), esp. [section 2](https://www.gnu.org/software/automake/manual/automake.html#Autotools-Introduction), for the concepts and an overview.
- - Build and install Enchant. The build process is a rather standard `./configure`, `make`, `make install`. [LfS has some instructions](http://www.linuxfromscratch.org/blfs/view/cvs/general/enchant.html) just in case.
+ - **If running on a distro that provides Enchant 2**, such as Ubuntu 20.04 or later:
+   - `sudo apt install enchant-2 libenchant-2-voikko`
+ - **If running on a distro that doesn't have Enchant 2**:
+   - Before building Enchant, make sure you have installed the prerequisites. On Debian-based distros, this means `sudo apt install` at least `build-essentials` and `libaspell-dev`, `libhunspell-dev`, `libenchant-voikko`, `libvoikko-dev`.
+     - If Enchant's `configure` complains or something looks not quite right, add more packages as needed, and then re-run the `configure` step.
+   - Get the [Enchant](https://github.com/AbiWord/enchant) source code, release 2.2.4 or later.
+     - If you prefer to build from git instead, install also GNU autotools.
+     - Make sure `libtool` and `pkg-config` are installed **before** starting the build. If not, misleading error messages may occur (e.g. complaining about `GLIB` during `configure`, when the actual problem is that `PKG_CONFIG_MODULES` was not defined at the time when `bootstrap` was run).
+     - Start the build by running `./bootstrap` to generate the `configure` script. If you're new to autotools, see [the manual](https://www.gnu.org/software/automake/manual/automake.html), esp. [section 2](https://www.gnu.org/software/automake/manual/automake.html#Autotools-Introduction), for the concepts and an overview.
+   - Build and install Enchant. The build process is a rather standard `./configure`, `make`, `make install`. [LfS has some instructions](http://www.linuxfromscratch.org/blfs/view/cvs/general/enchant.html) just in case.
    - The goal is to get a config that supports Voikko for Finnish, and some other spellchecker(s) for other languages.
- - In the `configure` step, use `./configure --prefix=/home/myusername/.local --disable-static --enable-relocatable` or some such to get an installation that won't conflict with anything installed from the distro's package manager.
-   - This assumes you *have* a `~/.local/bin` directory, and that it's in your `PATH`. See your `~/.bashrc`, which may need something like `export PATH=/home/myusername/.local/bin:$PATH`
+   - In the `configure` step, use `./configure --prefix=/home/myusername/.local --disable-static   --enable-relocatable` or some such to get an installation that won't conflict with anything installed from the distro's package manager.
+     - This assumes you *have* a `~/.local/bin` directory, and that it's in your `PATH`. See your `~/.bashrc`, which may need something like `export PATH=/home/myusername/.local/bin:$PATH`
  - Make the above customization to your `.spacemacs.d/init.el`.
  - `M-x customize-group RET ispell RET`. Find the setting for `Ispell program` and change it to `~/.local/bin/enchant`. Set and save for future sessions (option `1`).
 
