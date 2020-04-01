@@ -511,7 +511,7 @@ To test, restart Emacs, open a new buffer in text mode (Spacemacs: `M-m b N n`, 
 ### Personal dictionary
 
  - **With Enchant 2.2.4**, saving new words to the personal dictionary with the `Save` option in `flyspell-correct-wrapper` (`M-m S c`) works for all languages.
-   - The personal dictionary **does not work with Enchant 1.6.0** that is currently in Debian/Ubuntu repos.
+   - The personal dictionary **does not work with the old Enchant 1.6.0**.
  - Note in case of Finnish, **Enchant 2.2.4 is needed**. Enchant 2.2.3 will not work correctly; see [issue 212](https://github.com/AbiWord/enchant/issues/212), which was fixed in 2.2.4.
 
 ### Why is Finnish so hard to spellcheck?
