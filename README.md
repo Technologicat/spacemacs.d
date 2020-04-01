@@ -370,6 +370,8 @@ See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.
  - `link-hint-open-link-at-point`
  - `grep`, accepts any command that produces output like `grep -nH` (while active, `{`, `}` jump to previous/next file with matches)
  - `diff` compare files
+ - `ediff` compare files, [more sophisticated](https://www.gnu.org/software/emacs/manual/html_node/emacs/Comparing-Files.html)
+ - `ediff3` three-way compare files
  - `helm-for-files` find a file ([see e.g. this](http://pragmaticemacs.com/emacs/find-and-open-files-from-anywhere-with-helm-for-files/))
  - `counsel-unicode-char` pick and insert unicode char by name, with preview
  - `list-colors-display` pick and insert color, with preview
