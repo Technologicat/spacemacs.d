@@ -459,9 +459,9 @@ To get autocompletion, `npm install tern` and `ln -s ~/node_modules/tern/bin/ter
 
 The only free spellchecker that works properly with Finnish, [Voikko](https://voikko.puimula.org/), runs on the [enchant](https://github.com/AbiWord/enchant) meta-spellchecker framework. Voikko does come with an `ispell` emulation layer called `tmispell` (Ubuntu package `tmispell-voikko`), but this is deprecated. To run Voikko in a multilingual environment with multiple different spellchecking engines, `enchant` is the currently recommended (and only) option.
 
-The Debian and Ubuntu packages of `enchant` are currently (2019/06) [eight years out of date](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336). In the old version (1.6.0), personal dictionary saving does not work.
-
 **Use Enchant 2.2.4 or later.** Recent versions up to 2.2.3 have a [bug](https://github.com/AbiWord/enchant/issues/212) in the [tokenize_line](https://github.com/AbiWord/enchant/blob/master/src/enchant.c) function which will silently truncate any `ä` or `ö` at the end of a word (before sending the input to Voikko for actual spellchecking).
+
+**Ubuntu 20.04 and later** provide the package `enchant-2`, so just `sudo apt install enchant-2 libenchant-2-voikko`. [In older ubuntu versions](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336), the latest provided `enchant` is 1.6.0, where personal dictionary saving does not work.
 
 Enchant almost works with Emacs's `ispell.el`. However, `enchant` takes `hunspell`-style *locale names* (`-d fi_FI`) for choosing the dictionary, instead of `ispell`-style language names (`-d finnish`). Hence, **out-of-the-box it will only work with the default dictionary** (which requires no `-d` option). Without further configuration, when `flyspell-mode` is enabled, and `enchant` is set up as the `Ispell program`, trying to switch to a non-default dictionary (`M-m S d` in Spacemacs) causes Emacs to freeze. (`C-g` to `Quit` or `killall -s USR2 emacs` to invoke the Elisp debugger (see [here](https://emacs.stackexchange.com/questions/506/debugging-a-frozen-emacs)) will temporarily help, but the freeze will occur again.)
 
