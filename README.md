@@ -180,7 +180,7 @@ Key | Command
 `M-s h .` | highlight symbol under point
 `M-s h p` | highlight phrase (will ask for phrase and color)
 `M-s h u` | remove highlighting (will ask which)
-`C-x d' | `dired` current directory
+`C-x d` | `dired` current directory
 `C-x p` | `bookmarkplus` menu ("pookmarks"? `C-x b` is taken for buffer switching...) Spacemacs has this as `M-m B`.
 `C-x p RET` | toggle autonamed bookmark at point
 `C-x p n` | jump to next bookmark in current buffer (wraps around)
