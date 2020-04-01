@@ -357,7 +357,7 @@ Just insert document title and author, and start writing.
 
 This displays LaTeX fragments as images (for equations); pretty-renders entities as unicode (so that e.g. `$\alpha^2$` shows as α² right there in Emacs); expands all sections by default; does not number sections; no table of contents (TOC); a more sensible margin size; paragraphs separated by a vskip, no indent; and no frames around links.
 
-Any `LATEX_HEADER_EXTRA` options only take effect for PDF export, not for fragment preview (such as for equations). If the `hypersetup` optionh is present in fragment preview, the fragment will erroneously show the `colorlinks=true,linkcolor=blue`.
+Any `LATEX_HEADER_EXTRA` options only take effect for PDF export, not for fragment preview (such as for equations). If the `hypersetup` option is present in fragment preview, the fragment will erroneously show the `colorlinks=true,linkcolor=blue`.
 
 See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.org/manual/Initial-visibility.html), [[3]](https://www.gnu.org/software/emacs/manual/html_node/org/In_002dbuffer-settings.html) and [[4]](https://orgmode.org/manual/LaTeX-header-and-sectioning.html).
 
