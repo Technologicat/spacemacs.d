@@ -439,7 +439,7 @@ See [Getting started with ESLint](https://eslint.org/docs/user-guide/getting-sta
 Roughly:
 
  - Install `npm` (`sudo apt install npm`) and then `npm init` your home directory.
-   - Of course it's not really a package, but the `eslint --later` step below may crash without producing a configuration file if `package.json` does not exist. So let's play along.
+   - Of course it's not really a package, but the `eslint --init` step below may crash without producing a configuration file if `package.json` does not exist. So let's play along.
    - See also [Node.js - installing packages](https://help.dreamhost.com/hc/en-us/articles/115004415628-Node-js-installing-packages).
  - `npm install eslint --save-dev` should work now without complaining.
  - Then you can `eslint --init` in your home directory to create a default configuration file (the wizard saves it as e.g. `~/.eslintrc.json`).
