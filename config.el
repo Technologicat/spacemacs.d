@@ -186,13 +186,15 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
     ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Interactive-Codes.html
     (interactive "^P")
     (if (and (eq major-mode 'term-mode) (term-in-char-mode))
-        (apply #'term-send-home args)
+        ;; Doesn't take args
+        ;; https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
+        (term-send-home)
       (apply #'mwim-beginning args)))
   (defun my/smart-end (&rest args)
     "Call mwim-end, except in term char mode; then term-send-end."
     (interactive "^P")
     (if (and (eq major-mode 'term-mode) (term-in-char-mode))
-        (apply #'term-send-end args)
+        (term-send-end)
       (apply #'mwim-end args)))
   (defun setup-mwim-keys ()
     "Set up smart home/end using the MWIM package."
