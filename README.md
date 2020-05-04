@@ -96,6 +96,7 @@ Key | Command
 `<f5>` (latex-mode) | run the default LaTeX command (useful for recompiling after a change; cf. `C-c C-c`, which always asks which operation to perform)
 `<f5>` (org-mode) | export via LaTeX to PDF
 `M-m M-j` | `evil-avy-goto-char-timer` (ergonomics, less repetitive than default `M-m j j`)
+`M-m j g` | `dumb-jump-go`, jump to definition of thing under point using [`dumb-jump`](https://github.com/jacktasia/dumb-jump) (works with Julia)
 
 [Smartparens](https://github.com/Fuco1/smartparens) keys:
 

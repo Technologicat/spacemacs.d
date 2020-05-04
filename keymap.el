@@ -100,6 +100,7 @@
         (spacemacs/set-leader-keys "s C-p" 'helm-multi-swoop-projectile)        ; M-m s C-p (NOTE: searches open project buffers only)
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" 'reftex-toc)  ; M-m m O, M-RET O (same as in Spacemacs pdf layer)
         (spacemacs/set-leader-keys "M-j" 'evil-avy-goto-char-timer)             ; M-m M-j, less repetitive than default M-m j j
+        (spacemacs/set-leader-keys "j g" 'dumb-jump-go)                         ; M-m j g
         )
       (progn  ; off
         (define-key evil-emacs-state-map (kbd "C-z") 'evil-exit-emacs-state)
@@ -107,6 +108,7 @@
         (spacemacs/set-leader-keys "s C-p" nil)
         (spacemacs/set-leader-keys-for-major-mode 'latex-mode "O" nil)
         (spacemacs/set-leader-keys "M-j" nil)
+        (spacemacs/set-leader-keys "j g" nil)
         )))
 
 (my/keymap-init)
