@@ -17,20 +17,20 @@
 (defun my-isearch-forward (&rest args)
   "phi-search or isearch as appropriate."
   (interactive "P")
-  (if (eq major-mode 'pdf-view-mode)
-    (apply 'isearch-forward args)
-    (if phi-search--active  ;; FIXME: accessing implementation detail
-      (phi-search-next)
-      (apply 'phi-search args))))
+  (cond ((eq major-mode 'pdf-view-mode) (apply 'isearch-forward args))
+        ((and (eq major-mode 'term-mode) (term-in-char-mode)) (term-send-raw-string ""))
+        (t (if phi-search--active  ;; FIXME: accessing implementation detail
+               (phi-search-next)
+               (apply 'phi-search args)))))
 
 (defun my-isearch-backward (&rest args)
   "phi-search-backward or isearch-backward as appropriate."
   (interactive "P")
-  (if (eq major-mode 'pdf-view-mode)
-    (apply 'isearch-backward args)
-    (if phi-search--active  ;; FIXME: accessing implementation detail
-      (phi-search-previous)
-      (apply 'phi-search-backward args))))
+  (cond ((eq major-mode 'pdf-view-mode) (apply 'isearch-backward args))
+        ((and (eq major-mode 'term-mode) (term-in-char-mode)) (term-send-raw-string ""))
+        (t (if phi-search--active  ;; FIXME: accessing implementation detail
+               (phi-search-previous)
+               (apply 'phi-search-backward args)))))
 
 ;; https://clojureverse.org/t/share-your-spacemacs-tweaks/1496/9
 (defvar custom-keys-minor-mode-map

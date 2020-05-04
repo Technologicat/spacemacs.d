@@ -60,9 +60,12 @@
 
   ;; ;; https://emacs.stackexchange.com/questions/328/how-to-override-keybindings-for-term
   ;; ;; https://stackoverflow.com/questions/4187117/emacs-how-add-custom-key-bindings-to-be-used-with-char-mode-of-ansi-term
-  ;; (with-eval-after-load "term"
-  ;;   (define-key term-raw-map (kbd "<home>") 'term-send-home)
-  ;;   (define-key term-raw-map (kbd "<end>") 'term-send-end))
+  ;;(with-eval-after-load "term"
+  ;; These don't help, because custom-keys-minor-mode-map has higher precedence.
+  ;;  (define-key term-raw-map (kbd "<home>") 'term-send-home)
+  ;;  (define-key term-raw-map (kbd "<end>") 'term-send-end)
+  ;;  (define-key term-raw-map (kbd "C-r") 'my-term-send-ctrl-r)
+  ;;  (define-key term-raw-map (kbd "C-s") 'my-term-send-ctrl-s))
 
   ;; Make helm-top auto-refresh its view.
   ;; https://ambrevar.xyz/emacs-eshell/
