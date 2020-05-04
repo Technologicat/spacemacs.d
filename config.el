@@ -71,12 +71,13 @@
 
   ;; Spell checking for English and Finnish.
   ;; http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
+  ;; See also Emacs help on `ispell-dictionary-alist', which explains the format.
   (setq ispell-local-dictionary "english")
   (setq ispell-local-dictionary-alist
         '(("english" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)  ;; default to en_US
           ("american" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)
           ("british" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_UK") nil utf-8)
-          ("finnish" "[[:alpha:]]" "[^[:alpha:]]" "[']" t ("-d" "fi") nil utf-8)))
+          ("finnish" "[[:alpha:]]" "[^[:alpha:]]" "[':]" t ("-d" "fi") nil utf-8)))  ; otherchars: e.g. "raa'at", "IT:ssä"
   ;; TODO fix enchant on Windows/MSYS2 (builds fine with aspell and voikko, but fails to find any dictionaries)
   (setq ispell-program-name (if my-on-winnt "c:/msys64/usr/bin/aspell" "~/.local/bin/enchant"))
 

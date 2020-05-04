@@ -593,6 +593,7 @@ This function is called at the very end of Spacemacs initialization."
  '(flycheck-python-mypy-executable "python3")
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
+ '(flyspell-dictionaries-that-consider-dash-as-word-delimiter '("francais" "deutsch8" "norsk" "finnish"))
  '(importmagic-python-interpreter "python3")
  '(major-mode 'text-mode)
  '(minimap-update-delay 0)
