@@ -155,6 +155,9 @@
   ;; web-mode-hook includes spacemacs/toggle-smartparens-off by default. Try to push it after that.
   (add-hook 'web-mode-hook 'smartparens-mode 50)
 
+  (add-hook 'term-mode-hook 'highlight-parentheses-mode)
+  (add-hook 'term-mode-hook 'rainbow-delimiters-mode)
+
   ;; Set up completion from text already in open buffers in all text-modes.
   ;; We do this by adding company-dabbrev to company-backends in text-mode.
   (eval-after-load "company"
