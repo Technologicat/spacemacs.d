@@ -107,9 +107,79 @@
          (push x prettify-symbols-alist)))
      (prettify-symbols-mode))
 
+  (defun my/prettify-julia-setup ()
+     "Set up symbol prettification (additional settings for Julia)."
+     (let ((xs '(("function" . ?λ)
+                 ("end" . ?⌟)
+                 ("^2" . ?²)
+                 ("^3" . ?³)
+                 ("^4" . ?⁴)
+                 ("^5" . ?⁵)
+                 ("^6" . ?⁶)
+                 ("^7" . ?⁷)
+                 ("^8" . ?⁸)
+                 ("^9" . ?⁹)
+                 ("^-1" . (?⁻ (Br . Bl) ?¹))  ; ⁻¹
+                 ("^-2" . (?⁻ (Br . Bl) ?²))  ; ⁻²
+                 ("^-3" . (?⁻ (Br . Bl) ?³))  ; ⁻³
+                 ("^-4" . (?⁻ (Br . Bl) ?⁴))  ; ⁻⁴
+                 ("^-5" . (?⁻ (Br . Bl) ?⁵))  ; ⁻⁵
+                 ("^-6" . (?⁻ (Br . Bl) ?⁶))  ; ⁻⁶
+                 ("^-7" . (?⁻ (Br . Bl) ?⁷))  ; ⁻⁷
+                 ("^-8" . (?⁻ (Br . Bl) ?⁸))  ; ⁻⁸
+                 ("^-9" . (?⁻ (Br . Bl) ?⁹))  ; ⁻⁹
+                 ("&&" . ?∩)
+                 ("||" . ?∪)
+                 ("!" . ?¬)
+                 ("==" . ?＝)
+                 ("===" . ?≡)  ; egal operator
+                 ("!==" . ?≢)  ; not-egal operator
+                 ("=" . ?←)
+                 ("nothing" . ?∅)
+                 ("return" . ?➡)
+                 ("Inf" . ?∞)
+                 ("sqrt" . ?√)
+                 ;; Greek symbols for mathematical usage
+                 ("alpha" . ?α)
+                 ("beta" . ?β)
+                 ("gamma" . ?γ)
+                 ("delta" . ?δ)
+                 ("epsilon" . ?ε)
+                 ("zeta" . ?ζ)
+                 ("eta" . ?η)
+                 ("theta" . ?θ)
+                 ("iota" . ?ι)
+                 ("kappa" . ?κ)
+                 ("lambda" . ?λ)
+                 ("mu" . ?μ)
+                 ("nu" . ?ν)
+                 ("pi" . ?π)
+                 ("rho" . ?ρ)
+                 ("sigma" . ?σ)
+                 ("tau" . ?τ)
+                 ("upsilon" . ?υ)
+                 ("phi" . ?φ)
+                 ("chi" . ?χ)
+                 ("psi" . ?ψ)
+                 ("omega" . ?ω)
+                 ("Gamma" . ?Γ)
+                 ("Delta" . ?Δ)
+                 ("Theta" . ?Θ)
+                 ("Lambda" . ?Λ)
+                 ("Pi" . ?Π)
+                 ("Sigma" . ?Σ)
+                 ("Phi" . ?Φ)
+                 ("Psi" . ?Ψ)
+                 ("Omega" . ?Ω)
+                 )))
+       (dolist (x xs nil)
+         (push x prettify-symbols-alist)))
+     (prettify-symbols-mode))
+
   (add-hook 'prog-mode-hook 'my/prettify-symbols-setup)
   (add-hook 'python-mode-hook 'my/prettify-python-setup)
   (add-hook 'js-mode-hook 'my/prettify-js-setup)
+  (add-hook 'julia-mode-hook 'my/prettify-julia-setup)
   (global-prettify-symbols-mode)
 
   ;; TODO: takes effect from the **second** Python file opened. Figure out why. (Maybe font-lock for python mode scans the file before the hooks run?)
