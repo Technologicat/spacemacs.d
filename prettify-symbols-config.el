@@ -134,6 +134,8 @@
                  ("==" . ?＝)
                  ("===" . ?≡)  ; egal operator
                  ("!==" . ?≢)  ; not-egal operator
+                 ("in" . ?∈)
+                 ;; Julia's "not in" has no bindings other than unicode ∉ (\notin) and ∌ (\nni)
                  ("=" . ?←)
                  ("nothing" . ?∅)
                  ("return" . ?➡)
