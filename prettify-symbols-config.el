@@ -139,6 +139,8 @@
                  ("return" . ?➡)
                  ("Inf" . ?∞)
                  ("sqrt" . ?√)
+                 ("all" . ?∀)
+                 ("any" . ?∃)
                  ;; Some builtin types
                  ("Integer" . ?ℤ)
                  ("Rational" . ?ℚ)
