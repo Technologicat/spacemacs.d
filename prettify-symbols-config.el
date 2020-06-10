@@ -110,6 +110,7 @@
   (defun my/prettify-julia-setup ()
      "Set up symbol prettification (additional settings for Julia)."
      (let ((xs '(("function" . ?λ)
+                 ("begin". ?⌜)
                  ("end" . ?⌟)
                  ("^2" . ?²)
                  ("^3" . ?³)
