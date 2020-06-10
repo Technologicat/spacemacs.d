@@ -152,6 +152,7 @@
                  ("Complex" . ?ℂ)
                  ("Bool" . (?ℤ (Br . Bl) ?₂))  ; ℤ₂ ...maybe bad taste?
                  ("Function" . ?λ)
+                 ("Nothing" . ?∅)  ; singleton type containing the value `nothing'
                  ("Any" . ?⊤)  ; top type, down tack symbol
                  ; in Julia, the bottom type is `Union{}', which is not a lone symbol, so we can't convert that.
                  ;; Greek symbols for mathematical usage
