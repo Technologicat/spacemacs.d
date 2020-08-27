@@ -205,8 +205,9 @@
   (defun my/unpythonic-syntax-highlight-setup ()
     "Set up additional syntax highlighting for `unpythonic.syntax' and `macropy3' in python mode."
     ;; adapted from code in dash.el
-    (let ((new-keywords '("test" "test_raises" "test_signals" "fail" "error"
-                          "signal" "handlers" "restarts" ; not macros, but in a role similar to exception handling constructs in the conditions/restarts system.
+    (let ((new-keywords '("test" "test_raises" "test_signals" "fail"
+                          "error" "warn"  ; both testing macros and condition signaling protocols
+                          "signal" "cerror" "handlers" "restarts" ; not macros, but in a role similar to exception handling constructs in the conditions/restarts system.
                           "let" "dlet" "blet"
                           "letseq" "dletseq" "bletseq"
                           "letrec" "dletrec" "bletrec"
