@@ -12,6 +12,8 @@
   ;; TODO: bad Spacemacs style to require modules directly; how to set up lazy autoload for helm-swoop like "SPC s s" does?
   (require 'helm-swoop))  ; for helm-multi-swoop-this-mode
 
+  (require 'ansi-color)  ; for display-ansi-colors
+
 ;; https://www.masteringemacs.org/article/searching-buffers-occur-mode
 ;;
 ;; with-current-buffer is slow; use buffer-local-value instead; see:
@@ -489,5 +491,21 @@ Prompts for the key sequence."
   (interactive "P")
   (TeX-command (TeX-command-default (TeX-master-file nil nil t))
 	             'TeX-master-file override-confirm))
+
+;; By StackOverflow user juanleon, from:
+;; https://stackoverflow.com/questions/23378271/how-do-i-display-ansi-color-codes-in-emacs-for-any-mode
+(defun display-ansi-colors-region ()
+  "Interpret ANSI color sequences in the active region.
+
+The sequences become overlays, making the text colored,
+just like in the terminal. Other overlays in the region
+are discarded.
+
+Useful for reading colored log files and similar.
+
+Works also in read-only buffers."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
 
 (my/funcs-init)
