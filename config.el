@@ -98,6 +98,13 @@
   (setq calendar-latitude +61.5)
   (setq calendar-longitude +23.8)
   (setq calendar-location-name "Tampere, Finland")
+  (setq calendar-intermonth-text  ; show week numbers; from help for `calendar-intermonth-text'
+        '(propertize
+          (format "%2d"
+                  (car
+                   (calendar-iso-from-absolute
+                    (calendar-absolute-from-gregorian (list month day year)))))
+          'font-lock-face 'font-lock-function-name-face))
   (with-eval-after-load "calendar"
     (define-key calendar-mode-map (kbd "RET") 'calendar-insert-date))
   (require 'suomalainen-kalenteri)  ; Finnish holidays
