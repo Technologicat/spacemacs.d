@@ -97,8 +97,7 @@ This function should only modify configuration layer settings."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      ;; helm-swoop-edit is broken, see: https://github.com/ShingoFukuyama/helm-swoop/issues/133
-                                      (helm-swoop :location (recipe :fetcher github :repo "ashiklom/helm-swoop"))
+                                      helm-swoop
                                       ;; http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/
                                       ;; https://github.com/kyagi/shell-pop-el
                                       ;;shell-pop
