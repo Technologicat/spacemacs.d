@@ -207,6 +207,7 @@ Key | Command
 `C-c C-s r` | `synosaurus-choose-and-replace`
 `M-m m O` or `M-RET O` | (pdf-mode) view outline (table of contents)
 `M-m m n` or `M-RET n` | (pdf-mode) `pdf-view-midnight-minor-mode`, reverse video grayscale view
+`M-RET s s` | (pdf-mode) `pdf-occur` (search for text in PDF, show a list of all matches)
 `l` | (help viewer) back to previous viewed help page
 `r` | (help viewer) forward (in the sense of opposite of back)
 `q` | (help viewer, many others) quit, usually kills the window too
