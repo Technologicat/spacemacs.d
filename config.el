@@ -152,6 +152,9 @@
 
   (require 'py-autopep8)
   (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+  ;; Work around crash in py-autopep8.el
+  ;; https://github.com/emacs-lsp/lsp-mode/issues/711
+  (setq lsp-json-use-lists t)
 
   ;; Add thesaurus to all text-modes.
   (add-hook 'text-mode-hook 'synosaurus-mode)
