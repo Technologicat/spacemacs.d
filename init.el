@@ -589,7 +589,6 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(flycheck-flake8rc "~/.config/flake8")
  '(flycheck-python-flake8-executable "python3")
- '(flycheck-python-mypy-executable "python3")
  '(flycheck-python-pycompile-executable "python3")
  '(flycheck-python-pylint-executable "python3")
  '(flyspell-dictionaries-that-consider-dash-as-word-delimiter '("francais" "deutsch8" "norsk" "finnish"))
