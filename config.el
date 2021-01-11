@@ -287,7 +287,7 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
   ;; https://wolfecub.github.io/dotfiles/
   (setq inhibit-compacting-font-caches t)
 
- ;; Combo with the .bashrc "alias em='emacsclient -c'"; use `C-x #' (M-x server-edit) to close a file.
+  ;; Combo with the .bashrc "alias em='emacsclient -c'"; use `C-x #' (M-x server-edit) to close a file.
   (when my-on-winnt
     (server-start))
 
