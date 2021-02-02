@@ -10,9 +10,9 @@
   (require 'flyspell-correct)
 
   ;; TODO: bad Spacemacs style to require modules directly; how to set up lazy autoload for helm-swoop like "SPC s s" does?
-  (require 'helm-swoop))  ; for helm-multi-swoop-this-mode
+  (require 'helm-swoop)  ; for helm-multi-swoop-this-mode
 
-  (require 'ansi-color)  ; for display-ansi-colors
+  (require 'ansi-color))  ; for display-ansi-colors
 
 ;; https://www.masteringemacs.org/article/searching-buffers-occur-mode
 ;;
