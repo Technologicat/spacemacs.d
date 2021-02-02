@@ -41,6 +41,7 @@ Potentially useful notes below.
    - New command `M-x insert-key-description` to auto-create args for `(kbd ...)`. Prompts for a key sequence.
    - New command `M-x unparenthesize-python-return-stmts` to strip parentheses around return value from Python return statements, from point forward. Requires `smartparens`.
      - To strip just one, see `M-x unparenthesize-python-return-stmt`, a recorded keyboard macro.
+   - New command `M-x my/scale-latex-fragments`, to scale the font size of `org-mode` LaTeX previews of the current buffer to match the (possibly zoomed) font size of the current frame. For use with Spacemacs's `zoom-frm-transient-state` (`M-m z f`). No hook for now; call this `M-x` command manually when needed. May take some time to create the LaTeX previews if the buffer has a lot of content.
    - Utility `my-make-repeatable-interactive-command`, which returns a repeatable (C-digits) version of a non-repeatable interactive command, and optionally `fset`s it to a desired name.
    - Finnish national holidays for the Emacs calendar (via package [`suomalainen-kalenteri`](https://github.com/tlikonen/suomalainen-kalenteri)). Highlight holidays by default.
    - Enable `pdf` layer for viewing **and annotating** PDFs in Emacs.

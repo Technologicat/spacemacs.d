@@ -508,4 +508,41 @@ Works also in read-only buffers."
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 
+;; --------------------------------------------------------------------------------
+;; Scale org-mode LaTeX fragments in a frame zoomed using Spacemacs's `zoom-frm.el'.
+;;
+;; https://emacs.stackexchange.com/questions/3387/how-to-enlarge-latex-fragments-in-org-mode-at-the-same-time-as-the-buffer-text
+;;
+;; Also based on the code of `zoom-frm.el' and `frame-cmds.el' in Spacemacs.
+;;
+(defun my/get-current-fontsize ()
+  "Get the font size of the current frame, in points, as an integer."
+  (let ((fontname (cdr (assq 'font (frame-parameters (selected-frame))))))
+    (let ((xlfd-fields  (x-decompose-font-name fontname)))
+      (unless xlfd-fields (error "Cannot decompose font name"))
+      (string-to-number (aref xlfd-fields xlfd-regexp-pixelsize-subnum)))))
+
+(defun my/get-font-scaling-factor ()
+  "Compute the font scaling factor used by Spacemacs's `zoom-frm.el'."
+  ;; zoom-frm.el's `zoom-factor' is just the number of zoom steps taken
+  ;; above (positive) or below (negative) the original base font size.
+  ;; So to get the actual font scaling factor, we compare the current size
+  ;; to the base size.
+  ;;
+  ;; See `zoom-frm-in' in `zoom-frem.el', and `enlarge-font' in `frame-cmds.el'.
+  (let* ((zoom-factor (or (frame-parameter (selected-frame) 'zoomed) 0))
+         (current-font-size (my/get-current-fontsize))
+         (base-font-size (- current-font-size zoom-factor)))
+    (/ (float current-font-size) (float base-font-size))))
+
+;; TODO: where to hook this? zoom-frm.el has no hooks.
+;; TODO: For now, this must be called manually as `M-x my/scale-latex-fragments'.
+(defun my/scale-latex-fragments ()
+  "Scale org-mode LaTeX fragments to match Spacemacs's current frame zoom state."
+  (interactive)
+  (org-latex-preview '(64))  ;; clear LaTeX previews
+  (plist-put org-format-latex-options :scale (my/get-font-scaling-factor))
+  (org-latex-preview '(16)))  ;; (create if needed and) display LaTeX previews
+;; --------------------------------------------------------------------------------
+
 (my/funcs-init)
