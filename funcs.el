@@ -434,7 +434,9 @@ Accept the first suggestion without prompting.
   (interactive "P")
   (let ((flyspell-correct-interface (lambda (candidates misspelled-word)
                                       (car candidates))))
-      (call-interactively 'flyspell-correct-previous)))
+      (call-interactively 'flyspell-correct-previous)
+      (let ((unlucky-key (substitute-command-keys "\\[my-flyspell-correct-unlucky]")))
+        (message (format "Last typo before point autozapped; hit %s now to undo and choose a different correction" unlucky-key)))))
 
 (defun my-flyspell-correct-unlucky (&rest args)
   "Wrapper for flyspell-correct-previous.
