@@ -432,11 +432,15 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
 Accept the first suggestion without prompting.
 "
   (interactive "P")
-  (let ((flyspell-correct-interface (lambda (candidates misspelled-word)
-                                      (car candidates))))
+  (let ((misspelled nil)
+        (candidate nil))
+    (let ((flyspell-correct-interface (lambda (candidates misspelled-word)
+                                        (setq misspelled misspelled-word)
+                                        (setq candidate (car candidates))
+                                        (car candidates))))
       (call-interactively 'flyspell-correct-previous)
       (let ((unlucky-key (substitute-command-keys "\\[my-flyspell-correct-unlucky]")))
-        (message (format "Last typo before point autozapped; hit %s now to undo and choose a different correction" unlucky-key)))))
+        (message (format "Last typo before point autozapped (%s → %s); hit %s now to undo and choose a different correction" misspelled candidate unlucky-key))))))
 
 (defun my-flyspell-correct-unlucky (&rest args)
   "Wrapper for flyspell-correct-previous.
