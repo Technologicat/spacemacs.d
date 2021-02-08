@@ -426,6 +426,8 @@ This is particularly useful under Mac OSX, where GUI apps are not started from a
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 
+;; --------------------------------------------------------------------------------
+
 (defun my-flyspell-correct-lucky (&rest args)
   "`I'm feeling lucky' mode for flyspell-correct-previous.
 
@@ -459,6 +461,39 @@ to correct interactively with minimum keypresses."
     ;; TODO: we assume the word that used to be misspelled is now on screen.
     (flyspell-region (window-start) (window-end)))
   (call-interactively 'flyspell-correct-previous))
+
+(defun my-flyspell-correct (&rest args)
+  "One-key typo zapper.
+
+Combines the functionality of `my-flyspell-correct-lucky' and
+`my-flyspell-correct-unlucky'.
+
+It is recommended to bind this function to a key. When the key is
+first hit, this autozaps the typo using the first suggestion provided
+by `flyspell'. If immediately hit again, you'll get a prompt to choose
+which correction to use.
+"
+  (interactive "P")
+  (if (eq last-command 'my-flyspell-correct)
+      (progn
+        (undo-tree-undo)
+        ;; Undoing the edit does not restore the misspelled-word status.
+        ;; Force flyspell to update its overlay.
+        ;; TODO: we assume the word that used to be misspelled is now on screen.
+        (flyspell-region (window-start) (window-end))
+        (call-interactively 'flyspell-correct-previous))
+    (progn
+      (let ((misspelled nil)
+            (candidate nil))
+        (let ((flyspell-correct-interface (lambda (candidates misspelled-word)
+                                            (setq misspelled misspelled-word)
+                                            (setq candidate (car candidates))
+                                            (car candidates))))
+          (call-interactively 'flyspell-correct-previous)
+          (let ((our-key (substitute-command-keys "\\[my-flyspell-correct]")))
+            (message (format "Last typo before point autozapped (%s → %s); hit %s again now to undo and choose a different correction" misspelled candidate our-key))))))))
+
+;; --------------------------------------------------------------------------------
 
 (defun unparenthesize-python-return-stmts ()
   "Unparenthesize all return values in Python return statements from point forward."

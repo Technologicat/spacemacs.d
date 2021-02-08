@@ -55,7 +55,7 @@
     (define-key map (kbd "<f6>") 'iedit-mode)
     (define-key map (kbd "<f7>") 'org-agenda)
     (define-key map (kbd "S-<f8>") 'my-flyspell-correct-unlucky)
-    (define-key map (kbd "<f8>") 'my-flyspell-correct-lucky)
+    (define-key map (kbd "<f8>") 'my-flyspell-correct)
     (define-key map (kbd "<f9>") 'toggle-minimap)
     (define-key map (kbd "S-<f12>") 'yafolding-go-parent-element)
     (define-key map (kbd "<f12>") 'yafolding-toggle-element)
