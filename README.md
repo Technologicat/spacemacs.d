@@ -23,7 +23,7 @@ Potentially useful notes below.
    - Enable 1-based column indexing. Rows already are, so why not columns too?
    - Diminish some more minor mode lighters to de-clutter the modeline.
    - Minimap mode (bound to `<f9>`), provided by `sublimity`.
-   - Several small things such as binding a key to the typo zapper (`<f8>` for `flyspell-correct-previous`), and adding an `unfill-paragraph` function (`M-S-q`, [thanks to Stefan Monnier](https://www.emacswiki.org/emacs/UnfillParagraph)).
+   - Several small things such as binding a key to the typo zapper (`<f8>`), and adding an `unfill-paragraph` function (`M-S-q`, [thanks to Stefan Monnier](https://www.emacswiki.org/emacs/UnfillParagraph)).
  - **Cursor handling**:
    - *[Vim scrolloff](https://wolfecub.github.io/dotfiles/)*: cursor always tries to stay at least 10 lines from the upper/lower edge.
    - [`beacon`](https://github.com/Malabarba/beacon) to never visually lose the cursor when scrolling or switching buffers.
@@ -81,8 +81,9 @@ Key | Command
 `M-S-q` | unfill paragraph, the counterpart of `fill-paragraph`
 `<f6>` | `iedit-mode` on/off, to quickly rename all occurrences of symbol under point (or to jump between them: `<TAB>`, `S-<TAB>`)
 `<f7>` | `org-agenda`
-`<f8>` | `flyspell-correct-previous`, auto-accept first suggestion (if needed, can then immediately `S-<f8>` to undo and correct interactively)
-`S-<f8>` | `flyspell-correct-previous`, ask
+`<f8>` | zap last typo before point via `flyspell-correct-previous`. When pressed once, auto-accept the first suggestion. If immediately pressed again, undo and choose a correction interactively.
+`C-<f8>` | zap last typo before point, always auto-accept first suggestion.
+`S-<f8>` | zap last typo before point, always choose a correction interactively. If pressed immediately after zapping a typo with `<f8>` or `C-<f8>`, automatically undo that first.
 `<f9>` | toggle minimap (provided by `sublimity`)
 `<f12>` | toggle folding of current element (`yafolding`)
 `S-<f12>` | go to parent element (`yafolding`)

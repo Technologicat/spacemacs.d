@@ -469,9 +469,9 @@ Combines the functionality of `my-flyspell-correct-lucky' and
 `my-flyspell-correct-unlucky'.
 
 It is recommended to bind this function to a key. When the key is
-first hit, this autozaps the typo using the first suggestion provided
-by `flyspell'. If immediately hit again, you'll get a prompt to choose
-which correction to use.
+first hit, this auto-zaps the last typo before point, using the first
+suggestion provided by `flyspell'. If immediately hit again, you'll
+get a prompt to choose which correction to use.
 "
   (interactive "P")
   (if (eq last-command 'my-flyspell-correct)
