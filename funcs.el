@@ -439,10 +439,18 @@ Accept the first suggestion without prompting.
     (let ((flyspell-correct-interface (lambda (candidates misspelled-word)
                                         (setq misspelled misspelled-word)
                                         (setq candidate (car candidates))
-                                        (car candidates))))
+                                        candidate)))
       (call-interactively 'flyspell-correct-previous)
       (let ((unlucky-key (substitute-command-keys "\\[my-flyspell-correct-unlucky]")))
-        (message (format "Last typo before point autozapped (%s → %s); hit %s now to undo and choose a different correction" misspelled candidate unlucky-key))))))
+        (if (eq candidate nil)
+            (progn
+              ;; Prevent undo of unrelated stuff in unlucky mode.
+              ;; `this-command' becomes `last-command' when the *next* command runs.
+              (set 'this-command 'my-flyspell-correct-lucky--failed)
+              (message (format "No suggestions for last typo before point (%s); hit %s to correct interactively" misspelled unlucky-key)))
+          (progn
+            (set 'this-command 'my-flyspell-correct-lucky--success)
+            (message (format "Last typo before point autozapped (%s → %s); hit %s to re-correct interactively" misspelled candidate unlucky-key))))))))
 
 (defun my-flyspell-correct-unlucky (&rest args)
   "Wrapper for flyspell-correct-previous.
@@ -454,7 +462,7 @@ often sufficient, but if the default suggestion was not correct,
 it is then possible to immediately hit \\[my-flyspell-correct-unlucky]
 to correct interactively with minimum keypresses."
   (interactive "P")
-  (when (eq last-command 'my-flyspell-correct-lucky)
+  (when (eq last-command 'my-flyspell-correct-lucky--success)
     (undo-tree-undo)
     ;; Undoing the edit does not restore the misspelled-word status.
     ;; Force flyspell to update its overlay.
@@ -474,13 +482,14 @@ suggestion provided by `flyspell'. If immediately hit again, you'll
 get a prompt to choose which correction to use.
 "
   (interactive "P")
-  (if (eq last-command 'my-flyspell-correct)
+  (if (or (eq last-command 'my-flyspell-correct--success) (eq last-command 'my-flyspell-correct--failed))
       (progn
-        (undo-tree-undo)
-        ;; Undoing the edit does not restore the misspelled-word status.
-        ;; Force flyspell to update its overlay.
-        ;; TODO: we assume the word that used to be misspelled is now on screen.
-        (flyspell-region (window-start) (window-end))
+        (when (eq last-command 'my-flyspell-correct--success)
+          (undo-tree-undo)
+          ;; Undoing the edit does not restore the misspelled-word status.
+          ;; Force flyspell to update its overlay.
+          ;; TODO: we assume the word that used to be misspelled is now on screen.
+          (flyspell-region (window-start) (window-end)))
         (call-interactively 'flyspell-correct-previous))
     (progn
       (let ((misspelled nil)
@@ -488,10 +497,16 @@ get a prompt to choose which correction to use.
         (let ((flyspell-correct-interface (lambda (candidates misspelled-word)
                                             (setq misspelled misspelled-word)
                                             (setq candidate (car candidates))
-                                            (car candidates))))
+                                            candidate)))
           (call-interactively 'flyspell-correct-previous)
           (let ((our-key (substitute-command-keys "\\[my-flyspell-correct]")))
-            (message (format "Last typo before point autozapped (%s → %s); hit %s again now to undo and choose a different correction" misspelled candidate our-key))))))))
+            (if (eq candidate nil)
+                (progn
+                  (set 'this-command 'my-flyspell-correct--failed)
+                  (message (format "No suggestions for last typo before point (%s); hit %s again to correct interactively" misspelled our-key)))
+              (progn
+                (set 'this-command 'my-flyspell-correct--success)
+                (message (format "Last typo before point autozapped (%s → %s); hit %s again to re-correct interactively" misspelled candidate our-key))))))))))
 
 ;; --------------------------------------------------------------------------------
 
