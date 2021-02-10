@@ -647,5 +647,6 @@ This function is called at the very end of Spacemacs initialization."
  '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
  '(minimap-font-face ((t (:height 20 :family my-default-font))))
  '(mouse ((t (:background "gainsboro"))))
+ '(region ((t (:extend t :background "CadetBlue4"))))
  '(spacemacs-emacs-face ((t (:inherit 'mode-line :background "SkyBlue4")))))
 )
