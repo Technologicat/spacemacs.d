@@ -152,7 +152,8 @@
 
   (require 'py-autopep8)
   (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-  (add-hook 'before-save-hook 'py-isort-before-save)  ; it checks we're in `python-mode' before doing anything.
+  ; isort breaks macropythonic code, so disable it for now.
+  ;(add-hook 'before-save-hook 'py-isort-before-save)  ; it checks we're in `python-mode' before doing anything.
   ;; Work around crash in py-autopep8.el
   ;; https://github.com/emacs-lsp/lsp-mode/issues/711
   (setq lsp-json-use-lists t)
