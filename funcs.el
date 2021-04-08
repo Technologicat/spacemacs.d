@@ -71,11 +71,12 @@
                                   (t "xsel -ib")))))))
 
 (defun copy-fullpath-of-current-buffer ()
-  "Copy full path of current file into the kill ring and OS clipboard."
+  "Show the absolute filename of current buffer and copy it into the kill ring and OS clipboard."
   (interactive)
   (when buffer-file-name
-    (copy-yank-str (file-truename buffer-file-name))
-    (message "file full path => kill ring & OS clipboard")))
+    (let ((absolute-filename (file-truename buffer-file-name)))
+      (copy-yank-str absolute-filename)
+      (message "`%s'" absolute-filename))))
 
 ;; https://www.emacswiki.org/emacs/UnfillParagraph
 ;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph.
