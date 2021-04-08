@@ -67,9 +67,9 @@ Key | Command
 `M-z` | `helm-select-action`, to unshadow it since `C-z` is taken by undo
 `C-s` | `phi-search` (supports `multiple-cursors`)
 `C-r` | `phi-search-backward` (supports `multiple-cursors`)
-`C-S-c` | copy full path of current buffer (if file)
-`C-S-d` | copy full path of current directory (if file buffer)
-`C-u C-S-d` | copy full path of project root (if in project)
+`C-S-c` | show and copy absolute filename of current buffer (if file)
+`C-S-d` | show and copy absolute path of current directory (if file buffer)
+`C-u C-S-d` | show and copy absolute path of project root (if in project)
 `C-S-e` | open file manager in current directory (if file buffer)
 `C-u C-S-e` | open file manager in project root (if in project)
 `C-S-t` | open dedicated terminal in current directory, see var `dedicated-terminal-command-template`
