@@ -218,7 +218,8 @@
                           "curry" "lazify" "envify" "tco" "prefix" "autoreturn" "forall"
                           "multilambda" "namedlambda" "quicklambda"
                           "cond" "aif" "autoref" "dbg" "nb"
-                          "macros" "q" "u" "hq" "ast_literal")) ; macropy3
+                          ;"macros" "q" "u" "hq" "ast_literal"  ; macropy3
+                          "macros" "dialects" "q" "u" "n" "a" "s" "t" "h"))  ; mcpyrate
           (special-variables '("it"
                                "dyn"
                                "dbgprint_expr")))
