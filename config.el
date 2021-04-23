@@ -252,6 +252,14 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
   (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'org-mode-hook #'highlight-parentheses-mode)
   (add-hook 'org-mode-hook #'org-cdlatex-mode)
+  ;; Disable <> as parens in org-mode, because otherwise writing inequalities in
+  ;; math mode confuses the parentheses highlighting minor modes.
+  ;; https://sites.google.com/site/xiangyangsite/home/technical-tips/linux-unix/emacs/parenthesis-matching-in-emacs
+  ;; https://www.emacswiki.org/emacs/EmacsSyntaxTable
+  ;; https://stackoverflow.com/questions/41681167/modify-syntax-entry-is-not-loaded-in-emacs-init
+  (add-hook 'org-mode-hook (lambda ()
+                             (modify-syntax-entry ?< "w" org-mode-syntax-table)
+                             (modify-syntax-entry ?> "w" org-mode-syntax-table)))
   (add-hook 'inferior-python-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'inferior-python-mode-hook #'highlight-parentheses-mode)
 
