@@ -215,7 +215,7 @@
                           "where"
                           "do" "local" "delete"
                           "continuations" "call_cc"
-                          "curry" "lazify" "envify" "tco" "prefix" "autoreturn" "forall"
+                          "autocurry" "lazify" "envify" "tco" "prefix" "autoreturn" "forall"
                           "multilambda" "namedlambda" "quicklambda"
                           "cond" "aif" "autoref" "dbg" "nb"
                           ;"macros" "q" "u" "hq" "ast_literal"  ; macropy3
