@@ -32,7 +32,7 @@ Potentially useful notes below.
  - **Usability, programming**:
    - `auto-highlight-symbol-mode` and `which-function-mode` enabled by default.
    - `python-mode`: enable `flycheck`, set up `company` for auto-completion. (Requires at least `flake8` and `jedi` from `pip`.)
-   - `python-mode`: syntax highlighting for [MacroPy](https://github.com/azazel75/macropy) and [unpythonic](https://github.com/Technologicat/unpythonic).
+   - `python-mode`: syntax highlighting for [`mcpyrate`](https://github.com/Technologicat/mcpyrate) and [`unpythonic`](https://github.com/Technologicat/unpythonic).
    - Lisp eval minibuffer (`M-:`): enable `eldoc-mode`, `paredit-mode` and `smartparens-mode`.
    - Enable `prettify-symbols-mode` for an experimental code-readability improvement, with a generic setup and a Python-specific setup.
  - **Miscellaneous**:
