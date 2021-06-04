@@ -10,6 +10,8 @@
         (kmacro-lambda-form [?í ?x ?l ?s ?í ?f ?s] 0 "%d"))
   (fset 'unparenthesize-python-return-stmt
         [?\C-s ?r ?e ?t ?u ?r ?n ?\( return left ?  ?\M-x ?s ?p ?- ?u ?n tab return])
+  (fset 'fill-paragraph-at-this-width
+        (kmacro-lambda-form [?\C-x ?f return ?\M-q] 0 "%d"))
 )
 
 (my/recorded-keyboard-macros)
