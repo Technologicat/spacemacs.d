@@ -35,9 +35,9 @@
 ;; https://clojureverse.org/t/share-your-spacemacs-tweaks/1496/9
 (defvar custom-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "s-+") 'spacemacs/zoom-frm-transient-state/spacemacs/zoom-frm-in)
-    (define-key map (kbd "s--") 'spacemacs/zoom-frm-transient-state/spacemacs/zoom-frm-out)
-    (define-key map (kbd "s-0") 'spacemacs/zoom-frm-transient-state/spacemacs/zoom-frm-unzoom)
+    (define-key map (kbd "s-+") 'spacemacs/zoom-frm-in)
+    (define-key map (kbd "s--") 'spacemacs/zoom-frm-out)
+    (define-key map (kbd "s-0") 'spacemacs/zoom-frm-unzoom)
     ;; phi-search for a multiple-cursors compatible isearch replacement
     (define-key map (kbd "C-s") 'my-isearch-forward)
     (define-key map (kbd "C-r") 'my-isearch-backward)

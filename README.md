@@ -62,9 +62,9 @@ Key | Command
 `C-v` | paste (via `cua-mode`)
 `C-z` | `undo-tree-undo`
 `C-S-z` | `undo-tree-redo`
-`s-+` | zoom in (`spacemacs/zoom-frm-transient-state/spacemacs/zoom-frm-in`)
-`s--` | zoom out (`spacemacs/zoom-frm-transient-state/spacemacs/zoom-frm-out`)
-`s-0` | reset zoom (`spacemacs/zoom-frm-transient-state/spacemacs/zoom-frm-unzoom`)
+`s-+` | zoom in (`spacemacs/zoom-frm-in`)
+`s--` | zoom out (`spacemacs/zoom-frm-out`)
+`s-0` | reset zoom (`spacemacs/zoom-frm-unzoom`)
 `S-RET` | sequence: newline, `indent-relative`. Accounts for electric-indent-mode, calling `newline` or `electric-indent-just-newline` as needed. Handy for working with Python docstrings, Org todo lists, and similar.
 `S-<backspace>` | `delete-indentation`. New binding since the default `M-^` is not accessible on Finnish keyboards. Also handy for working with Python docstrings.
 `M-z` | `helm-select-action`, to unshadow it since `C-z` is taken by undo
