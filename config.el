@@ -305,7 +305,7 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
   ;; https://www.reddit.com/r/bashonubuntuonwindows/comments/70i8aa/making_emacs_on_wsl_open_links_in_windows_web/
   (when my-on-wsl
     (setq
-     cmdExeBin"/mnt/c/Windows/System32/cmd.exe"
+     cmdExeBin "/mnt/c/Windows/System32/cmd.exe"
      cmdExeArgs '("/c" "start" "") )
     (setq
      browse-url-generic-program  cmdExeBin
