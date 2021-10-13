@@ -311,6 +311,10 @@ This is useful as a `mwim-beginning-position-function' for the MWIM package."
      browse-url-generic-program  cmdExeBin
      browse-url-generic-args     cmdExeArgs
      browse-url-browser-function 'browse-url-generic))
+
+  ;; Download the "ding (text-format)" dictionary from here:
+  ;; https://en.wiktionary.org/wiki/User:Matthias_Buchmeier/download
+  (setq define-word-offline-dict-directory "~/.spacemacs.d/dictionaries_enwiktionary")
 )
 
 (my/user-config)

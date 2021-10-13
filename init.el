@@ -587,6 +587,7 @@ This function is called at the very end of Spacemacs initialization."
  '(bmkp-autotemp-bookmark-predicates nil)
  '(bmkp-bookmark-map-prefix-keys '("p" [134217837 66]))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/.cache/bookmarks")
+ '(define-word-default-service 'offline-wikitionary)
  '(display-time-24hr-format t)
  '(evil-want-Y-yank-to-eol nil)
  '(flycheck-flake8rc "~/.config/flake8")
