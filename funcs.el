@@ -158,8 +158,14 @@ visible to Windows, and so the directories in it cannot be
 browsed in Windows Explorer.
 "
   (interactive "P")
+  ;; Emacs 28.1 changed browse-url, adding `browse-url-handlers'.
+  ;; Using `browse-url-of-file', directories now open Dired by default.
+  ;; Tried this customization, but it didn't work:
+  ;;     (list (cons #'file-directory-p #'browse-file-f))
+  ;; so we now bypass browse-url, and always use our custom `browse-file-f'.
+  ;; Note our `dedicated-file-browser-template' must be correctly set for this to work.
   (call-in-current-or-project-directory
-   (if my-on-wsl 'browse-file-f 'browse-url-of-file)
+   'browse-file-f
    in-project-root))
 
 (defun open-dedicated-terminal (&optional in-project-root)
