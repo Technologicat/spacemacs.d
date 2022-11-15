@@ -396,7 +396,7 @@ See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.
 
 ## Fast Emacs startup
 
-Use daemon mode. Save [this handy script](https://medium.com/@bobbypriambodo/blazingly-fast-spacemacs-with-persistent-server-92260f2118b7) as `~/.local/bin/em`:
+Use daemon mode. Save [this handy script](https://medium.com/@bobbypriambodo/blazingly-fast-spacemacs-with-persistent-server-92260f2118b7) as `~/.local/bin/em` (it's now also provided as [`em.sh`](em.sh) in the repo):
 
 ```bash
 #!/usr/bin/env bash
