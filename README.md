@@ -315,6 +315,8 @@ Key | Command
 :--- |:---
 `TAB` | cycle folding for current subtree
 `S-TAB` | cycle folding for whole buffer (also `C-u TAB`)
+`C-c C-n` | jump to next heading (disregard level)
+`C-c C-p` | jump to previous heading (disregard level)
 `C-c C-f` | jump to next heading at same level
 `C-c C-b` | jump to previous heading at same level
 `C-c C-u` | jump up one level
