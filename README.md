@@ -153,19 +153,25 @@ These should be standard-ish Emacs.
 Key | Command
 :--- |:---
 `C-g` | "quit", i.e. cancel the current command or ask Emacs to stop whatever it is currently doing.
+`M-x` | the famous meta-x: invoke command by name (the Helm version installed with Spacemacs keeps history, supports incremental fragment search from all available command names, and shows the matching keybind for commands bound to a key combo)
 `C-x C-c` | quit Emacs
 `C-x C-s` | save
 `C-x C-w` | save as
+`C-SPC` | (via `cua-mode`) set/unset mark, useful to select stuff without holding down shift
+`C-u C-SPC` | (via `cua-mode`) jump to previous location of mark (so `C-SPC C-SPC` to tag a location without leaving mark active, and then later `C-u C-SPC` to jump back to it; consider also bookmarks if you need a more persistent solution) (can also use this to jump back to last edited location if you accidentally hit page-down while typing)
+`M-l` | `downcase-word`, make word all-lowercase (starting at point; if at whitespace, apply to next word)
+`M-c` | `capitalize-word`, make word have one uppercase letter (at point; if at whitespace, apply to next word)
+`M-u` | `upcase-word`, make word all-uppercase (starting at point; if at whitespace, apply to next word)
 `<f1>` | `help-command`, same as `C-h`
 `<f1> k` | "what does the following key combo do?"
 `<f1> f` | "what is the Lisp function under point?"
 `<f1> v` | "what is the Lisp variable under point?"
 `<f1> l` | `view-lossage` i.e. "what did I just press?"
-`C-u C-x =` | `what-cursor-position` i.e. "what is the character under cursor?". Without the `C-u` gives just the number, with `C-u` also the name along with other info. Spacemacs has this as `M-m h d c`.
+`C-u C-x =` | `what-cursor-position` i.e. "what is the character under cursor?". Without the `C-u` gives just the number, with `C-u` also the name along with other info. Spacemacs has this as the more mnemonic `M-m h d c` (**m**enu **h**elp **d**escribe **c**haracter).
 `<f3>` | start recording keyboard macro
 `<f4>` | stop recording; replay last recorded keyboard macro (if not recording)
 `C-x` | prefix: global commands
-`C-x z` | repeat last command (that was not caused by an input event), hit more `z` to keep repeating
+`C-x z` | repeat last command (that was not caused by an input event), hit more `z` to repeat again
 `C-x o` | focus other window (e.g. in two-column view, Spacemacs `M-m w v`)
 `C-x 2` | `split-window-below`, same as Spacemacs `M-m w s`
 `C-x 3` | `split-window-right`, same as Spacemacs `M-m w v`
@@ -173,6 +179,8 @@ Key | Command
 `ESC` | *meta*; same as holding Alt (e.g. `ESC d` is `M-d`), but in Spacemacs allows discovery of `M-something` key bindings
 `C-s` | isearch forward (see also `helm-swoop`)
 `C-r` | isearch backward (see also `helm-swoop`)
+`C-a` | jump start of line (same as `<home>`)
+`C-e` | jump end of line (same as `<end>`)
 `M-a` | jump start of sentence (previous full-stop) (in `python-mode`, start of defun)
 `M-e` | jump end of sentence (next full-stop) (in `python-mode`, end of defun)
 `C-M-<home>` | jump beginning of defun
@@ -181,8 +189,6 @@ Key | Command
 `C-<down>` | jump down paragraph (next blank line)
 `M-g M-g` | goto line (also `M-g g`, so doesn't matter whether Alt is held down or not)
 `C-u M-g M-g` | goto line in most recently used other buffer (sometimes useful with a stack trace in an inferior shell)
-`C-SPC` | (via `cua-mode`) set/unset mark, useful to select stuff without holding down shift
-`C-u C-SPC` | (via `cua-mode`) jump to previous location of mark (so `C-SPC C-SPC` to tag a location without leaving mark active, and then later `C-u C-SPC` to jump back to it; consider also using bookmarks)
 `M-s h` | set/remove visual highlighting (persists for the session until manually removed)
 `M-s h .` | highlight symbol under point
 `M-s h p` | highlight phrase (will ask for phrase and color)
@@ -196,7 +202,7 @@ Key | Command
 `C-x p c m` | create named bookmark at point
 `C-x p <delete>` | delete bookmark at point
 `C-x p d` | delete bookmark by name (will prompt)
-`C-x r` | registers menu (for pasting snippets often needed during a session)
+`C-x r` | registers menu (multi-clipboard for pasting snippets often needed during a session)
 `C-x r s` | copy selection to register ("save")
 `C-x r i` | insert contents of register (in Spacemacs, see also `M-m r r`, a register viewer/selector)
 `C-x 8` | input some special chars, `RET` for insert by name (see also `M-x counsel-unicode-char`)
@@ -204,9 +210,6 @@ Key | Command
 `C-x k` | kill buffer (will ask which)
 `C-x 4 0` | kill current window **and buffer**
 `C-x 1` | maximize, i.e. kill other windows
-`M-l` | `downcase-word`, make word all-lowercase (starting at point; if at whitespace, apply to next word)
-`M-c` | `capitalize-word`, make word have one uppercase letter (at point; if at whitespace, apply to next word)
-`M-u` | `upcase-word`, make word all-uppercase (starting at point; if at whitespace, apply to next word)
 `C-x C-x` | `exchange-point-and-mark` (e.g. jump cursor to other end of selected region, but preserve selection). When using `cua-mode`, if a region is selected, must use a quick `C-x C-x` and then another `C-x`, otherwise the first `C-x` will cut instead!
 `C-c C-s i` | `synosaurus-choose-and-insert` ([thesaurus minor mode](https://github.com/hpdeifel/synosaurus) using [WordNet](https://wordnet.princeton.edu/) for English (`sudo apt install wordnet`))
 `C-c C-s l` | `synosaurus-lookup`
@@ -236,7 +239,7 @@ Function keys: by default, `<f2>` is used for 2C two-column mode, which doesn't 
 
 Essentially, `<f3>` and `<f4>` together provide the same functionality as vim's `.`.
 
-The `M-<` and `M->` keys are useful in contexts where the `home` and `end` keys are reserved for other purposes. For example, in a Helm session, `home` and `end` move the cursor in the text entry field, whereas `M-<` and `M->` jump to the beginning/end of the list of completion suggestions. The `M-<` and `M->` key bindings are also hard-coded into some modes such as the help viewer, and always guaranteed to work.
+The `M-<` and `M->` keys are useful in contexts where the `<home>` and `<end>` keys are reserved for other purposes. For example, in a Helm session, `<home>` and `<end>` move the cursor in the text entry field, whereas `M-<` and `M->` jump to the beginning/end of the list of completion suggestions. The `M-<` and `M->` key bindings are also hard-coded into some modes such as the help viewer, and always guaranteed to work.
 
 To debug a frozen Emacs (and potentially save your work), when `C-g` does not help, try `killall -s USR2 emacs` in a terminal. This will essentially `M-x toggle-debug-on-quit`.
 
@@ -257,18 +260,19 @@ Key | Command
 `M-m h d v` | ...for Lisp variables only
 `M-m b N n` | new file (create empty buffer and switch to it)
 `M-m b d` | close file (kill current buffer)
-`M-m b u` | re-open last closed file (buffer)
+`M-m b u` | re-open last closed file (buffer), re-reading it from disk
+`M-m b R` | revert current file from disk
+`M-m f R` | rename current file on disk
 `M-m f s` | save (at first save of an unsaved buffer, will ask for destination) (same as `C-x C-s`)
 `M-m q q` | quit Emacs (will ask to save modified buffers; to cancel quitting, use `C-g`)
 `M-m q Q` | quit Emacs (just do it)
-`M-m q f` | quit Emacs (kill current frame, but leave Emacs open in the background)
+`M-m q f` | quit Emacs (kill current frame, but leave Emacs open in the background, so that it starts much faster if you need it again)
 `M-m f f` | open file
 `M-m f r` | open recent file
-`M-m b b` | show currently open buffers
+`M-m b b` | show currently open buffers (jump by fragment search from buffer names)
+`M-m b m` | show the messages buffer (useful e.g. if you quickly saw an error message in the minibuffer, but it was already replaced by another message)
 `M-m p p` | switch to (another) recent project
 `M-m p f` | open file from current project
-`M-m b R` | revert current file from disk
-`M-m f R` | rename current file on disk
 `M-m f c` | copy current file (will ask for destination)
 `M-m w 2` | 2-column window layout (Spacemacs compatible)
 `M-m w d` | kill current window (same as `C-x 0`)
@@ -286,7 +290,14 @@ Key | Command
 `M-m g s` | open magit, the full-featured git control panel (see its `?`)
 `M-m a u` | open the undo-tree viewer (see its `?` for key bindings), same as `C-x u`
 `M-m e L` | open and jump to `flycheck` error list for current file
-`M-m s s` | `helm-swoop`, an isearch with preview (up/down to pick, `RET` to jump, `C-g` to cancel; see also other swoop variants in the `M-m s` menu)
+`M-m e n` | jump to next `flycheck` error
+`M-m e p` | jump to previous `flycheck` error
+`M-m s s` | `helm-swoop`, isearch current buffer, with preview of matches (up/down to pick, `RET` to jump, `C-g` to cancel)
+`M-m s p` | `spacemacs/helm-project-smart-do-search`, like `M-m s s`, but search the whole project.
+`M-m s d` | `spacemacs/helm-dir-smart-do-search`, like `M-m s s`, but search from all files in the current directory.
+`M-m s S` | `helm-swoop-region-or-symbol`, like `M-m s s`, but use the highlighted word or symbol under point as the query.
+`M-m s P` | `spacemacs/helm-project-smart-do-search-region-or-symbol`, like `M-m s p`, but use the highlighted word or symbol under point as the query.
+`M-m s D` | `spacemacs/helm-dir-smart-do-search-region-or-symbol`, like `M-m s d`, but use the highlighted word or symbol under point as the query.
 `M-m r l` | resume Helm session (e.g. continue a `helm-swoop` search that was exited via `RET`)
 `M-m r y` | show kill ring (`RET` to paste an entry, `C-g` to cancel)
 `M-m S` | spellchecking menu
@@ -297,7 +308,7 @@ Key | Command
 `M-m z f` | zoom frame transient state (increase/decrease font size)
 `M-m s m` | `multiple-cursors` menu (once in `multiple-cursors-mode`, use `RET` to exit it; use `C-m` to insert a literal RET at each cursor)
 `M-m s m a` | `mc/mark-all-dwim` (useful with `narrow-to-region`)
-`M-m s m r` | `mc/edit-lines` (be careful what exactly is selected and where exactly point is before you invoke this!)
+`M-m s m r` | `mc/edit-lines` (be careful what exactly is selected and where exactly point is before you invoke this!) (`RET` to exit multiple cursor edit mode)
 `M-m s m s n` | insert a running number at cursors (starting from 0)
 `C-u 1 M-m s m s n` | insert a running number at cursors, starting from 1 (use a numeric prefix argument)
 `M-m b w` | toggle buffer read-only
@@ -306,10 +317,16 @@ Key | Command
 
 Note in [`projectile`](https://github.com/bbatsov/projectile), a project is [any directory that is under version control](https://jaketrent.com/post/projects-in-spacemacs/), so you don't have to do anything extra to create or manage a project. However, [Treemacs](https://github.com/Alexander-Miller/treemacs) has its own idea of projects, which are essentially directories registered manually; see its `?` for key bindings.
 
+Note also that `helm-swoop` is much better than a standard isearch; it is actually an **incremental fragment search**. For example, to match the text *parachute oranges*, you can use *par ora* or even *ran chu* as the search query. The order of the fragments does not matter. The fragments can be regexes; particularly, use `\b` to mark a word boundary (e.g. `\bora` to match only words beginning with `ora`, and `nges\b` to match only words ending with `nges`).
+
+Also, `helm-swoop` is actually a quick navigation feature in disguise. Even if your document consists of several hundred pages (e.g. a book manuscript), `help-swoop` allows you to jump to any line almost instantly, as long as you remember a couple of words from that line. For example, if the part you want talks about the *Cauchy stress tensor*, a quick query for *cau stre ten* will find it. To continue the example, if the part you want specifically says that the tensor is symmetric, *cau stre ten symm* will narrow down the matches. If you type a lot anyway, this is much faster than other forms of in-document navigation.
+
+(Once you've tried `helm-swoop`, you'll wish everyone implemented search like this.)
+
 
 ## Notes on Org-mode
 
-So far mostly for managing TODO lists.
+So far mostly for managing TODO lists. And authoring technical documents.
 
 Key | Command
 :--- |:---
@@ -350,6 +367,8 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
 
 ### Org template for LaTeX output
 
+Place this at the start of your org-mode document:
+
 ```org
 #+STARTUP: latexpreview
 #+STARTUP: entitiespretty
@@ -363,7 +382,7 @@ See [Org tutorial](https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html) 
 #+author:
 ```
 
-Just insert document title and author, and start writing.
+Then just insert document title and author, and start writing.
 
 This displays LaTeX fragments as images (for equations); pretty-renders entities as unicode (so that e.g. `$\alpha^2$` shows as α² right there in Emacs); expands all sections by default; does not number sections; no table of contents (TOC); a more sensible margin size; paragraphs separated by a vskip, no indent; and no frames around links.
 
@@ -374,29 +393,31 @@ See [[1]](https://orgmode.org/manual/Comment-lines.html), [[2]](https://orgmode.
 
 ## Some useful M-x commands
 
- - `replace-string`, `replace-regexp`
  - `count-words`
- - `calendar`
  - `link-hint-open-link-at-point`
+ - `counsel-unicode-char` pick and insert unicode char by name, with preview (we have this bound to `C-x 8 RET`)
+ - `git-timemachine` quickly see and/or copy text from an old revision (`p`/`n` previous/next revision; `q` to return to file in working tree; while active, save the buffer to overwrite file in working tree with the historical revision being viewed)
+ - `replace-string`, `replace-regexp`
+ - `calendar`
  - `grep`, accepts any command that produces output like `grep -nH` (while active, `{`, `}` jump to previous/next file with matches)
  - `diff` compare files
  - `ediff` compare files, [more sophisticated](https://www.gnu.org/software/emacs/manual/html_node/emacs/Comparing-Files.html)
  - `ediff3` three-way compare files
  - `helm-for-files` find a file ([see e.g. this](http://pragmaticemacs.com/emacs/find-and-open-files-from-anywhere-with-helm-for-files/))
- - `counsel-unicode-char` pick and insert unicode char by name, with preview
  - `list-colors-display` pick and insert color, with preview
  - `name-last-kbd-macro`, `insert-kbd-macro` to save keyboard macros as Lisp (for `init.el`)
  - `artist-mode` draw rectangles and similar
- - `define-word-at-point` (needs internet access) (Spacemacs: `M-m x w d`)
- - `customize-group` configure stuff (a.k.a. *Customize*; some packages prefer to use this)
+ - `define-word-at-point` (needs internet access, unless you have a local installation of wiktionary) (Spacemacs: `M-m x w d`)
+ - `customize`, `customize-group` configure Emacs settings (a.k.a. *Customize*; some packages prefer to use this)
  - `org-agenda` agenda overview
  - `org-todo-list` overview of TODOs, once `org-agenda-files` is configured (`RET` to jump, `t` to cycle TODO/DONE/none, `s` to save all org buffers, `q` to quit)
- - `git-timemachine` quickly see and/or copy text from an old revision (`p`/`n` previous/next revision; `q` to return to file in working tree; while active, save the buffer to overwrite file in working tree with the historical revision being viewed)
 
 
 ## Fast Emacs startup
 
-Use daemon mode. Save [this handy script](https://medium.com/@bobbypriambodo/blazingly-fast-spacemacs-with-persistent-server-92260f2118b7) as `~/.local/bin/em` (it's now also provided as [`em.sh`](em.sh) in the repo):
+In short: use daemon mode.
+
+Save [this handy script](https://medium.com/@bobbypriambodo/blazingly-fast-spacemacs-with-persistent-server-92260f2118b7) as `~/.local/bin/em` (it's now also provided as [`em.sh`](em.sh) in the repo):
 
 ```bash
 #!/usr/bin/env bash
@@ -416,7 +437,7 @@ fi
 wmctrl -a emacs
 ```
 
-and then set up your start menu shortcut (if you use one) to invoke that instead of `emacs` directly. (Though the process-spawning features seem to work more reliably if it's invoked from a terminal.)
+and then set up your start menu shortcut (if you use one) to invoke that instead of `emacs` directly. (Though the process-spawning features, such as opening file browsers or external terminal sessions, seem to work more reliably if the script is invoked from a terminal.)
 
 When using this, use `M-m q f` (`spacemacs/frame-killer`) to quit Emacs so that it stays running in the background; `em` will connect to the running instance, if there is one.
 
@@ -425,7 +446,7 @@ To shut down Emacs, shutting down also the daemon, use `M-m q q` as usual.
 
 ## Configuring flake8 and autopep8
 
-This is used for static analysis of Python (to detect common trivial problems), and automatic [PEP8](https://www.python.org/dev/peps/pep-0008/) code style enforcement.
+This is used for static analysis of Python (to autodetect and warn about common trivial problems), and automatic [PEP8](https://www.python.org/dev/peps/pep-0008/) code style enforcement.
 
 [The default location](https://flake8.pycqa.org/en/latest/user/configuration.html) (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
 
@@ -472,6 +493,8 @@ The only free spellchecker that works properly with Finnish, [Voikko](https://vo
 **Use Enchant 2.2.4 or later.** Recent versions up to 2.2.3 have a [bug](https://github.com/AbiWord/enchant/issues/212) in the [tokenize_line](https://github.com/AbiWord/enchant/blob/master/src/enchant.c) function which will silently truncate any `ä` or `ö` at the end of a word (before sending the input to Voikko for actual spellchecking).
 
 **Ubuntu 20.04 and later** provide the package `enchant-2`, so just `sudo apt install enchant-2 libenchant-2-voikko`. [In older ubuntu versions](https://bugs.launchpad.net/ubuntu/+source/enchant/+bug/1830336), the latest provided `enchant` is 1.6.0, where personal dictionary saving does not work.
+
+For Finnish specifically, you'll also need `sudo apt install libvoikko1 voikko-fi`. If these backend packages are missing, Emacs will hang upon choosing Finnish spellchecking.
 
 Enchant almost works with Emacs's `ispell.el`. However, `enchant` takes `hunspell`-style *locale names* (`-d fi_FI`) for choosing the dictionary, instead of `ispell`-style language names (`-d finnish`). Hence, **out-of-the-box it will only work with the default dictionary** (which requires no `-d` option). Without further configuration, when `flyspell-mode` is enabled, and `enchant` is set up as the `Ispell program`, trying to switch to a non-default dictionary (`M-m S d` in Spacemacs) causes Emacs to freeze. (`C-g` to `Quit` or `killall -s USR2 emacs` to invoke the Elisp debugger (see [here](https://emacs.stackexchange.com/questions/506/debugging-a-frozen-emacs)) will temporarily help, but the freeze will occur again.)
 
@@ -520,9 +543,9 @@ To test, restart Emacs, open a new buffer in text mode (Spacemacs: `M-m b N n`, 
 
 ### Personal dictionary
 
- - **With Enchant 2.2.4**, saving new words to the personal dictionary with the `Save` option in `flyspell-correct-wrapper` (`M-m S c`) works for all languages.
+ - **With Enchant 2.2.4 or later**, saving new words to the personal dictionary with the `Save` option in `flyspell-correct-wrapper` (`M-m S c`) works for all languages.
    - The personal dictionary **does not work with the old Enchant 1.6.0**.
- - Note in case of Finnish, **Enchant 2.2.4 is needed**. Enchant 2.2.3 will not work correctly; see [issue 212](https://github.com/AbiWord/enchant/issues/212), which was fixed in 2.2.4.
+ - Note in case of Finnish, **Enchant 2.2.4 or later is needed**. Enchant 2.2.3 will not work correctly; see [issue 212](https://github.com/AbiWord/enchant/issues/212), which was fixed in 2.2.4.
 
 ### Why is Finnish so hard to spellcheck?
 
