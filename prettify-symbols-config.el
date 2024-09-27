@@ -230,6 +230,18 @@
                                               1 font-lock-keyword-face)) 'append)
   ))
   (add-hook 'python-mode-hook 'my/unpythonic-syntax-highlight-setup)
+  (defun my/python-3-10-syntax-highlight-setup ()
+    "Set up additional syntax highlighting for `match'/`case' introduced in Python 3.10."
+    ;; adapted from code in dash.el
+    (let ((new-keywords '("match" "case"))
+          (special-variables '("_")))  ; wildcard in match patterns only, but doesn't hurt to highlight it everywhere.
+      (font-lock-add-keywords 'python-mode `((,(concat "\\_<" (regexp-opt special-variables 'paren) "\\_>")
+                                              1 font-lock-variable-name-face)) 'append)
+      ;; "(\\s-*" maybe somewhere?
+      (font-lock-add-keywords 'python-mode `((,(concat "\\_<" (regexp-opt new-keywords 'paren) "\\_>")
+                                              1 font-lock-keyword-face)) 'append)
+  ))
+  (add-hook 'python-mode-hook 'my/python-3-10-syntax-highlight-setup)
 )
 
 (my/prettifier-init)
