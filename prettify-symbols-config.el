@@ -241,7 +241,23 @@
       (font-lock-add-keywords 'python-mode `((,(concat "\\_<" (regexp-opt new-keywords 'paren) "\\_>")
                                               1 font-lock-keyword-face)) 'append)
   ))
+  (defun my/python-3-11-syntax-highlight-setup ()
+    "Set up additional syntax highlighting for `except*' introduced in Python 3.11."
+    ;; adapted from code in dash.el
+    (let ((new-keywords '("except*")))
+      (font-lock-add-keywords 'python-mode `((,(concat "\\_<" (regexp-opt special-variables 'paren) "\\_>")
+                                              1 font-lock-variable-name-face)) 'append)
+      ))
+  (defun my/python-3-12-syntax-highlight-setup ()
+    "Set up additional syntax highlighting for `type' statement introduced in Python 3.12."
+    ;; adapted from code in dash.el
+    (let ((new-keywords '("type")))
+      (font-lock-add-keywords 'python-mode `((,(concat "\\_<" (regexp-opt special-variables 'paren) "\\_>")
+                                              1 font-lock-variable-name-face)) 'append)
+      ))
   (add-hook 'python-mode-hook 'my/python-3-10-syntax-highlight-setup)
+  (add-hook 'python-mode-hook 'my/python-3-11-syntax-highlight-setup)
+  (add-hook 'python-mode-hook 'my/python-3-12-syntax-highlight-setup)
 )
 
 (my/prettifier-init)
