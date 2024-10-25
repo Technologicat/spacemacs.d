@@ -47,6 +47,7 @@ This function should only modify configuration layer settings."
    '(rust
      octave
      javascript
+     tern
      html
      csv
      yaml
