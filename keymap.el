@@ -43,8 +43,8 @@
     (define-key map (kbd "C-r") 'my-isearch-backward)
     ;; Ctrl+Z undo shadows helm's action list viewer; let's place that on Alt+Z
     (define-key map (kbd "M-z") 'helm-select-action)  ; this seems to be the "C-z Actions"?
-    (define-key map (kbd "C-z") 'undo-tree-undo)
-    (define-key map (kbd "C-S-z") 'undo-tree-redo)
+    (define-key map (kbd "C-z") 'undo)
+    (define-key map (kbd "C-S-z") 'undo-redo)
     (define-key map (kbd "C-S-c") 'copy-fullpath-of-current-buffer)
     (define-key map (kbd "C-S-d") 'copy-fullpath-of-current-directory)
     (define-key map (kbd "C-t") 'spacemacs/shell-pop-inferior-shell)  ; much more useful than transpose-chars
