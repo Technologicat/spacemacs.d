@@ -60,8 +60,8 @@ Key | Command
 `C-x` | cut (via `cua-mode`)
 `C-c` | copy (via `cua-mode`)
 `C-v` | paste (via `cua-mode`)
-`C-z` | `undo-tree-undo`
-`C-S-z` | `undo-tree-redo`
+`C-z` | `undo`
+`C-S-z` | `undo-redo`
 `s-+` | zoom in (`spacemacs/zoom-frm-in`)
 `s--` | zoom out (`spacemacs/zoom-frm-out`)
 `s-0` | reset zoom (`spacemacs/zoom-frm-unzoom`)
@@ -143,7 +143,7 @@ We use `yafolding` instead of the folding features of `evil`, because it require
 
 We provide `C-M-S-u` and `C-M-S-r` also as `s-u` and `s-r`, respectively, because the `C-M-S-` variant is reserved in Linux Mint (unicode input and screen recording, respectively), while the `s-` variant is reserved in Windows (accessiblity settings and run command, respectively), which may still be relevant in corporate environments.
 
-**CAUTION**: The undo-and-correct-interactively feature of `<f8> S-<f8>` requires the corrected word still to be on the screen in order to work correctly. This limitation is because the flyspell overlay is deleted when a correction is accepted, and `undo-tree-undo` to remove the correction does not restore the overlay. Thus, as a workaround, when you press `<f8> S-<f8>`, after performing the undo, we run `flyspell-region` for the text currently visible on screen (to restore the overlay) before invoking `flyspell-correct-previous` again. This is known to be slow for buffers with only a screenful of text in them (e.g. git commit messages).
+**CAUTION**: The undo-and-correct-interactively feature of `<f8> S-<f8>` requires the corrected word still to be on the screen in order to work correctly. This limitation is because the flyspell overlay is deleted when a correction is accepted, and `undo` to remove the correction does not restore the overlay. Thus, as a workaround, when you press `<f8> S-<f8>`, after performing the undo, we run `flyspell-region` for the text currently visible on screen (to restore the overlay) before invoking `flyspell-correct-previous` again. This is known to be slow for buffers with only a screenful of text in them (e.g. git commit messages).
 
 
 ## Some useful standard key bindings
@@ -288,7 +288,6 @@ Key | Command
 `M-m n r` | `narrow-to-region`
 `M-m n w` | `widen`, i.e. exit from narrowing
 `M-m g s` | open magit, the full-featured git control panel (see its `?`)
-`M-m a u` | open the undo-tree viewer (see its `?` for key bindings), same as `C-x u`
 `M-m e L` | open and jump to `flycheck` error list for current file
 `M-m e n` | jump to next `flycheck` error
 `M-m e p` | jump to previous `flycheck` error
