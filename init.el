@@ -53,7 +53,7 @@ This function should only modify configuration layer settings."
      yaml
      graphviz
      racket
-     python
+     (python :variables python-auto-set-local-pyvenv-virtualenv 'on-visit)
      julia
      c-c++
      cscope
@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
      helm
      (auto-completion
       :variables
-      ;auto-completion-enable-help-tooltip t
+                                        ;auto-completion-enable-help-tooltip t
       auto-completion-enable-snippets-in-popup t
       auto-completion-return-key-behavior 'complete
       auto-completion-tab-key-behavior 'cycle
@@ -129,7 +129,7 @@ This function should only modify configuration layer settings."
                                       ;; https://github.com/paetzke/py-autopep8.el
                                       py-autopep8
                                       ;; https://github.com/Bogdanp/coverage-mode
-                                      ;(coverage-mode :location (recipe :fetcher github :repo "Bogdanp/coverage-mode"))
+                                        ;(coverage-mode :location (recipe :fetcher github :repo "Bogdanp/coverage-mode"))
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -462,9 +462,9 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-persistent-server nil
 
    ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
-   ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   ;; tool of the list. Supported tools are `rg', `ag', `ack' and `grep'.
+   ;; (default '("rg" "ag" "ack" "grep"))
+   dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
@@ -560,7 +560,7 @@ before packages are loaded."
   ;; ;; no need for hook, this whole function runs after init is done
   ;; (add-hook 'after-init-hook #'fancy-battery-mode)
   ;; (add-hook 'after-init-hook #'display-time)
-)
+  )
 
 ;; In custom settings, use tmispell instead of classic ispell to check also Finnish; part of Voikko.
 ;; EDIT: in 2019, deprecated. Use enchant instead, Voikko has a provider also for that.
@@ -577,83 +577,83 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(beacon-color "goldenrod")
- '(bmkp-auto-light-when-jump 'any-bookmark)
- '(bmkp-auto-light-when-set 'any-bookmark)
- '(bmkp-autoname-bookmark-function 'my-auto-l+c-name)
- '(bmkp-autotemp-bookmark-predicates nil)
- '(bmkp-bookmark-map-prefix-keys '("p" [134217837 66]))
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/.cache/bookmarks")
- '(define-word-default-service 'offline-wikitionary)
- '(display-time-24hr-format t)
- '(evil-want-Y-yank-to-eol nil)
- '(flycheck-flake8rc "~/.config/flake8")
- '(flycheck-python-flake8-executable "python3")
- '(flycheck-python-mypy-config '("mypy.ini" "setup.cfg" "~/.config/mypy/config"))
- '(flycheck-python-pycompile-executable "python3")
- '(flycheck-python-pylint-executable "python3")
- '(flyspell-dictionaries-that-consider-dash-as-word-delimiter '("francais" "deutsch8" "norsk" "finnish"))
- '(importmagic-python-interpreter "python3")
- '(ispell-dictionary nil)
- '(major-mode 'text-mode)
- '(minimap-update-delay 0)
- '(minimap-window-location 'right)
- '(mwim-beginning-of-line-function
-   '((t . beginning-of-visual-line)
-     (message-mode . message-beginning-of-line)
-     (org-mode . org-beginning-of-line)))
- '(mwim-beginning-position-functions
-   '(mwim-code-beginning mwim-line-beginning my/where-is-beginning-of-line mwim-comment-beginning))
- '(mwim-end-of-line-function '((t . end-of-visual-line) (org-mode . org-end-of-line)))
- '(mwim-end-position-functions '(mwim-code-end mwim-line-end my/where-is-end-of-line))
- '(mwim-next-position-function 'mwim-next-unique-position)
- '(org-emphasis-alist
-   '(("*" bold)
-     ("/" italic)
-     ("_" underline)
-     ("=" org-verbatim verbatim)
-     ("~" org-code verbatim)
-     ("+"
-      (:strike-through t))
-     ("!"
-      (:overline t)
-      verbatim)))
- '(org-format-latex-options
-   '(:foreground default :background default :scale 1.25 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
-                 ("begin" "$1" "$" "$$" "\\(" "\\[")))
- '(package-selected-packages
-   '(minimap toml-mode racer helm-gtags ggtags flycheck-rust counsel-gtags cargo rust-mode py-autopep8 cdlatex web-mode web-beautify tagedit slim-mode scss-mode pug-mode prettier-js nodejs-repl livid-mode skewer-mode json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc impatient-mode htmlize simple-httpd helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern tern csv-mode yaml-mode synosaurus graphviz-dot-mode mc-extras phi-search helm-cscope xcscope helm-rtags google-c-style flycheck-rtags disaster cpp-auto-include company-rtags rtags company-c-headers clang-format multiple-cursors suomalainen-kalenteri lsp-julia lsp-mode julia-repl julia-mode fireplace shell-pop company-quickhelp yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic flycheck-pos-tip pos-tip flycheck company-auctex auctex zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme smeargle orgit mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy evil-magit magit transient git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
- '(paradox-github-token t)
- '(prettify-symbols-unprettify-at-point 'right-edge)
- '(python-shell-interpreter "ipython3")
- '(python-shell-interpreter-args "--simple-prompt --matplotlib=tk -i")
- '(sort-fold-case t t)
- '(sublimity-map-active-region 'secondary-selection))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
- '(ahs-face ((t (:background "olive drab" :foreground "GhostWhite"))))
- '(ahs-plugin-whole-buffer-face ((t (:background "dark olive green" :foreground "ghost white"))))
- '(bmkp-light-autonamed ((t (:background "SteelBlue4"))))
- '(bmkp-light-autonamed-region ((t (:background "SteelBlue4"))))
- '(bmkp-light-fringe-autonamed ((t (:background "SteelBlue4"))))
- '(bmkp-light-fringe-non-autonamed ((t (:background "SteelBlue4"))))
- '(bmkp-light-non-autonamed ((t (:background "SteelBlue4"))))
- '(bmkp-light-non-autonamed-region ((t (:background "SteelBlue4"))))
- '(coverage/covered-face ((t (:background "dark slate gray"))))
- '(coverage/uncovered-face ((t (:background "gray30"))))
- '(minimap-active-region-background ((t (:background "dark olive green"))))
- '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
- '(minimap-font-face ((t (:height 20 :family my-default-font))))
- '(mouse ((t (:background "gainsboro"))))
- '(region ((t (:extend t :background "CadetBlue4"))))
- '(spacemacs-emacs-face ((t (:inherit 'mode-line :background "SkyBlue4")))))
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(beacon-color "goldenrod")
+   '(bmkp-auto-light-when-jump 'any-bookmark)
+   '(bmkp-auto-light-when-set 'any-bookmark)
+   '(bmkp-autoname-bookmark-function 'my-auto-l+c-name)
+   '(bmkp-autotemp-bookmark-predicates nil)
+   '(bmkp-bookmark-map-prefix-keys '("p" [134217837 66]))
+   '(bmkp-last-as-first-bookmark-file "~/.emacs.d/.cache/bookmarks")
+   '(define-word-default-service 'offline-wikitionary)
+   '(display-time-24hr-format t)
+   '(evil-want-Y-yank-to-eol nil)
+   '(flycheck-flake8rc "~/.config/flake8")
+   '(flycheck-python-flake8-executable "~/.local/venvs/editor-tools/bin/flake8")
+   '(flycheck-python-mypy-config '("mypy.ini" "setup.cfg" "~/.config/mypy/config"))
+   '(flycheck-python-pycompile-executable "python3")
+   '(flycheck-python-pylint-executable "python3")
+   '(flyspell-dictionaries-that-consider-dash-as-word-delimiter '("francais" "deutsch8" "norsk" "finnish"))
+   '(importmagic-python-interpreter "~/.local/venvs/editor-tools/bin/python")
+   '(ispell-dictionary nil)
+   '(major-mode 'text-mode)
+   '(minimap-update-delay 0)
+   '(minimap-window-location 'right)
+   '(mwim-beginning-of-line-function
+     '((t . beginning-of-visual-line)
+       (message-mode . message-beginning-of-line)
+       (org-mode . org-beginning-of-line)))
+   '(mwim-beginning-position-functions
+     '(mwim-code-beginning mwim-line-beginning my/where-is-beginning-of-line mwim-comment-beginning))
+   '(mwim-end-of-line-function '((t . end-of-visual-line) (org-mode . org-end-of-line)))
+   '(mwim-end-position-functions '(mwim-code-end mwim-line-end my/where-is-end-of-line))
+   '(mwim-next-position-function 'mwim-next-unique-position)
+   '(org-emphasis-alist
+     '(("*" bold)
+       ("/" italic)
+       ("_" underline)
+       ("=" org-verbatim verbatim)
+       ("~" org-code verbatim)
+       ("+"
+        (:strike-through t))
+       ("!"
+        (:overline t)
+        verbatim)))
+   '(org-format-latex-options
+     '(:foreground default :background default :scale 1.25 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+                   ("begin" "$1" "$" "$$" "\\(" "\\[")))
+   '(package-selected-packages
+     '(minimap toml-mode racer helm-gtags ggtags flycheck-rust counsel-gtags cargo rust-mode py-autopep8 cdlatex web-mode web-beautify tagedit slim-mode scss-mode pug-mode prettier-js nodejs-repl livid-mode skewer-mode json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc impatient-mode htmlize simple-httpd helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern tern csv-mode yaml-mode synosaurus graphviz-dot-mode mc-extras phi-search helm-cscope xcscope helm-rtags google-c-style flycheck-rtags disaster cpp-auto-include company-rtags rtags company-c-headers clang-format multiple-cursors suomalainen-kalenteri lsp-julia lsp-mode julia-repl julia-mode fireplace shell-pop company-quickhelp yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic flycheck-pos-tip pos-tip flycheck company-auctex auctex zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme smeargle orgit mmm-mode markdown-toc markdown-mode magit-gitflow magit-popup helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy evil-magit magit transient git-commit with-editor company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+   '(paradox-github-token t)
+   '(prettify-symbols-unprettify-at-point 'right-edge)
+   '(python-shell-interpreter "python")
+   '(python-shell-interpreter-args "-i")
+   '(sort-fold-case t t)
+   '(sublimity-map-active-region 'secondary-selection))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:background unspecified))))
+   '(ahs-face ((t (:background "olive drab" :foreground "GhostWhite"))))
+   '(ahs-plugin-whole-buffer-face ((t (:background "dark olive green" :foreground "ghost white"))))
+   '(bmkp-light-autonamed ((t (:background "SteelBlue4"))))
+   '(bmkp-light-autonamed-region ((t (:background "SteelBlue4"))))
+   '(bmkp-light-fringe-autonamed ((t (:background "SteelBlue4"))))
+   '(bmkp-light-fringe-non-autonamed ((t (:background "SteelBlue4"))))
+   '(bmkp-light-non-autonamed ((t (:background "SteelBlue4"))))
+   '(bmkp-light-non-autonamed-region ((t (:background "SteelBlue4"))))
+   '(coverage/covered-face ((t (:background "dark slate gray"))))
+   '(coverage/uncovered-face ((t (:background "gray30"))))
+   '(minimap-active-region-background ((t (:background "dark olive green"))))
+   '(minimap-current-line-face ((t (:background "olive drab" :foreground "olive drab"))))
+   '(minimap-font-face ((t (:height 20 :family my-default-font))))
+   '(mouse ((t (:background "gainsboro"))))
+   '(region ((t (:extend t :background "CadetBlue4"))))
+   '(spacemacs-emacs-face ((t (:inherit 'mode-line :background "SkyBlue4")))))
+  )
