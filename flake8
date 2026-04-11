@@ -27,6 +27,8 @@ ignore =
     E731,
     # whitespace before ':' (false positive on alignment and slices; Black/Ruff agree)
     E203,
+    # `global x` as intent marker (reading, not assigning)
+    F824,
     # line break before binary operator (PEP 8 recommends Knuth's style, i.e. break before)
     W503,
     # line break after binary operator
