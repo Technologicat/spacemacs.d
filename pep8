@@ -1,0 +1,40 @@
+[pep8]
+# autopep8's config. Deliberately NOT the same file as `flake8`, though both accept this format.
+#
+# A reporter and a rewriter want opposite defaults. A false positive from flake8 costs a glance; a false
+# positive from autopep8 costs code, and cannot be argued with, because **autopep8 does not honour
+# `# noqa`** - it rewrites a suppressed line just the same. So a site-level exemption is no protection,
+# and this file is the only place a rule can be held back.
+#
+# Hence a `select` whitelist rather than an `ignore` list: a rule gains the power to rewrite only when
+# named here, so a new pycodestyle release cannot quietly acquire it.
+#
+# What is allowed is whitespace hygiene that cannot carry meaning: nothing here can change what a line
+# says, only how much invisible space surrounds it.
+#
+#   W291  trailing whitespace
+#   W293  whitespace on a blank line
+#   W391  blank line at end of file
+#   E211  whitespace before '(' or '['
+#   E231  missing whitespace after ','
+select = W291,W293,W391,E211,E231
+
+# Kept out on purpose, each having been observed to damage real code (Raven, 2026-08-11):
+#
+#   E201/E202  whitespace after '{' / before '}'. In an f-string the space in `f"{ {k: v for ...} }"` is
+#              what distinguishes an expression from an escaped brace; removing it yields `{{`, and the
+#              file no longer parses. This one is a SyntaxError, not a style regression.
+#   E241/E272  multiple spaces after ',' / before a keyword. This is how a hand-aligned table of data is
+#              written, and the alignment is the readability - collapsing it loses the columns.
+#   E702       multiple statements on one line. Splitting `a = 1; b = 2  # noqa: E702` into separate lines
+#              strands the suppression on the last of them, so the rewrite breaks both the intent and the
+#              exemption that documented it.
+#   E226       arithmetic spacing. `f"{'-'*70}"` reads as one unit; respacing it is a preference, and a
+#              rewriter should not hold preferences.
+#   E1xx       the indentation family (E111, E117, E126-E131). autopep8 normalizes the whole *logical
+#              line* rather than the flagged line, so fixing one continuation can silently reflow others
+#              that were aligned by hand - a string continuation belongs under the opening quote of the
+#              string it continues, and no linter models that.
+#
+# Reporting these is still wanted: that is flake8's job, and its config is the `flake8` file next to this
+# one. Being told is useful; being overruled is not.

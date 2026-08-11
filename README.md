@@ -453,9 +453,15 @@ However, Emacs thinks the default location is `~/.config/flake8rc` (note the `rc
 
 This gives [Spyder](https://github.com/spyder-ide/spyder)-like notes in the fringe for statically detected errors and style issues.
 
-For `autopep8`, the default location is `~/.config/pep8`. This can be just a symlink to `~/.config/flake8`, as [it accepts the same format](https://github.com/hhatto/autopep8#configuration), at least for the ignore flags.
+For `autopep8`, the default location is `~/.config/pep8`. It [accepts the same format](https://github.com/hhatto/autopep8#configuration), so it is tempting to point it at the flake8 config and be done — which is what this file used to recommend. **Don't.** Give it its own, as the [pep8](pep8) file here does.
 
-The [flake8](flake8) file in this repository contains my actual flake8 config, and `~/.config/flake8` is just a symlink to `~/.spacemacs.d/flake8`. (So `~/.config/pep8` → `~/.config/flake8` → `~/.spacemacs.d/flake8`, which is the actual file.)
+A reporter and a rewriter want opposite defaults. A false positive from flake8 costs a glance; a false positive from autopep8 costs code, and cannot be argued with, because **autopep8 does not honour `# noqa`** — it rewrites a suppressed line just the same, so the usual site-level exemption is no protection. With `py-autopep8-mode` on the save hook, that happens silently, on every save.
+
+Sharing one permissive ignore list between the two was doing real damage. Measured over one project (2026-08-11), a save would have rewritten eleven files: collapsing the space in `f"{ {k: v for ...} }"` — where it is what distinguishes an expression from an escaped brace — into `{{`, which is a **SyntaxError** and not a style regression; flattening hand-aligned tables of data, where the columns are the readability; and splitting a `# noqa: E702` one-liner into four lines with the suppression stranded on the last of them.
+
+So [pep8](pep8) uses a `select` whitelist rather than an `ignore` list: a rule may rewrite only when named, and a new pycodestyle release cannot quietly acquire the power. What it allows is whitespace that cannot carry meaning. Everything held back is still *reported* by flake8, which is the right division of labour — being told is useful, being overruled is not.
+
+Both real files live in this repository, with `~/.config` symlinked to them: `~/.config/flake8` → `~/.spacemacs.d/flake8`, and `~/.config/pep8` → `~/.spacemacs.d/pep8`.
 
 
 ## Configuring essential development tools for JavaScript
