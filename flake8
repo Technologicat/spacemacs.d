@@ -33,4 +33,4 @@ ignore =
     W503,
     # line break after binary operator
     W504
-exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,node_modules,instance,00_stuff,00_old
+exclude = .git,.venv,__pycache__,docs/source/conf.py,old,build,dist,node_modules,instance,00_stuff,00_old
