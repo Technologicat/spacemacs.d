@@ -447,7 +447,7 @@ To shut down Emacs, shutting down also the daemon, use `M-m q q` as usual.
 
 This is used for static analysis of Python (to autodetect and warn about common trivial problems), and automatic [PEP8](https://www.python.org/dev/peps/pep-0008/) code style enforcement.
 
-[The default location](https://flake8.pycqa.org/en/latest/user/configuration.html) (as far as `flake8` itself is concerned) for the configuration is `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory.
+The configuration lives at `~/.config/flake8`. Note no `rc` at the end of the name, and that is a filename, not a directory. Current `flake8` does not pick it up by itself — it [reads only project-level configs](https://flake8.pycqa.org/en/latest/user/configuration.html) (`setup.cfg`, `tox.ini`, `.flake8`) — so on the command line, pass it explicitly: `flake8 --config ~/.config/flake8 <paths>`. (Verified with flake8 6.0.)
 
 However, Emacs thinks the default location is `~/.config/flake8rc` (note the `rc`), so if you want `flycheck-verify-setup` (`M-m e v`) to see it, the value must be customized (via `M-x customize-group flycheck-executables`). (This is already done in the `init.el` provided here.)
 
